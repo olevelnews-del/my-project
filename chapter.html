@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title id="chapter-title">অধ্যায় | HSC Academic Hub</title>
-  <meta name="description" content="HSC Academic Hub অধ্যায়ের ভিডিও, নোট, অনুশীলন ও NotebookLM এক জাগায়।" />
+  <meta name="description" content="HSC Academic Hub অধ্যায়ের টিউটোরিয়াল, নোট, অনুশীলন।" />
 
   <!-- OG Meta Tags -->
-  <meta property="og:title" content="অধ্যায় ভিডিও প্লেয়ার — HSC Academic Hub" />
-  <meta property="og:description" content="YouTube ভিডিও, Google Drive Notes, এবং NotebookLM এক জাগায়।" />
+  <meta property="og:title" content="অধ্যায় টিউটোরিয়াল — HSC Academic Hub" />
+  <meta property="og:description" content="YouTube টিউটোরিয়াাল, Google Drive Notes, এবং NotebookLM এক জাগায ়।" />
   <meta property="og:image" content="https://hsctutorbd.com/og-image.jpg" />
   <meta property="og:url" content="https://hsctutorbd.com/chapter.html" />
   <meta property="og:type" content="website" />
@@ -19,223 +19,165 @@
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="/css/dashboard-dark.css" />
+  <script src="/js/youtube-search.js"></script>
 
   <style>
-    .video-column { padding: 24px; background: var(--bg-card); border-radius: 14px; margin-bottom: 24px; }
-    .video-frame { width: 100%; position: relative; padding-top: 56.25%; overflow: hidden; border-radius: 10px; background: #000; }
-    .video-frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-    .media-empty { text-align: center; color: var(--text-muted); font-size: 14px; padding: 40px 0; }
-    .progress-actions { display: flex; gap: 12px; align-items: center; margin-top: 16px; flex-wrap: wrap; }
-    .progress-phone input { background: var(--bg-hover); border: 1px solid var(--border-subtle); color: var(--text-primary); padding: 10px 14px; border-radius: 8px; font-size: 13px; min-width: 220px; }
-    .notebooklm-section { padding: 24px; background: var(--bg-card); border-radius: 14px; }
-    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; justify-content: center; align-items: center; }
-    .modal-overlay.active { display: flex; }
-    .modal-box { background: var(--bg-card); border: 1px solid var(--accent-violet); border-radius: 16px; padding: 28px; max-width: 480px; width: 90%; }
-    .modal-box h2 { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
-    .modal-field label { font-size: 13px; color: var(--text-secondary); display: block; margin-bottom: 6px; }
-    .modal-field input { width: 100%; background: var(--bg-hover); border: 1px solid var(--border-subtle); color: var(--text-primary); padding: 10px 12px; border-radius: 8px; font-size: 13px; margin-bottom: 12px; }
-    .chapter-breadcrumb { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
-    .chapter-breadcrumb a { color: var(--accent-purple); }
-  </style>
+    body { font-family: 'Hind Siliguri', sans-serif; background: var(--bg-dark); color: var(--text-primary); margin: 0; padding: 0; }
+    
+    .page-header { background: var(--bg-card); border-bottom: 1px solid var(--border-subtle); padding: 20px; }
+    .page-header h1 { margin: 0 0 4px 0; font-size: 20px; color: var(--cta-yellow); }
+    .page-header p { margin: 0; font-size: 13px; color: var(--text-muted); }
+    .back-link { color: var(--accent-purple); text-decoration: none; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 12px; }
+    .back-link:hover { text-decoration: underline; }
 
-  <script src="/config.js"></script>
+    /* Section boxes */
+    .section-box { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 20px; margin: 20px; }
+    .section-box h2 { margin: 0 0 12px 0; font-size: 16px; font-weight: 700; color: var(--text-primary); }
+    .section-box p { margin: 0 0 16px 0; color: var(--text-secondary); font-size: 14px; }
+    
+    /* Tutorial card */
+    .tutorial-card { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; padding: 24px; text-align: center; max-width: 500px; margin: 0 auto; }
+    .tutorial-card h3 { margin: 0 0 8px 0; font-size: 18px; color: var(--text-primary); }
+    .tutorial-card p.subtext { margin: 0 0 20px 0; color: var(--text-muted); font-size: 13px; line-height: 1.5; }
+    
+    /* Watch Tutorial Button */
+    .watch-tutorial-btn { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 10px; 
+      background: linear-gradient(135deg, #FF0000, #CC0000); 
+      color: #fff; 
+      text-decoration: none; 
+      padding: 14px 28px; 
+      border-radius: 50px; 
+      font-size: 16px; 
+      font-weight: 600; 
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(255,0,0,0.3);
+    }
+    .watch-tutorial-btn:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 6px 16px rgba(255,0,0,0.4); 
+    }
+    .watch-tutorial-btn span { font-size: 20px; }
+    
+    .youtube-note { margin-top: 12px; font-size: 12px; color: var(--text-muted); }
+    
+    /* Placeholder buttons */
+    .placeholder-btn { 
+      background: var(--bg-hover); 
+      color: var(--text-muted); 
+      border: 1px dashed var(--border-subtle); 
+      padding: 12px 20px; 
+      border-radius: 8px; 
+      font-size: 14px; 
+      cursor: not-allowed; 
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .placeholder-btn span { margin-right: 0; }
+    
+    .action-btn {
+      background: var(--accent-violet);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+    .action-btn:hover { background: #9333ea; }
+    
+    @media (max-width: 768px) {
+      .section-box { margin: 16px; padding: 16px; }
+      .watch-tutorial-btn { width: 100%; justify-content: center; }
+    }
+  </style>
 </head>
 <body>
-  <div class="dashboard-container">
-    <aside class="sidebar" id="sidebar">
-      <div class="sidebar-logo">
-        <a href="/" class="logo-link">
-          <span class="logo-icon">🎓</span>
-          <div>
-            <div class="logo-title" data-brand>HSC Academic Hub</div>
-            <div class="logo-subtitle">Consultant Dashboard</div>
-          </div>
-        </a>
-      </div>
+  <div class="page-header">
+    <a href="/courses/index.html" class="back-link">← সব কোর্সে ফিরে যান</a>
+    <h1 id="chapter-title">অধ্যায় | HSC Academic Hub</h1>
+    <p id="chapter-subtitle">প্রস্তুত হচ্ছে...</p>
+  </div>
 
-      <nav class="sidebar-nav">
-        <div class="nav-section-title">নেভিগেশন</div>
-        <a href="dashboard.html" class="nav-item">
-          <span class="nav-icon">🏠</span>
-          <span class="nav-label">হোম ড্যাবোর্ড</span>
-        </a>
-        <a href="planner.html" class="nav-item">
-          <span class="nav-icon">📅</span>
-          <span class="nav-label">পড়াঁর প্ল্যানার</span>
-        </a>
-        <a href="scorecard.html" class="nav-item">
-          <span class="nav-icon">📊</span>
-          <span class="nav-label">স্কোরকার্ড</span>
-        </a>
-        <a href="test.html" class="nav-item">
-          <span class="nav-icon">📝</span>
-          <span class="nav-label">টেস্ট সিরিজ</span>
-        </a>
-        <a href="revision.html" class="nav-item">
-          <span class="nav-icon">🔖</span>
-          <span class="nav-label">বুকমার্ক ও রিভিশন</span>
-        </a>
-      </nav>
-
-      <div class="sidebar-footer-note">
-        <p>৳999 একবার · HSC পরীক্ষা পর্যন্ত</p>
-      </div>
-    </aside>
-
-    <div class="main-wrapper">
-      <header class="topbar">
-        <button class="topbar-mobile-btn" id="topbar-toggle" aria-label="মেনু">☰</button>
-        <h1 style="font-size:16px;font-weight:700;color:var(--text-primary);" id="topbar-chapter-name">অধ্যায় প্লেয়ার</h1>
-      </header>
-
-      <main class="main-content" style="padding:24px;">
-
-        <div class="chapter-breadcrumb">
-          <a href="dashboard.html">হোম</a> &nbsp;›&nbsp; <a href="courses/">কোর্স</a> &nbsp;›&nbsp; <span id="breadcrumb-course">—</span> &nbsp;›&nbsp; <span id="breadcrumb-chapter">অধ্যায়</span>
-        </div>
-
-        <div class="video-column">
-          <h2 style="font-size:18px;font-weight:700;margin-bottom:12px;" id="video-title">অধ্যায় লোড হচ্ছে...</h2>
-          <div class="video-frame">
-            <iframe id="lesson-video" title="অধ্যায়ের YouTube ভিডিও" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen hidden></iframe>
-            <p class="media-empty" id="video-empty">🎬 ভিডিও লিংক links.json এ যোগ করুন</p>
-          </div>
-          <p id="links-status" style="margin-top:12px;font-size:13px;color:var(--text-muted);"></p>
-
-          <div class="progress-actions">
-            <label class="progress-phone">
-              <input id="progress-phone" type="tel" placeholder="তোমার ফোন নম্বর (আজকের ট্র্যাকিং)" autocomplete="tel" />
-            </label>
-            <button class="btn btn-yellow" data-mark-video>✅ ভিডিও দেখেছি</button>
-            <span data-progress-message role="status" style="font-size:13px;color:#4ADE80;"></span>
-          </div>
-        </div>
-
-        <div class="notebooklm-section">
-          <h2 style="font-size:18px;font-weight:700;margin-bottom:8px;">🔗 Connect Your NotebookLM — One Time Only</h2>
-          <p style="color:var(--text-secondary);font-size:14px;margin-bottom:4px;">একবার Connect করলেই সব Subject এর জন্য কাজ করবে। Google iframe ব্লক করে তাই নতুন Tab এ খুলবে।</p>
-          <p style="font-size:13px;color:#4ADE80;margin-bottom:16px;" data-notebooklm-connection-text></p>
-
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
-            <button class="btn btn-primary" data-open-notebooklm>🔗 Connect Your NotebookLM</button>
-            <button class="btn btn-outline" data-download-chapter>📥 Download Chapter Data (JSON)</button>
-          </div>
-
-          <div data-connection-card aria-live="polite"></div>
-        </div>
-
-      </main>
+  <!-- SECTION 1: TUTORIAL -->
+  <div class="section-box">
+    <h2>📺 Tutorial</h2>
+    <div class="tutorial-card">
+      <h3 id="tutorial-title">এই অধ্যায়ের সব Tutorial YouTube-এ দেখুন</h3>
+      <p class="subtext" id="tutorial-desc">গতিবিদ্যা - HSC Physics - Full Class, One Shot, MCQ - সব এক জায়গায়</p>
+      <a id="watch-tutorial-btn" href="#" target="_blank" rel="noopener noreferrer" class="watch-tutorial-btn">
+        <span>▶</span> Watch Tutorial
+      </a>
+      <p class="youtube-note">YouTube-এ খুলবে - আপনার YouTube-এ এই অধ্যায়ের সব ক্লাস দেখতে পারবেন</p>
     </div>
   </div>
 
-  <!-- NotebookLM Modal -->
-  <div class="modal-overlay" id="notebooklm-modal">
-    <div class="modal-box">
-      <button type="button" data-close-notebooklm style="float:right;background:none;border:none;color:var(--text-muted);font-size:24px;cursor:pointer;">×</button>
-      <h2>Connect Your NotebookLM — One Time</h2>
-      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">তোমার NotebookLM share link নিচে paste করো। একবার সেভ করলে আর করতে হবে না।</p>
-      <div class="modal-step">
-        <div class="modal-field">
-          <label>তোমার ফোন নম্বর (যাতে প্রমাণ পাঠানো যায়)</label>
-          <input id="notebooklm-phone" type="tel" inputmode="tel" placeholder="তোমার মোবাইল নম্বর" autocomplete="tel" />
-        </div>
-        <div class="modal-field">
-          <label>NotebookLM Share Link (notebooklm.google.com/link/...)</label>
-          <input id="notebooklm-link" type="url" placeholder="Paste your NotebookLM share link" autocomplete="url" />
-        </div>
-        <button class="btn btn-primary" style="width:100%;" data-save-notebooklm>Save Once (Cloud Sync + Local)</button>
-      </div>
-      <p style="font-size:12px;color:var(--text-muted);margin-top:12px;">⚠️ Google NotebookLM নতুন ট্যাবে খুলবে — Google এ embedded iframe ব্লক করে।</p>
-      <p id="notebooklm-modal-status" role="status" aria-live="polite" style="margin-top:8px;font-size:13px;"></p>
-    </div>
+  <!-- SECTION 2: NOTES -->
+  <div class="section-box">
+    <h2>📝 Notes</h2>
+    <p>আমাদের Experts এই অংশে কাজ করছেন - শীঘ্রই আসছে</p>
+    <button class="placeholder-btn" onclick="alert('NotebookLM নোট শীঘ্রই আসছে!')">
+      <span>📖</span> NotebookLM-এ নোট বানাও
+    </button>
   </div>
 
-  <script src="/js/notebooklm.js"></script>
-  <script src="/js/progress.js"></script>
+  <!-- SECTION 3: TEST YOURSELF -->
+  <div class="section-box">
+    <h2>✍️ Test Yourself</h2>
+    <p>Test Yourself - শীঘ্রই আসছে - Link পরে যোগ করা হবে</p>
+    <button class="placeholder-btn" onclick="alert('Revision Queue শীঘ্রই আসছে!')">
+      <span>🎯</span> Revision Queue দেখুন
+    </button>
+  </div>
 
   <script>
-    // --- URL params ---
-    function getParam(name) {
-      return new URLSearchParams(window.location.search).get(name);
-    }
-    var subject = (getParam('subject') || '').toLowerCase();
-    var chNum = getParam('ch'); // string like "2", "organic", etc.
-
-    // --- Chapter titles mapping (Bengali) ---
-    var SUBJECT_NAMES_BN = {
-      physics: 'পদার্থবিজ্ঞান', chemistry: 'রসায়ন', biology: 'জীববিজ্ঞান',
-      math: 'গণিত', bangla: 'বাংলা', english: 'ইংরেজি'
-    };
-    var SUBJECT_ICONS = {
-      physics: '⚛️', chemistry: '🧪', biology: '🌿',
-      math: '📐', bangla: '📖', english: '🔤'
+    // Chapter name mappings
+    var CHAPTER_NAMES_ENG = {
+      'motion': 'Motion', 'vector': 'Vector', 'dynamics': 'Dynamics',
+      'newton': 'Newtonian Mechanics', 'work-energy': 'Work Energy Power',
+      'gravitation': 'Gravitation', 'elasticity': 'Elasticity',
+      'periodic': 'Periodic Motion', 'waves': 'Waves', 'ideal-gas': 'Ideal Gas'
     };
 
-    var courseName = SUBJECT_NAMES_BN[subject] || (subject ? subject.toUpperCase() : 'অজানা বিষয়');
-    var icon = SUBJECT_ICONS[subject] || '📘';
+    var CHAPTER_NAMES_BN = {
+      'motion': 'গতিবিদ্যা', 'vector': 'ভেক্টর', 'dynamics': 'গতিবিদ্যা',
+      'newton': 'নিউটনীয় বলবিদ্যা', 'work-energy': 'কাজ শক্তি ক্ষমতা',
+      'gravitation': 'মহাকর্ষ ও অভিকর্ষ', 'elasticity': 'পদার্থের গাঁঠনিক ধর্ম',
+      'periodic': 'পর্যাবৃত্তিক গততি', 'waves': 'তরঙ্গ', 'ideal-gas': 'আদর্শ গ্যাস'
+    };
 
-    document.getElementById('chapter-title').textContent = icon + ' ' + courseName + ' | HSC Academic Hub';
-    document.getElementById('topbar-chapter-name').textContent = icon + ' ' + courseName + ' অধ্যায়';
-    document.getElementById('breadcrumb-course').textContent = courseName;
+    var SUBJECT_MAP = {
+      'physics': 'Physics', 'chemistry': 'Chemistry', 'biology': 'Biology',
+      'math': 'Mathematics', 'bangla': 'Bangla', 'english': 'English', 'ict': 'ICT'
+    };
 
-    // Chapter number/name
-    var chapterDisplay = '';
-    if (chNum) {
-      var bnCh = chNum.replace(/\d/g, function(d){ return ['০','১','২','৩','৪','৫','৬','৭','৮','৯'][d]; });
-      if (!isNaN(parseInt(chNum))) {
-        chapterDisplay = 'অধ্যায় ' + bnCh;
-      } else {
-        chapterDisplay = chNum.charAt(0).toUpperCase() + chNum.slice(1);
-      }
-    } else {
-      chapterDisplay = 'অধ্যায়';
-    }
-    document.getElementById('breadcrumb-chapter').textContent = chapterDisplay;
-    document.getElementById('video-title').textContent = icon + ' ' + courseName + ' ' + chapterDisplay;
+    // Parse URL parameters
+    var urlParams = new URLSearchParams(window.location.search);
+    var subject = urlParams.get('subject') || 'physics';
+    var ch = urlParams.get('ch') || 'motion';
 
-    // Fetch links.json for video / notes URLs
-    fetch('/links.json')
-      .then(function(r) { return r.json(); })
-      .then(function(links) {
-        var vidKey = null;
-        if (subject && chNum) {
-          vidKey = subject.toLowerCase().replace(/[^a-z]/g,'') + '-ch' + chNum;
-        }
-        var vidUrl = (vidKey && links.videos[vidKey]) ? links.videos[vidKey] : null;
-        var noteUrl = (vidKey && links.notes[vidKey]) ? links.notes[vidKey] : null;
+    var subjectEnglish = SUBJECT_MAP[subject] || subject.charAt(0).toUpperCase() + subject.slice(1);
+    var chapterEnglish = CHAPTER_NAMES_ENG[ch] || ch;
+    var chapterBangla = CHAPTER_NAMES_BN[ch] || ch;
 
-        var statusEl = document.getElementById('links-status');
-        if (!vidUrl) {
-          statusEl.textContent = '⚠️ ' + courseName + ' ' + chapterDisplay + ' এর ভিডিও/নোট এখনো যোগ করা হয়নি। Admin কে জানাও।';
-          document.getElementById('video-empty').style.display = 'block';
-        } else {
-          document.getElementById('video-empty').style.display = 'none';
-          var frame = document.getElementById('lesson-video');
-          frame.src = vidUrl;
-          frame.hidden = false;
-          statusEl.textContent = '✅ ভিডিও লোড হয়েছে';
-        }
+    // Build search query using YouTube Search System
+    var searchUrl = YoutubeSearchSystem.getYoutubeSearchUrl(subjectEnglish, chapterBangla, chapterEnglish);
 
-        // TODO: load notes iframe from links.notes when available
-      })
-      .catch(function() {
-        document.getElementById('links-status').textContent = '❌ links.json load করতে সমস্যা হয়েছে।';
-      });
-
-    // --- Mobile nav toggle ---
-    var toggle = document.getElementById('topbar-toggle');
-    var sidebar = document.getElementById('sidebar');
-    if (toggle && sidebar) {
-      toggle.addEventListener('click', function() { sidebar.classList.toggle('open'); });
-    }
-
-    // --- NotebookLM modal ---
-    var modal = document.getElementById('notebooklm-modal');
-    var openBtns = document.querySelectorAll('[data-open-notebooklm]');
-    var closeBtn = document.querySelector('[data-close-notebooklm]');
-    openBtns.forEach(function(btn){ btn.addEventListener('click', function(){ modal.classList.add('active'); }); });
-    closeBtn.addEventListener('click', function(){ modal.classList.remove('active'); });
-    modal.addEventListener('click', function(e){ if (e.target === modal) modal.classList.remove('active'); });
+    // Update page content
+    document.getElementById('chapter-title').textContent = chapterBangla + ' - ' + subjectEnglish + ' 1st Paper';
+    document.getElementById('chapter-subtitle').textContent = subjectEnglish + ' 1st Paper - ' + chapterBangla;
+    document.getElementById('tutorial-title').textContent = 'এই অধ্যায়ের সব Tutorial YouTube-এ দেখুন';
+    document.getElementById('tutorial-desc').textContent = chapterBangla + ' - HSC ' + subjectEnglish + ' - Full Class, One Shot, MCQ - সব এক জায়গায়';
+    
+    // Set watch tutorial button URL
+    document.getElementById('watch-tutorial-btn').href = searchUrl;
   </script>
 </body>
 </html>

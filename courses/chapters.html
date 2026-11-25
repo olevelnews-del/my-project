@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">অধ্যায় সমূহ — HSC Academic Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/dashboard-dark.css" />
+  <style>
+    body { font-family: 'Hind Siliguri', sans-serif; background: var(--bg-dark); color: var(--text-primary); margin: 0; padding: 0; }
+    .subject-header { background: var(--bg-card); border-left: 4px solid var(--accent-violet); padding: 16px 20px; margin: 24px 0 16px 0; border-radius: 0 12px 12px 0; }
+    .subject-header h2 { margin: 0; font-size: 18px; color: var(--cta-yellow); }
+    .subject-header p { margin: 4px 0 0; font-size: 13px; color: var(--text-muted); }
+    .chapter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; padding: 0 20px; }
+    .chapter-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 16px; transition: all 0.2s ease; }
+    .chapter-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-color: var(--accent-purple); }
+    .chapter-num { font-size: 12px; color: var(--accent-violet); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .chapter-title { font-size: 16px; font-weight: 700; margin: 6px 0; color: var(--text-primary); }
+    .chapter-eng { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+    .btn-search-yt { display: block; width: 100%; padding: 10px 16px; background: linear-gradient(135deg, #FF0000, #CC0000); color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 14px; text-align: center; transition: all 0.2s ease; margin-top: 8px; }
+    .btn-search-yt:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,0,0,0.3); }
+    .btn-more-vids { display: block; width: 100%; padding: 8px 16px; background: transparent; color: var(--text-secondary); text-decoration: none; border-radius: 8px; font-size: 12px; text-align: center; margin-top: 8px; border: 1px solid var(--border-subtle); transition: all 0.2s ease; }
+    .btn-more-vids:hover { background: var(--bg-hover); color: var(--text-primary); }
+    .page-header { background: var(--bg-card); border-bottom: 1px solid var(--border-subtle); padding: 20px; }
+    .page-header h1 { margin: 0; font-size: 22px; color: var(--cta-yellow); }
+    .page-header p { margin: 4px 0 0; font-size: 13px; color: var(--text-muted); }
+    .back-link { color: var(--accent-purple); text-decoration: none; font-size: 13px; }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+  <script src="/js/youtube-search.js"></script>
+</head>
+<body>
+  <div class="page-header">
+    <a href="/dashboard.html" class="back-link">← হোমে ফিরে যান</a>
+    <h1 id="subject-title">অধ্যায় সমূহ</h1>
+    <p>প্রতোকটি অধ্যায়ের জন্য YouTube-এ টিউটোরিয়াল দ্রুত খুঁজুন</p>
+  </div>
+
+  <div class="chapter-grid" id="chapters-container">
+    <!-- Chapters will be injected here -->
+  </div>
+
+  <script>
+    // Subject chapter data
+    const SUBJECT_CHAPTERS = {
+      'bangla': {
+        title: 'বাংলা ১ম পত্র',
+        english: 'Bangla 1st Paper',
+        chapters: [
+          {bangla: 'ব্যালকরণ', english: 'Grammar'},
+          {bangla: 'গদ্য', english: 'Prose'},
+          {bangla: 'পদ্য', english: 'Poetry'},
+          {bangla: 'নাটক', english: 'Drama'},
+          {bangla: 'উপন্যাস', english: 'Novel'},
+          {bangla: 'সাহিত্য_ইতিহাস', english: 'Literature History'}
+        ]
+      },
+      'english': {
+        title: 'ইংরাজি ১ম পত্র',
+        english: 'English 1st Paper',
+        chapters: [
+          {bangla: 'Units 1-5', english: 'Reading Comprehension'},
+          {bangla: 'Units 6-10', english: 'Vocabulary & Grammar'},
+          {bangla: 'Units 11-15', english: 'Writing Skills'},
+          {bangla: 'Grammar', english: 'Grammar Topics'},
+          {bangla: 'Writing', english: 'Essay & Letter Writing'}
+        ]
+      },
+      'physics': {
+        title: 'পদার্থবিজ্ঞান ১ম পত্র',
+        english: 'Physics 1st Paper',
+        chapters: [
+          {bangla: 'ভৌত জগৎ ও পরিমাপ', english: 'Physical World & Measurement'},
+          {bangla: 'ভেক্টর', english: 'Vector'},
+          {bangla: 'গতবিদ্যা', english: 'Dynamics'},
+          {bangla: 'নিউটনীয় বলবিদ্যা', english: 'Newtonian Mechanics'},
+          {bangla: 'কাজ শক্তি ক্ষমতা', english: 'Work Energy Power'},
+          {bangla: 'মহাকর্ষ ও অভিকর্ষ', english: 'Gravitation'},
+          {bangla: 'পদার্থের গাঁঠনিক ধর্ম', english: 'Elasticity'},
+          {bangla: 'পর্যাবৃত্তিক গতি', english: 'Periodic Motion'},
+          {bangla: 'তরঙ্গ', english: 'Waves'},
+          {bangla: 'আদর্শ গ্যাস', english: 'Ideal Gas'}
+        ]
+      },
+      'chemistry': {
+        title: 'রসায়ন ১ম পত্র',
+        english: 'Chemistry 1st Paper',
+        chapters: [
+          {bangla: 'লেবরেটরি নিরাপদ ব্যবহার', english: 'Lab Safety'},
+          {bangla: 'গুণগত রসায়ন', english: 'Qualitative Chemistry'},
+          {bangla: 'মৌলের পর্যায়বৃত্ত ধর্ম', english: 'Periodic Properties'},
+          {bangla: 'রাসায়নিক বন্ধন', english: 'Chemical Bonding'},
+          {bangla: 'রাসায়নিক পরিবর্তন', english: 'Chemical Changes'}
+        ]
+      },
+      'biology': {
+        title: 'জীববিজ্ঞান ১ম পত্র',
+        english: 'Biology 1st Paper (Botany)',
+        chapters: [
+          {bangla: 'কোষ ও এর গঠন', english: 'Cell Structure'},
+          {bangla: 'কোষ বিভাজন', english: 'Cell Division'},
+          {bangla: 'কোষ রসায়ন', english: 'Cell Chemistry'},
+          {bangla: 'অণুজীব', english: 'Microorganisms'},
+          {bangla: 'শৈবাল ও ছত্রাক', english: 'Algae & Fungi'}
+        ]
+      },
+      'math': {
+        title: 'উচ্চতর গণিত ১ম পত্র',
+        english: 'Higher Math 1st Paper',
+        chapters: [
+          {bangla: 'ম্যাট্রিক্স ও নির্ণায়ক', english: 'Matrix & Determinant'},
+          {bangla: 'ভেক্টর', english: 'Vector'},
+          {bangla: 'সরলরেখা', english: 'Straight Line'},
+          {bangla: 'বৃত্ত', english: 'Circle'},
+          {bangla: 'বিন্যাস ও সমাবেশ', english: 'Permutation Combination'},
+          {bangla: 'ত্রিকোণমিতিক অনুপাত', english: 'Trigonometric Ratios'},
+          {bangla: 'সংযুক্ত কোণের ত্রিকোণমিতি', english: 'Compound Angles'},
+          {bangla: 'ফাংশন', english: 'Function'},
+          {bangla: 'অন্তরীকরণ', english: 'Differentiation'},
+          {bangla: 'যোগজীকরণ', english: 'Integration'}
+        ]
+      },
+      'ict': {
+        title: 'তথ্য ও যোগাযোগ প্রযুক্তি',
+        english: 'ICT',
+        chapters: [
+          {bangla: 'বিশ্ব ও বাংলাদেশ প্রেক্ষিত', english: 'World Context'},
+          {bangla: 'কমিউনিকেশন সিস্টেম', english: 'Communication System'},
+          {bangla: 'সংখ্যা পদ্ধতি', english: 'Number Systems'},
+          {bangla: 'ওয়েব ডিজাইন ও HTML', english: 'Web Design HTML'},
+          {bangla: 'প্রোগ্রামিং ভাষা C', english: 'Programming C'},
+          {bangla: 'ডেটাবেস ম্যানেজমেন্ট', english: 'Database Management'}
+        ]
+      }
+    };
+
+    // Get subject from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const subject = urlParams.get('subject') || 'bangla';
+    const data = SUBJECT_CHAPTERS[subject] || SUBJECT_CHAPTERS['bangla'];
+
+    // Update page title
+    document.getElementById('page-title').textContent = data.title + ' — HSC Academic Hub';
+    document.getElementById('subject-title').textContent = data.title + ': ' + data.english;
+
+    // Render chapters
+    const container = document.getElementById('chapters-container');
+    data.chapters.forEach(function(ch, idx) {
+      const card = document.createElement('div');
+      card.className = 'chapter-card';
+      
+      const bnIdx = String(idx + 1).replace(/\d/g, d => ['০','১','২','৩','৪','৫','৬','৭','৮','৯'][d]);
+      
+      card.innerHTML = 
+        '<div class="chapter-num">অধ্যায় ' + bnIdx + '</div>' +
+        '<div class="chapter-title">' + ch.bangla + '</div>' +
+        '<div class="chapter-eng">' + ch.english + '</div>' +
+        '<a href="' + YoutubeSearchSystem.getYoutubeSearchUrl(data.english, ch.bangla, ch.english) + '" target="_blank" class="btn-search-yt">▶ YouTube-এ টিউটোরিয়াল দেখুন</a>' +
+        '<a href="' + YoutubeSearchSystem.getYoutubeSearchUrl(data.english, ch.bangla, ch.english) + '" target="_blank" class="btn-more-vids">🔍 আরও ভিডিও খুঁজুন</a>';
+      
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>

@@ -202,6 +202,12 @@
         <div class="countdown-badge">
           HSC 2027 → <span id="hsc-countdown">-- দিন</span>
         </div>
+        <div class="streak-badge-top" id="streak-badge-top" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,200,0,0.15);border:1px solid #FFC800;color:#FFC800;font-weight:700;padding:4px 12px;border-radius:20px;font-size:12px;margin-left:10px;">
+          🔥 <span id="dash-streak">০</span> দিন টানা
+        </div>
+        <div class="rev-queue-badge" id="rev-queue-badge" style="display:none;margin-left:10px;background:rgba(239,68,68,0.15);border:1px solid #EF4444;color:#FCA5A5;font-weight:700;padding:4px 12px;border-radius:20px;font-size:12px;">
+          🔄 Revision Queue: <span id="rev-queue-count">০</span>
+        </div>
       </div>
     </header>
 
@@ -212,6 +218,20 @@
         <p class="greeting-date" id="today-date">--</p>
         <a href="test.html" class="btn-create-test">+ একটি টেস্ট তৈরি করো</a>
       </section>
+
+      <!-- FACILITY 1: CHECK-IN BANNER (shows after 9 PM if no evening check-in) -->
+      <div id="checkin-banner" style="display:none;background:rgba(239,68,68,0.15);border:1px solid #EF4444;border-radius:12px;padding:14px 20px;margin-bottom:20px;" class="reveal">
+        <p style="color:#FCA5A5;font-size:14px;font-weight:600;margin:0;">⚠️ আজকেক Check-In বাকি — <a href="planner.html" style="color:#FFC800;text-decoration:underline;">এখনি শেষ করো</a></p>
+      </div>
+
+      <!-- FACILITY 5: SMART ROUTINE CARD -->
+      <div id="routine-card" class="planner-card reveal" style="background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:14px;padding:24px;margin-bottom:24px;display:none;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+          <h3 style="font-size:16px;font-weight:700;color:var(--cta-yellow);margin:0;">📋 আজকের Smart Routine</h3>
+          <a href="planner.html" style="color:var(--accent-purple);font-size:13px;font-weight:600;text-decoration:none;">প্ল্যানার দেখো →</a>
+        </div>
+        <div id="routine-tasks-list"></div>
+      </div>
 
       <div class="course-prompt-card reveal">
         <div class="course-prompt-text">
@@ -261,31 +281,32 @@
       <section class="three-columns-grid reveal">
 
         <div class="column-box">
-          <h3>HSC প্রস্তুতি</h3>
+          <h3>HSC প্রসত্তি</h3>
+          <a href="/courses/index.html" class="menu-item"><span>📚</span> সব কোর্স দেখো</a>
+          <a href="/courses/chapters.html?subject=physics" class="menu-item"><span>⚡</span> পদার্থবিজ্ঞান</a>
+          <a href="/courses/chapters.html?subject=chemistry" class="menu-item"><span>⚗️</span> রসায়ন</a>
+          <a href="/courses/chapters.html?subject=biology" class="menu-item"><span>🧬</span> জীববিজ্ঞান</a>
+          <a href="/courses/chapters.html?subject=math" class="menu-item"><span>➗</span> উচ্চতর গণিত</a>
           <a href="test.html" class="menu-item"><span>📝</span> MCQ টেস্ট</a>
           <a href="test.html?type=creative" class="menu-item"><span>✍️</span> ক্রিয়েটিভ টেস্ট</a>
-          <a href="#" class="menu-item"><span>📰</span> HSC বর্তমান ঘটনা <small style="color:var(--text-muted);font-size:11px;">(Mentor আসছে)</small></a>
-          <a href="/courses/" class="menu-item"><span>💡</span> কনসেপ্ট ভিডিও</a>
-          <a href="test.html?type=hsc_pyq" class="menu-item"><span>📜</span> HSC PYQ</a>
-        </div>
-
-        <div class="column-box">
-          <h3>বোর্ড প্রস্তুতি</h3>
-          <a href="test.html" class="menu-item"><span>📋</span> বোর্ড টেস্ট</a>
-          <a href="test.html" class="menu-item"><span>✏️</span> বোর্ড টেস্ট তৈরি করো</a>
-          <a href="/courses/" class="menu-item"><span>📝</span> editorial সারসংক্ষেপ <small style="color:var(--text-muted);font-size:11px;">(Mentor আসছে)</small></a>
-          <a href="#" class="menu-item"><span>📒</span> বোর্ড নোট <small style="color:var(--text-muted);font-size:11px;">(Mentor আসছে)</small></a>
-          <a href="test.html?type=board_pyq" class="menu-item"><span>📜</span> বোর্ড PYQ</a>
-        </div>
-
-        <div class="column-box">
-          <h3>সম্পূর্ণ প্রস্তুতি</h3>
-          <a href="planner.html" class="menu-item"><span>📅</span> পড়ার প্ল্যান</a>
-          <a href="/pricing.html#mentor" class="menu-item"><span>👨‍🏫</span> মেন্টরের সাথে যোগাযোগ</a>
-          <a href="#" class="menu-item"><span>📒</span> আমার নোট <small style="color:var(--text-muted);font-size:11px;">(Mentor আসছে)</small></a>
           <a href="scorecard.html" class="menu-item"><span>📊</span> স্কোরকার্ড</a>
-          <a href="revision.html" class="menu-item"><span>🔖</span> বুকমার্ক ও রিভিশন</a>
-          <a href="test.html" class="menu-item"><span>🧪</span> টেস্ট সিরিজ</a>
+        </div>
+
+        <div class="column-box">
+          <h3>বোর্ড প্রসত্তি</h3>
+          <a href="test.html" class="menu-item"><span>📋</span> বোর্ড টেস্ট</a>
+          <a href="test.html?type=board_pyq" class="menu-item"><span>📜</span> বোর্ড PYQ</a>
+          <a href="/courses/chapters.html?subject=bangla" class="menu-item"><span>📖</span> বাম্ল</a>
+          <a href="/courses/chapters.html?subject=english" class="menu-item"><span>🔤</span> ইংরাজি</a>
+          <a href="/courses/chapters.html?subject=ict" class="menu-item"><span>💻</span> ICT</a>
+        </div>
+
+        <div class="column-box">
+          <h3>অতিরিক্ত</h3>
+          <a href="planner.html" class="menu-item"><span>📅</span> পড়ার প্লান</a>
+          <a href="revision.html" class="menu-item"><span>🔖</span> বুকমার্ক</a>
+          <a href="https://quizkutir.com/free-tests" target="_blank" class="menu-item"><span>🎯</span> Quiz Kutir (External)</a>
+          <a href="https://syntiqco.com/mcq/hsc-physics-1st-paper" target="_blank" class="menu-item"><span>🧪</span> Physics MCQ (SyntiqCo)</a>
         </div>
 
       </section>
@@ -387,35 +408,37 @@
 
       <section class="syllabus-section reveal">
         <h2 style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:6px;">সিলেবাস কভারেজ</h2>
-        <p style="color:var(--text-secondary);font-size:14px;margin-bottom:16px;">0 of 61 HSC টপিক attempted — 61 কখনো স্পর্শ করা হয়নি</p>
+        <p style="color:var(--text-secondary);font-size:14px;margin-bottom:16px;">YouTube-এ সরাসরি টিউটোরিয়াল খুঁজুন | প্রতোকটি অধ্যায়ে Click করলে YouTube Search Open Hobe</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+          <a href="/courses/index.html" class="practice-btn" style="background:var(--accent-violet);color:#fff;text-decoration:none;padding:12px 20px;border-radius:8px;font-weight:600;">📚 সব কোর্স ব্রাউজ করো →</a>
+        </div>
         <div class="syllabus-grid">
-          <a href="test.html?subject=physics" class="syllabus-square sq-never">
+          <a href="/courses/chapters.html?subject=bangla" class="syllabus-square sq-never">
+            <span class="sq-label">বাম্ল</span>
+            <span class="sq-pct">▶</span>
+          </a>
+          <a href="/courses/chapters.html?subject=english" class="syllabus-square sq-never">
+            <span class="sq-label">ইংর</span>
+            <span class="sq-pct">▶</span>
+          </a>
+          <a href="/courses/chapters.html?subject=physics" class="syllabus-square sq-done">
             <span class="sq-label">পদার্থ</span>
-            <span class="sq-pct">0%</span>
+            <span class="sq-pct">✓10</span>
           </a>
-          <a href="test.html?subject=chemistry" class="syllabus-square sq-never">
-            <span class="sq-label">রসায়ন</span>
-            <span class="sq-pct">0%</span>
+          <a href="/courses/chapters.html?subject=chemistry" class="syllabus-square sq-never">
+            <span class="sq-label">রসায়</span>
+            <span class="sq-pct">▶</span>
           </a>
-          <a href="test.html?subject=biology" class="syllabus-square sq-never">
-            <span class="sq-label">জীববিজ্ঞান</span>
-            <span class="sq-pct">0%</span>
+          <a href="/courses/chapters.html?subject=biology" class="syllabus-square sq-never">
+            <span class="sq-label">জীব</span>
+            <span class="sq-pct">▶</span>
           </a>
-          <a href="test.html?subject=math" class="syllabus-square sq-never">
+          <a href="/courses/chapters.html?subject=math" class="syllabus-square sq-never">
             <span class="sq-label">গণিত</span>
-            <span class="sq-pct">0%</span>
-          </a>
-          <a href="test.html?subject=bangla" class="syllabus-square sq-never">
-            <span class="sq-label">বাংলা</span>
-            <span class="sq-pct">0%</span>
-          </a>
-          <a href="test.html?subject=english" class="syllabus-square sq-never">
-            <span class="sq-label">ইংরেজি</span>
-            <span class="sq-pct">0%</span>
+            <span class="sq-pct">▶</span>
           </a>
         </div>
-        <p class="syllabus-info-text">61 টপিক তুমি এখনো স্পর্শ করোনি — কয়েকটি বেছে নাও এবং টেস্ট তৈরি করো।</p>
-        <a href="test.html" class="fill-gaps-btn">গ্যাপ পূরণ করো →</a>
+        <p class="syllabus-info-text">Green = Complete Links | Red = YouTube Search Available</p>
       </section>
 
       <footer class="dashboard-footer">
@@ -494,6 +517,55 @@
           btn.classList.add('active');
         });
       });
+
+      // ===== FACILITY 1+5: Streak + Check-In Banner + Routine Card =====
+      (function() {
+        var bn = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+        function toBn(n) { return String(n).split('').map(d => bn[parseInt(d)]||d).join(''); }
+
+        // Streak
+        var streak = localStorage.getItem('hsc_streak') || '0';
+        var dashStreak = document.getElementById('dash-streak');
+        if (dashStreak) dashStreak.textContent = toBn(streak);
+
+        // Revision Queue Count
+        var wrongQueue = JSON.parse(localStorage.getItem('hsc_wrong_queue') || '[]');
+        var pendingCount = wrongQueue.filter(function(q) { return q.status === 'pending'; }).length;
+        var revBadge = document.getElementById('rev-queue-badge');
+        var revCountEl = document.getElementById('rev-queue-count');
+        if (pendingCount > 0 && revBadge && revCountEl) {
+          revBadge.style.display = 'inline-flex';
+          revCountEl.textContent = toBn(pendingCount);
+        }
+
+        // Check-in banner (show after 9 PM if evening check-in not done)
+        var now = new Date();
+        var hour = now.getHours();
+        var todayStr = now.toISOString().split('T')[0];
+        var checkinKey = 'hsc_checkin_' + todayStr;
+        var checkinRecord = JSON.parse(localStorage.getItem(checkinKey) || '{}');
+        var checkinBanner = document.getElementById('checkin-banner');
+        if (hour >= 21 && (!checkinRecord || !checkinRecord.eveningTime)) {
+          checkinBanner.style.display = 'block';
+        }
+
+        // Smart Routine Card
+        var routine = JSON.parse(localStorage.getItem('hsc_routine_today') || 'null');
+        var routineCard = document.getElementById('routine-card');
+        var routineList = document.getElementById('routine-tasks-list');
+        if (routine && routine.date === todayStr && routine.tasks) {
+          routineCard.style.display = 'block';
+          routineList.innerHTML = routine.tasks.map(function(t, i) {
+            var icon = t.done ? '✅' : '⬜';
+            var style = t.done ? 'text-decoration:line-through;opacity:0.6;' : '';
+            return '<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border-subtle);' + style + '">' +
+              '<span style="font-size:16px;">' + icon + '</span>' +
+              '<span style="font-size:13px;color:var(--text-primary);flex:1;">' + t.text + '</span>' +
+              '<span style="font-size:11px;color:var(--text-muted);">Focus ' + (i+1) * 25 + 'মি.</span>' +
+            '</div>';
+          }).join('');
+        }
+      })();
     });
   </script>
 </body>

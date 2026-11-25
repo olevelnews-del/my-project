@@ -120,12 +120,26 @@
           <p>NCTB সিলেবাসের বড় চ্যাপ্টারগুলোকে প্রতিদিনের ৩টি সহজ টাস্কে ভাগ করা হয়েছে। প্রতিদিন সম্পন্ন করো এবং স্ট্রিক বাড়াও!</p>
         </div>
 
-        <!-- Today's Tasks -->
-        <div class="planner-card">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-            <h3 style="font-size:18px;font-weight:700;color:var(--text-primary);">আজকের ৩টি টাস্ক</h3>
-            <span style="font-size:13px;color:var(--text-muted);" id="today-date-str">--</span>
-          </div>
+      <!-- FACILITY 1+5: SMART ROUTINE GENERATOR -->
+      <div class="planner-card">
+        <h3 style="font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:8px;">🧠 স্মার্ট রুটিন জেনারেটর</h3>
+        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">দুর্বলতা + সময় + পরীক্ষার তারিখ ববেচনায় আজকের প্ল্যান বানাবো</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:12px;">
+          <div><label style="font-size:11px;color:var(--text-muted);">গ্রুপ</label><select id="gen-group" style="width:100%;padding:8px;background:var(--bg-hover);border:1px solid var(--border-subtle);border-radius:6px;color:var(--text-primary);"><option value="science">বিজ্ঞান</option><option value="commerce">ব্যবসায়</option><option value="arts">মানবিক</option></select></div>
+          <div><label style="font-size:11px;color:var(--text-muted);">HSC বছর</label><select id="gen-year" style="width:100%;padding:8px;background:var(--bg-hover);border:1px solid var(--border-subtle);border-radius:6px;color:var(--text-primary);"><option value="2026">২০২৬</option><option value="2027" selected>২০২৭</option></select></div>
+          <div><label style="font-size:11px;color:var(--text-muted);">দৈনিক সময়</label><select id="gen-time" style="width:100%;padding:8px;background:var(--bg-hover);border:1px solid var(--border-subtle);border-radius:6px;color:var(--text-primary);"><option value="1">১ ঘণ্টা</option><option value="2">২ ঘণ্টা</option><option value="3" selected>৩ ঘণ্টা</option><option value="4">৪+ ঘণ্টা</option></select></div>
+          <div><label style="font-size:11px;color:var(--text-muted);">দুবল বিষয়</label><select id="gen-weak" style="width:100%;padding:8px;background:var(--bg-hover);border:1px solid var(--border-subtle);border-radius:6px;color:var(--text-primary);"><option value="physics">পদার্থবিজ্ঞান</option><option value="chemistry">রসায়ন</option><option value="biology">জীববিজ্ঞান</option><option value="math">গণিত</option><option value="bangla">বাংলা</option><option value="english">ইংরেজি</option></select></div>
+        </div>
+        <button class="btn btn-yellow" style="width:100%;" onclick="generateSmartRoutine()">🧠 স্মার্ট রুটিন বানাও</button>
+        <div id="routine-result" style="display:none;margin-top:14px;"></div>
+      </div>
+
+      <!-- Today's Tasks (auto-filled from Smart Routine or default) -->
+      <div class="planner-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <h3 style="font-size:18px;font-weight:700;color:var(--text-primary);">আজকের ৩টি টাস্ক</h3>
+          <span style="font-size:13px;color:var(--text-muted);" id="today-date-str">--</span>
+        </div>
 
           <div class="task-item">
             <input type="checkbox" class="task-checkbox" id="task1" onchange="toggleTask(this)" />
@@ -147,6 +161,29 @@
 
           <button class="btn btn-yellow" style="width:100%;margin-top:16px;" onclick="dailyCheckIn()">✅ Daily Check-In সম্পূর্ণ করো (+১ স্ট্রিক)</button>
           <p id="checkin-msg" style="text-align:center;font-size:13px;color:#4ADE80;margin-top:8px;display:none;"></p>
+        </div>
+
+        <!-- FACILITY 1 EVENING CHECK-IN -->
+        <div class="planner-card">
+          <h3 style="font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:8px;">🌙 রাতে Check-In</h3>
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:14px;">আজকের টাস্কগুলো পূরণ হলো?</p>
+          <div id="evening-options">
+            <button class="btn" style="width:100%;margin-bottom:8px;background:#22C55E;color:white;" onclick="submitEveningCheck('yes')">✅ হ্যাঁ, সম্পূর্ণ করেছি</button>
+            <button class="btn" style="width:100%;margin-bottom:8px;background:var(--cta-yellow);color:#111827;" onclick="submitEveningCheck('partial')">⚠️ আংশিক করেছেছি</button>
+            <button class="btn" style="width:100%;background:var(--danger,#EF4444);color:white;" onclick="showWhyNot()">❌ হয়নি</button>
+          </div>
+          <div id="why-not-section" style="display:none;margin-top:14px;">
+            <p style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:8px;">কেন হয়নি?</p>
+            <select id="why-dropdown" style="width:100%;padding:10px;background:var(--bg-hover);border:1px solid var(--border-subtle);border-radius:8px;color:var(--text-primary);margin-bottom:10px;">
+              <option value="">-- কারণ বাছাই করো --</option>
+              <option value="no-time">সময় পাইনি</option>
+              <option value="hard">কঠিন লাগছে</option>
+              <option value="forgot">ভুলে গেছি</option>
+              <option value="other">অন্য</option>
+            </select>
+            <button class="btn btn-yellow" style="width:100%;" onclick="recoverTask()">➕ আগামীকালের প্ল্যানে যোগ করো</button>
+          </div>
+          <div id="evening-result" style="display:none;text-align:center;padding:14px;border-radius:10px;margin-top:12px;"></div>
         </div>
 
         <!-- Focus Timer -->
@@ -199,12 +236,150 @@
 
     // Daily Check-In
     function dailyCheckIn() {
-      var streak = parseInt(localStorage.getItem('hscStreak') || '1') + 1;
-      localStorage.setItem('hscStreak', streak);
+      var today = new Date().toISOString().split('T')[0];
+      var checkinKey = 'hsc_checkin_' + today;
+      if (localStorage.getItem(checkinKey)) {
+        var msg = document.getElementById('checkin-msg');
+        msg.textContent = 'আজকেক Check-In ইতিমধ্যে সম্পূর্ণ হয়েছে ✅';
+        msg.style.display = 'block';
+        return;
+      }
+      localStorage.setItem(checkinKey, JSON.stringify({ time: new Date().toISOString(), status: 'morning' }));
+      var streak = parseInt(localStorage.getItem('hsc_streak') || '0');
+      streak++;
+      localStorage.setItem('hsc_streak', streak);
       document.getElementById('streak-count').textContent = toBn(streak);
+      updateStreakBadge();
       var msg = document.getElementById('checkin-msg');
-      msg.textContent = '🎉 দারুণ! আজকের Check-In সফল হয়েছে। তোমার নতুন স্ট্রিক: ' + toBn(streak) + ' দিন!';
+      msg.textContent = '🎉 দারুণ! আজকেক Check-In সফল হযেছ। নতুন স্ট্রিক: ' + toBn(streak) + ' দিন!';
       msg.style.display = 'block';
+    }
+
+    // Evening Check-In
+    function submitEveningCheck(status) {
+      var today = new Date().toISOString().split('T')[0];
+      var checkinKey = 'hsc_checkin_' + today;
+      var record = JSON.parse(localStorage.getItem(checkinKey) || '{}');
+      record.status = status;
+      record.eveningTime = new Date().toISOString();
+      localStorage.setItem(checkinKey, JSON.stringify(record));
+      var resultEl = document.getElementById('evening-result');
+      var optionsEl = document.getElementById('evening-options');
+      if (status === 'yes') {
+        resultEl.innerHTML = '✅ চমৎকার! আজকেক Check-In পূর্ণ। স্ট্রিক বজায রাখো! 🔥';
+        resultEl.style.background = 'rgba(34,197,94,0.15)';
+        resultEl.style.border = '1px solid #22C55E';
+      } else if (status === 'partial') {
+        resultEl.innerHTML = '⚠️ আংশিক সমন্বয় হয়েছে — আগামীকাল আরও ভালো করার চেষ্টা করো!';
+        resultEl.style.background = 'rgba(255,200,0,0.15)';
+        resultEl.style.border = '1px solid #FFC800';
+      }
+      optionsEl.style.display = 'none';
+      resultEl.style.display = 'block';
+    }
+
+    function showWhyNot() {
+      document.getElementById('why-not-section').style.display = 'block';
+      document.getElementById('evening-options').style.display = 'none';
+    }
+
+    function recoverTask() {
+      var reason = document.getElementById('why-dropdown').value;
+      if (!reason) { alert('কারণ বাছাই করো'); return; }
+      var today = new Date().toISOString().split('T')[0];
+      var checkinKey = 'hsc_checkin_' + today;
+      var record = JSON.parse(localStorage.getItem(checkinKey) || '{}');
+      record.status = 'no';
+      record.whyReason = reason;
+      localStorage.setItem(checkinKey, JSON.stringify(record));
+      var resultEl = document.getElementById('evening-result');
+      resultEl.innerHTML = '➕ পরবর্তী টাস্ক হিসেবে যোগ করা হয়েছে। কালকে আবার চেষ্টা করো 💪';
+      resultEl.style.background = 'rgba(239,68,68,0.15)';
+      resultEl.style.border = '1px solid #EF4444';
+      resultEl.style.display = 'block';
+      document.getElementById('why-not-section').style.display = 'none';
+    }
+
+    // Smart Routine Generator
+    var subjectChapters = {
+      physics: ['ভেক্টর','মেকানিক্স','শক্তি','চাপ','পদার্থের_গুন','তাপ_গতিবিদ্যা','তাপ_স্থানান্তর','ধ্বনি','তড়িৎ','চুম্বকত্ব'],
+      chemistry: ['স্টয়কিওমেট্রি','পর্যায়_সারণি','রাসায়নিক_বন্ধন','জৈব_রসায়ন','অ্যাসিড_বেস','বৈদ্যুতিক_রসায়ন','উৎপ्रेরক','সাম্যাবস্থা'],
+      biology: ['কোষ_বিদ্যা','বংশগতি','বিবর্তন','পরিবেশ','উদ্ভিদ_প্রাণী','মানব_প্রাণী','জীবাণুবিদ্যা'],
+      math: ['ম্যাট্রিক্স','নির্ধারক','জটিল_সংখ্যা','লগারিদম','ক্রম_ধারা','ত্রিকোণমিতি','অন্তরকলন','সমাকলন'],
+      bangla: ['ব্যাকরণ','গদ্য','পদ্য','নাটক','উপন্যাস','সাহিত্য_ইতিহাস'],
+      english: ['grammar','comprehension','writing','literature','translation']
+    };
+    var subjectLabels = { physics:'পদার্থবিজ্ঞান', chemistry:'রসায়ন', biology:'জীববিজ্ঞান', math:'গণিত', bangla:'বাংলা', english:'ইংরেজি' };
+    var strongSubjects = ['physics','chemistry','bangla','english'];
+
+    function generateSmartRoutine() {
+      var group = document.getElementById('gen-group').value;
+      var time = parseInt(document.getElementById('gen-time').value);
+      var weak = document.getElementById('gen-weak').value;
+      var today = new Date().toISOString().split('T')[0];
+
+      // Pick a random chapter from weak subject
+      var chapters = subjectChapters[weak] || ['অধ্যায় ১'];
+      var randomChapter = chapters[Math.floor(Math.random() * chapters.length)];
+      var task1Time = Math.round(time * 60 * 0.4) + ' মিনিট';
+      var task1Text = subjectLabels[weak] + ' – ' + randomChapter + ' (দুবল) – ' + task1Time;
+
+      // Strong subject revision
+      var strongIdx = Math.floor(Math.random() * strongSubjects.length);
+      var strong = strongSubjects[strongIdx];
+      var sChapters = subjectChapters[strong] || ['অধ্যায় ১'];
+      var sChapter = sChapters[Math.floor(Math.random() * sChapters.length)];
+      var task2Time = Math.round(time * 60 * 0.3) + ' মিনিট';
+      var task2Text = subjectLabels[strong] + ' – ' + sChapter + ' Revision – ' + task2Time;
+
+      // MCQ Practice
+      var task3Text = subjectLabels[weak] + ' MCQ – ১০ টি প্রশ্ন – ' + Math.round(time * 60 * 0.3) + ' মিনিট';
+
+      var routine = {
+        date: today,
+        tasks: [
+          { text: task1Text, done: false },
+          { text: task2Text, done: false },
+          { text: task3Text, done: false }
+        ],
+        generatedAt: new Date().toISOString()
+      };
+      localStorage.setItem('hsc_routine_today', JSON.stringify(routine));
+
+      // Render result
+      var resultEl = document.getElementById('routine-result');
+      resultEl.innerHTML = '<div style="background:var(--bg-hover);border-radius:10px;padding:14px;border:1px solid var(--accent-violet)">' +
+        '<p style="font-size:14px;font-weight:700;color:var(--cta-yellow);margin-bottom:10px;">📋 আজকের প্ল্যান তৈরি হয়েছে!</p>' +
+        '<ol style="padding-left:20px;color:var(--text-primary);font-size:13px;line-height:2;">' +
+        '<li>' + task1Text + '</li>' +
+        '<li>' + task2Text + '</li>' +
+        '<li>' + task3Text + '</li>' +
+        '</ol></div>';
+      resultEl.style.display = 'block';
+
+      // Also update today's tasks in DOM
+      applyRoutineToTasks();
+    }
+
+    function applyRoutineToTasks() {
+      var routine = JSON.parse(localStorage.getItem('hsc_routine_today') || 'null');
+      if (!routine || routine.date !== new Date().toISOString().split('T')[0]) return;
+      var tasks = document.querySelectorAll('.task-item input[type=checkbox]');
+      var labels = document.querySelectorAll('.task-label');
+      if (tasks.length >= 3 && routine.tasks) {
+        routine.tasks.forEach(function(t, i) {
+          if (labels[i]) labels[i].textContent = t.text;
+          if (tasks[i]) tasks[i].checked = t.done || false;
+        });
+      }
+    }
+
+    function updateStreakBadge() {
+      var badge = document.querySelector('.streak-badge');
+      if (badge) {
+        var streak = localStorage.getItem('hsc_streak') || '0';
+        badge.innerHTML = '🔥 <span id="streak-count">' + toBn(streak) + '</span> দিন স্ট্রিক';
+      }
     }
 
     // Timer

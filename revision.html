@@ -104,6 +104,19 @@
     <div id="bookmarkList"></div>
   </div>
 
+  <!-- WRONG ANSWER QUEUE (FACILITY 2) -->
+  <div class="rev-card" id="wrongQueueSection">
+    <div class="rev-card-title">🔄 ভুল উত্ধর - আবার চেষ্টা করো</div>
+    <div class="rev-stats">
+      <div class="rev-stat">বাকি রিভিশন <strong id="queuePending">০</strong></div>
+      <div class="rev-stat">পারফেক্ট <strong id="queueMastered">০</strong></div>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:14px;">যেসব প্ৰশ্নে ভুল করছো, তারা এখান আসবে। পাখরা দিলে Mastered হয়।</p>
+    <div id="wrongQueueList"></div>
+    <div id="queue-empty" class="rev-empty" style="display:none;">কোনো ভুল উত্তর নাই — টেস্ট দিয়া ভুল প্রশ্নগুলো এখানে দেখুন</div>
+    <button class="cta-btn cta-outline" style="margin-top:12px;font-size:11px;padding:6px 14px;" onclick="clearWrongDemo()">Demo - Clear</button>
+  </div>
+
   <!-- EMPTY STATE -->
   <div class="rev-card" id="revEmptyCard" style="display:none">
     <div class="rev-empty">
@@ -252,6 +265,107 @@
   }
 
   render();
+
+  // ===== FACILITY 2: WRONG ANSWER QUEUE =====
+  (function() {
+    var bn = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+    function toBn(n) { return String(n).split('').map(d => bn[parseInt(d)]||d).join(''); }
+
+    var demoWrong = [
+      { subject: 'physics', chapter: 'Vectors', question: 'ভেক্টর AB-এর দৈর্ঘ্য কত?', options: ['3', '5', '4', '6'], correctAnswer: 1, attempts: 0, status: 'pending', lastAttempted: new Date().toISOString() },
+      { subject: 'bangla', chapter: 'বাক্য', question: 'সন্ধি কাকে বলে?', options: ['দুই বর্ণ মিলন', 'কথার ব্যবধান', 'বিরামচিনহ্ন', 'লিঙ্গ পরিবর্তন'], correctAnswer: 0, attempts: 1, status: 'pending', lastAttempted: new Date().toISOString() },
+      { subject: 'chemistry', chapter: 'Stoichiometry', question: 'NaCl এর মোলার ভর কত?', options: ['58.5 g/mol', '35.5 g/mol', '23 g/mol', '117 g/mol'], correctAnswer: 0, attempts: 2, status: 'pending', lastAttempted: new Date().toISOString() }
+    ];
+
+    function getWrongQueue() {
+      var data = localStorage.getItem('hsc_wrong_queue');
+      if (!data) return demoWrong;
+      try {
+        var parsed = JSON.parse(data);
+        return parsed.length > 0 ? parsed : demoWrong;
+      } catch(e) {
+        return demoWrong;
+      }
+    }
+
+    function renderWrongQueue() {
+      var list = document.getElementById('wrongQueueList');
+      var emptyEl = document.getElementById('queue-empty');
+      if (!list) return;
+
+      var queue = getWrongQueue();
+      var pending = queue.filter(function(q) { return q.status === 'pending'; });
+      var mastered = queue.filter(function(q) { return q.status === 'mastered'; });
+
+      // Update stats
+      var pendingEl = document.getElementById('queuePending');
+      var masteredEl = document.getElementById('queueMastered');
+      if (pendingEl) pendingEl.textContent = toBn(pending.length);
+      if (masteredEl) masteredEl.textContent = toBn(mastered.length);
+
+      if (pending.length === 0 && mastered.length === 0) {
+        list.innerHTML = '';
+        emptyEl.style.display = 'block';
+        return;
+      }
+      emptyEl.style.display = 'none';
+
+      list.innerHTML = pending.map(function(q, i) {
+        var subLabel = SUBJECT_MAP[q.subject] || q.subject;
+        return '<div class="bookmark-item" style="border-color:' + (q.status === 'weak' ? '#EF4444' : 'var(--border-color)') + '">' +
+          '<div class="bm-body">' +
+            '<div class="bm-q">❓ ' + escapeHtml(q.question) + '</div>' +
+            '<div class="bm-meta">' + subLabel + ' | চ্যাপ্টার: ' + escapeHtml(q.chapter || '-') + ' | প্রযােস: ' + toBn(q.attempts || 0) + '</div>' +
+          '</div>' +
+          '<div class="bm-actions">' +
+            '<button class="bm-btn bm-btn-test" onclick="retryQuestion(' + i + ')">আবার চেষ্টা করো</button>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    window.retryQuestion = function(idx) {
+      var queue = getWrongQueue();
+      var q = queue[idx];
+      if (!q) return;
+
+      // Show simple retry dialog
+      var userAnswer = prompt('তোমার উত্তর দাও (0-3):');
+      if (userAnswer === null) return;
+      userAnswer = parseInt(userAnswer);
+      if (isNaN(userAnswer) || userAnswer < 0 || userAnswer > 3) {
+        alert('সঠিক সংখ্যা দাও (0-3)');
+        return;
+      }
+
+      q.attempts = (q.attempts || 0) + 1;
+      q.lastAttempted = new Date().toISOString();
+
+      if (userAnswer === q.correctAnswer) {
+        // Correct! Check if 2 in a row → master
+        var masteredCount = queue.filter(function(item) {
+          return item.question === q.question && item.status === 'mastered';
+        }).length;
+        q.status = 'mastered';
+        alert('✅ সঠিক! এটা Mastered হিসেবে যোগ হোল।');
+      } else {
+        q.status = 'pending';
+        alert('❌ ভুল আবার চেষ্টা করো।');
+      }
+
+      localStorage.setItem('hsc_wrong_queue', JSON.stringify(queue));
+      renderWrongQueue();
+    };
+
+    window.clearWrongDemo = function() {
+      if (!confirm('ডেমো ডাটা মুছতে চান?')) return;
+      localStorage.removeItem('hsc_wrong_queue');
+      renderWrongQueue();
+    };
+
+    var SUBJECT_MAP = { physics:'পদার্থবিজ্ঞান', chemistry:'রসায়ন', biology:'জীববিজ্ঞান', math:'গণিত', bangla:'বাংলা', english:'ইংরেজি' };
+    renderWrongQueue();
+  })();
 })();
 </script>
 </body>

@@ -230,5 +230,47 @@
 </main>
 
 <script src="/js/dashboard.js"></script>
+<script>
+  // ===== FACILITY 2+4: Save Wrong Answers + Per-Subject Scores =====
+  window.saveTestResults = function(subject, questions, answers) {
+    var bn = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+    function toBn(n) { return String(n).split('').map(d => bn[parseInt(d)]||d).join(''); }
+
+    var correctCount = 0;
+    answers.forEach(function(a, i) {
+      if (a === questions[i].correct) correctCount++;
+    });
+
+    // Save per-subject score for analytics
+    var scores = JSON.parse(localStorage.getItem('hsc_scores') || '[]');
+    scores.push({ date: new Date().toISOString().split('T')[0], subject: subject, score: correctCount, total: questions.length });
+    localStorage.setItem('hsc_scores', JSON.stringify(scores));
+
+    // Collect wrong answers into revision queue
+    var wrongQueue = JSON.parse(localStorage.getItem('hsc_wrong_queue') || '[]');
+    questions.forEach(function(q, i) {
+      if (answers[i] !== q.correct) {
+        var exists = wrongQueue.some(function(item) {
+          return item.question === q.text && item.subject === subject;
+        });
+        if (!exists) {
+          wrongQueue.push({
+            subject: subject,
+            chapter: q.chapter || '',
+            question: q.text,
+            options: q.options || [],
+            correctAnswer: q.correct,
+            userAnswer: answers[i],
+            attempts: 0,
+            status: 'pending',
+            lastAttempted: new Date().toISOString()
+          });
+        }
+      }
+    });
+    localStorage.setItem('hsc_wrong_queue', JSON.stringify(wrongQueue));
+    console.log('Test saved:', subject, correctCount + '/' + questions.length);
+  };
+</script>
 </body>
 </html>

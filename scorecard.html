@@ -199,25 +199,24 @@
     <!-- WHAT TO FIX NEXT -->
     <div class="sc-card">
       <div class="sc-card-title">পরবর্তীতে কী ঠিক করবে</div>
-      <p style="font-size:12px;color:var(--text-muted);margin-bottom:14px">তোমার সবচেয়ে দুর্বল টপিক থেকে শুরু — প্রতিটি একটি টেস্ট স্কোপ করে শুরু করবে।</p>
-      <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap">
-        <button class="tab-btn active">ফোকাস</button>
-        <button class="tab-btn">সিলেবাস</button>
-        <button class="tab-btn">ইতিহাস</button>
-      </div>
-      <div class="empty-state-card">এখনো কোনো দুর্বল টপিক চিহ্নিত হয়নি — একটি টেস্ট দিয়ে তোমার সবচেয়ে দুর্বল টপিক এখানেظهورবে</div>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:14px;">তোমার সবচেয়ে দুর্বল টপিক থেকে শুরু — প্রতিটি একটি টেস্ট স্কোপ করে শুরু হবে।</p>
+      <div id="weak-subjects-list" style="display:flex;flex-direction:column;gap:8px;"></div>
+      <div id="weak-empty" class="empty-state-card" style="margin-top:8px;">এখনো কোনো দুর্বল টপিক চিহ্নিত হয়নি — একটা টেস্ট দিয়ে তোমার সবচেয়ে দুর্বল টপিক এখানে দেখাবে</div>
     </div>
 
-    <!-- BY SUBJECT / BY SOURCE -->
+    <!-- BY SUBJECT ANALYTICS + RECENT TESTS -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;padding:0 28px 16px;">
       <div class="sc-card" style="margin:0">
-        <div class="sc-card-title">বিষয়ভিত্তিক</div>
-        <div class="empty-state-card">কোনো ডেটা নেই</div>
+        <div class="sc-card-title">বিস্তারিত পরিসংখ্যান</div>
+        <div id="analytics-detail"></div>
       </div>
-      <div class="sc-card" style="margin:0">
-        <div class="sc-card-title">উৎসভিত্তিক</div>
-        <div class="empty-state-card">কোনো ডেটা নেই</div>
-      </div>
+    </div>
+
+    <!-- RECENT TESTS TREND -->
+    <div class="sc-card" style="margin:0 28px;">
+      <div class="sc-card-title">সাম্প্রতিক ৫টি টেস্ট</div>
+      <div id="recent-tests-list"></div>
+      <div id="recent-empty" class="empty-state-card" style="margin-top:8px;">কোনো টেস্ট দেওয়া হয়নি — টেস্ট দিয়ে তোর ট্রেন্ড এখানদেখা যাবো</div>
     </div>
   </div>
 
@@ -339,6 +338,90 @@
     const bn = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
     return String(n).split('').map(d => bn[parseInt(d)]||d).join('');
   }
+
+  // ===== FACILITY 4: Subject-Wise Analytics + Recent Tests =====
+  (function() {
+    var bn = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+    function toBn(n) { return String(n).split('').map(d => bn[parseInt(d)]||d).join(''); }
+
+    // Load test scores from localStorage
+    var scores = JSON.parse(localStorage.getItem('hsc_scores') || '[]');
+    var wrongQueue = JSON.parse(localStorage.getItem('hsc_wrong_queue') || '[]');
+
+    if (scores.length > 0) {
+      // Aggregate by subject
+      var subjectScores = {};
+      scores.forEach(function(s) {
+        if (!subjectScores[s.subject]) {
+          subjectScores[s.subject] = { total: 0, correct: 0, count: 0 };
+        }
+        subjectScores[s.subject].total += s.total;
+        subjectScores[s.subject].correct += s.score;
+        subjectScores[s.subject].count++;
+      });
+
+      // Render analytics bars
+      var detailEl = document.getElementById('analytics-detail');
+      if (detailEl) {
+        var html = '';
+        for (var subj in subjectScores) {
+          var stats = subjectScores[subj];
+          var pct = Math.round((stats.correct / stats.total) * 100);
+          var color = pct >= 70 ? '#22C55E' : pct >= 50 ? '#FFC800' : '#EF4444';
+          html += '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">' +
+            '<span style="width:100px;font-size:13px;color:var(--text-primary);">' + subj + '</span>' +
+            '<div style="flex:1;height:24px;background:var(--bg-hover);border-radius:6px;overflow:hidden;">' +
+            '<div style="width:' + pct + '%;height:100%;background:' + color + ';border-radius:6px;"></div>' +
+            '</div>' +
+            '<span style="font-size:13px;color:' + color + ';min-width:60px;text-align:right;">' + pct + '% (' + toBn(stats.count) + ' tests)</span>' +
+          '</div>';
+        }
+        detailEl.innerHTML = html;
+      }
+
+      // Render recent tests list
+      var recentList = document.getElementById('recent-tests-list');
+      var recentEmpty = document.getElementById('recent-empty');
+      if (recentList && recentEmpty) {
+        recentEmpty.style.display = 'none';
+        var last5 = scores.slice(-5).reverse();
+        recentList.innerHTML = last5.map(function(s) {
+          var pct = Math.round((s.score / s.total) * 100);
+          var color = pct >= 70 ? '#22C55E' : pct >= 50 ? '#FFC800' : '#EF4444';
+          return '<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border-subtle);font-size:13px;">' +
+            '<span>' + s.subject + '</span>' +
+            '<span>' + toBn(s.score) + '/' + toBn(s.total) + '</span>' +
+            '<span style="color:' + color + ';font-weight:700;">' + pct + '%</span>' +
+            '<span style="color:var(--text-muted);font-size:11px;">' + s.date + '</span>' +
+          '</div>';
+        }).join('');
+      }
+
+      // Update weak subjects list
+      var weakList = document.getElementById('weak-subjects-list');
+      var weakEmpty = document.getElementById('weak-empty');
+      if (weakList && weakEmpty) {
+        // Sort by lowest accuracy
+        var sortedSubjects = Object.keys(subjectScores).sort(function(a, b) {
+          var pctA = subjectScores[a].correct / subjectScores[a].total;
+          var pctB = subjectScores[b].correct / subjectScores[b].total;
+          return pctA - pctB;
+        });
+        if (sortedSubjects.length > 0) {
+          weakEmpty.style.display = 'none';
+          weakList.innerHTML = sortedSubjects.map(function(subj) {
+            var stats = subjectScores[subj];
+            var pct = Math.round((stats.correct / stats.total) * 100);
+            var icon = pct < 50 ? '🔴' : pct < 70 ? '🟡' : '🟢';
+            return '<div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:var(--bg-hover);border-radius:8px;">' +
+              '<span>' + icon + ' ' + subj + '</span>' +
+              '<span style="font-size:13px;color:' + (pct < 50 ? '#EF4444' : pct < 70 ? '#FFC800' : '#22C55E') + '">' + pct + '%</span>' +
+            '</div>';
+          }).join('');
+        }
+      }
+    }
+  })();
 })();
 </script>
 </body>

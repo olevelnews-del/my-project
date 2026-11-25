@@ -3,86 +3,180 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HSC Academic Hub | ৳999 একবার - একজন শিক্ষার্থীর জন্য সবকিছু</title>
-  <meta name="description" content="HSC Academic Hub — ৳999 একবার পেমেন্ট, একজন শিক্ষার্থীর জন্য সবকিছু। One Student - All Groups - All Subjects - Until HSC Exam." />
-  <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="stylesheet" href="/css/additional.css" />
+  <title>সব কোর্স — HSC Academic Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
-  <script src="/config.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/dashboard-dark.css" />
+  <style>
+    body { font-family: 'Hind Siliguri', sans-serif; background: var(--bg-dark); color: var(--text-primary); margin: 0; padding: 0; }
+    .hero-section { background: linear-gradient(135deg, var(--accent-violet), var(--cta-yellow)); padding: 40px 20px; text-align: center; }
+    .hero-section h1 { margin: 0; font-size: 28px; color: #fff; }
+    .hero-section p { margin: 8px 0 0; font-size: 14px; color: rgba(255,255,255,0.9); }
+    .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding: 30px 20px; max-width: 1200px; margin: 0 auto; }
+    .course-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 20px; transition: all 0.3s ease; cursor: pointer; text-decoration: none; color: inherit; display: block; }
+    .course-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(124,58,237,0.2); border-color: var(--accent-violet); }
+    .course-icon { font-size: 40px; margin-bottom: 12px; }
+    .course-title { font-size: 18px; font-weight: 700; color: var(--cta-yellow); margin: 0 0 6px 0; }
+    .course-eng { font-size: 13px; color: var(--text-muted); margin: 0 0 8px 0; }
+    .course-chapters { font-size: 12px; color: var(--text-secondary); margin: 0; }
+    .course-badge { display: inline-block; padding: 4px 10px; background: rgba(124,58,237,0.2); color: var(--accent-purple); border-radius: 12px; font-size: 11px; font-weight: 600; margin-top: 10px; }
+    .back-link { display: inline-block; margin: 20px; color: var(--accent-purple); text-decoration: none; font-size: 13px; }
+    .back-link:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <a href="/index.html" class="logo">
-        <span class="logo-icon">🎓</span>
-        <div class="logo-text">
-          <div class="logo-title"><span data-brand>HSC Academic Hub</span></div>
-          <div class="logo-sub">HSC Tutor BD</div>
-        </div>
-      </a>
-      <nav class="main-nav">
-        <a href="/index.html">হোম</a>
-        <a href="/bundles/">Membership</a>
-        <a href="/courses/">পাঠসমূহ</a>
-        <a href="/pricing.html#package">Membership মূল্য</a>
-        <a href="/pricing.html#package" class="btn btn-primary">এখনই ভর্তি হও</a>
-      </nav>
-    </div>
-  </header>
-  <section class="page-hero" style="background:linear-gradient(110deg,#7C3AED,#EC4899,#F97316)">
-    <div class="container">
-      <h1>তোমার জন্য পাঠসমূহ</h1>
-      <p>সব বিভাগের পাঠ, অধ্যায়ের প্রশ্ন, Google Drive Notes ও NotebookLM সংযোগ।</p>
-    </div>
-  </section>
-  <section class="courses-list-section">
-    <div class="container">
-      <div class="group-tabs" aria-label="বিভাগ অনুযায়ী পাঠ বাছাই">
-        <button class="filter-tab active" data-group="all">সব</button>
-        <button class="filter-tab" data-group="science">বিজ্ঞান</button>
-        <button class="filter-tab" data-group="business_studies">ব্যবসায়</button>
-        <button class="filter-tab" data-group="humanities">মানবিক</button>
-        <label class="sr-only" for="course-search">পাঠ খুঁজুন</label>
-        <input id="course-search" class="course-search" type="search" placeholder="পাঠ খুঁজুন..." />
-      </div>
-      <div class="courses-grid" id="courses-grid"></div>
-    </div>
-  </section>
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="logo"><span class="logo-icon">🎓</span><div class="logo-title"><span data-brand>HSC Academic Hub</span></div><div class="logo-sub">HSC Tutor BD</div></div>
-          <p>HSC পরীক্ষার্থীদের জন্য অধ্যায়ভিত্তিক ভিডিও, নোট, প্রশ্ন ও বাহ্যিক পরীক্ষার লিংক।</p>
-        </div>
-        <div class="footer-links">
-          <h4>দ্রুত লিংক</h4>
-          <a href="/index.html">হোম পেজ</a>
-          <a href="/bundles/">Membership</a>
-          <a href="/courses/">সকল পাঠ</a>
-          <a href="/pricing.html#package">Membership মূল্য</a>
-        </div>
-        <div class="footer-links">
-          <h4>গ্রুপ সমূহ</h4>
-          <a href="/courses/">বিজ্ঞান</a>
-          <a href="/courses/">ব্যবসায়</a>
-          <a href="/courses/">মানবিক</a>
-          <a href="/courses/">সাধারণ বিষয়</a>
-        </div>
-        <div class="footer-links">
-          <h4>যোগাযোগ</h4>
-          <p><a data-whatsapp>WhatsApp এ মেসেজ করো: <span data-support-phone></span></a></p>
+  <a href="/dashboard.html" class="back-link">← হোম ড্যাবোর্ডে ফিরে যান</a>
+  
+  <div class="hero-section">
+    <h1>📚 সব কোর্স ও অধ্যায়</h1>
+    <p>HSC 2026/2027 | প্রতিটি অধ্যায়ের YouTube টিউটোরিয়াল + নোট + টেস্ট</p>
+  </div>
 
-          <p style="margin-top:8px">💬 WhatsApp সাপোর্ট</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 <span data-brand>HSC Academic Hub</span> - <a data-domain>hsctutorbd.com</a> | WhatsApp: <a data-whatsapp><span data-support-phone></span></a></p>
-      </div>
-    </div>
-  </footer>
-  <script src="/js/site-data.js"></script>
-  <script src="/js/app.js"></script>
+  <div class="courses-grid">
+    <!-- Compulsory Subjects -->
+    <a href="/courses/chapters.html?subject=bangla" class="course-card">
+      <div class="course-icon">📖</div>
+      <h2 class="course-title">বাংলা ১ম পত্র</h2>
+      <p class="course-eng">Bangla 1st Paper</p>
+      <p class="course-chapters">৬টি অধ্যায় • ব্যাকরণ, গদ্য, পদ্য, নাটক, উপন্যাস</p>
+      <span class="course-badge">▶ YouTube টিউটোরিয়াল</span>
+    </a>
+
+    <a href="/courses/chapters.html?subject=english" class="course-card">
+      <div class="course-icon">🔤</div>
+      <h2 class="course-title">ইংরাজি ১ম পত্র</h2>
+      <p class="course-eng">English 1st Paper</p>
+      <p class="course-chapters">৫টি ইউনিট • Reading, Vocabulary, Grammar, Writing</p>
+      <span class="course-badge">▶ YouTube টিউটোরিয়াল</span>
+    </a>
+
+    <a href="/courses/chapters.html?subject=ict" class="course-card">
+      <div class="course-icon">💻</div>
+      <h2 class="course-title">আইসিট্ (ICT)</h2>
+      <p class="course-eng">Information & Communication Technology</p>
+      <p class="course-chapters">৬টি অধ্যায় • HTML, C Programming, Database</p>
+      <span class="course-badge">✅ সম্পূর্ণ লিংক আছে</span>
+    </a>
+
+    <!-- Science Group -->
+    <a href="/courses/chapters.html?subject=physics" class="course-card">
+      <div class="course-icon">⚡</div>
+      <h2 class="course-title">পদার্থবিজ্ঞান ১ম পত্র</h2>
+      <p class="course-eng">Physics 1st Paper</p>
+      <p class="course-chapters">১০টি অধ্যায় • ভৌত জগৎ থেকে আদর্শ গ্যাস পর্যন্ত</p>
+      <span class="course-badge">✅ ১০/১০ ভিডিও + MCQ</span>
+    </a>
+
+    <a href="/courses/chapters.html?subject=chemistry" class="course-card">
+      <div class="course-icon">⚗️</div>
+      <h2 class="course-title">রসায়ন ১ম পত্র</h2>
+      <p class="course-eng">Chemistry 1st Paper</p>
+      <p class="course-chapters">৫টি অধ্যায় • ল্যাব সুরক্ষা থেকে রাসায়নিক পরিবর্তন</p>
+      <span class="course-badge">▶ YouTube টিউটোরিয়াল</span>
+    </a>
+
+    <a href="/courses/chapters.html?subject=biology" class="course-card">
+      <div class="course-icon">🧬</div>
+      <h2 class="course-title">জীববিজ্ঞান ১ম পত্র</h2>
+      <p class="course-eng">Biology 1st Paper (Botany)</p>
+      <p class="course-chapters">১২টি অধ্যায় • কোষ থেকে উদ্ভিদ প্রজনন</p>
+      <span class="course-badge">▶ YouTube টিউটোরিয়াল</span>
+    </a>
+
+    <a href="/courses/chapters.html?subject=math" class="course-card">
+      <div class="course-icon">➗</div>
+      <h2 class="course-title">উচ্চতর গণিত ১ম পত্র</h2>
+      <p class="course-eng">Higher Math 1st Paper</p>
+      <p class="course-chapters">১০টি অধ্যায় • ম্যাট্রিক্স থেকে যোগজীকরণ</p>
+      <span class="course-badge">✅ ৩/১০ ভিডিও + YouTube Search</span>
+    </a>
+
+    <!-- Commerce Group -->
+    <a href="/courses/chapters.html?subject=accounting" class="course-card">
+      <div class="course-icon">🧾</div>
+      <h2 class="course-title">হিসাববিজ্ঞান</h2>
+      <p class="course-eng">Accounting</p>
+      <p class="course-chapters">৮টি অধ্যায় • Journal থেকে Final Accounts</p>
+      <span class="course-badge">▶ YouTube টিউটোরিয়াল</span>
+    </a>
+
+    <a href="/courses/chapters.html?subject=management" class="course-card">
+      <div class="course-icon">📊</div>
+      <h2 class="course-title">ব্যবস্থাপনা</h2>
+      <p class="course-eng">Business Management</p>
+      <p class="course-chapters">৫টি অধ্যায় • Management Principles</p>
+      <span class="course-badge">✅ ২/৫ ভিডিও + Search</span>
+    </a>
+
+    <a href="/courses/chapters.html?subject=marketing" class="course-card">
+      <div class="course-icon">🛒</div>
+      <h2 class="course-title">বাজারজাতকরণ</h2>
+      <p class="course-eng">Marketing</p>
+      <p class="course-chapters">৩টি অধ্যায় • Marketing Basics</p>
+      <span class="course-badge">▶ YouTube টিউটোরিয়াল</span>
+    </a>
+
+    <!-- Humanities Group -->
+    <a href="/courses/chapters.html?subject=economics" class="course-card">
+      <div class="course-icon">📈</div>
+      <h2 class="course-title">অর্থনীতি</h2>
+      <p class="course-eng">Economics</p>
+      <p class="course-chapters">৯টি অধ্যায় • Demand & Supply to National Income</p>
+      <span class="course-badge">▶ YouTube টিউটোরিয়াল</span>
+    </a>
+
+    <a href="/courses/chapters.html?subject=geography" class="course-card">
+      <div class="course-icon">🌍</div>
+      <h2 class="course-title">ভূগোল</h2>
+      <p class="course-eng">Geography</p>
+      <p class="course-chapters">৬টি অধ্যায় • Climate, Resources, Environment</p>
+      <span class="course-badge">✅ ১/৬ ভিডিও + Search</span>
+    </a>
+
+    <a href="/courses/chapters.html?subject=civics" class="course-card">
+      <div class="course-icon">⚖️</div>
+      <h2 class="course-title">পৌরনীতি ও সুশাসন</h2>
+      <p class="course-eng">Civics</p>
+      <p class="course-chapters">৬টি অধ্যায় • Constitution, Rights, Duties</p>
+      <span class="course-badge">✅ ১/৬ ভিডিও + Search</span>
+    </a>
+
+    <a href="/courses/chapters.html?subject=history" class="course-card">
+      <div class="course-icon">🏛️</div>
+      <h2 class="course-title">ইতিহাস</h2>
+      <p class="course-eng">History</p>
+      <p class="course-chapters">৬টি অধ্যায় • Ancient to Liberation War</p>
+      <span class="course-badge">✅ ১/৬ ভিডিও + Search</span>
+    </a>
+
+    <a href="/courses/chapters.html?subject=logic" class="course-card">
+      <div class="course-icon">🧠</div>
+      <h2 class="course-title">যুক্তিবিদ্যা</h2>
+      <p class="course-eng">Logic</p>
+      <p class="course-chapters">৬টি অধ্যায় • Definition, Proposition, Syllogism</p>
+      <span class="course-badge">▶ YouTube টিউটোরিয়াল</span>
+    </a>
+
+    <a href="/courses/chapters.html?subject=sociology" class="course-card">
+      <div class="course-icon">👥</div>
+      <h2 class="course-title">সামাজিক বিজ্ঞান</h2>
+      <p class="course-eng">Sociology</p>
+      <p class="course-chapters">৬টি অধ্যায় • Society, Culture, Social Institutions</p>
+      <span class="course-badge">▶ YouTube টিউটোরিয়াল</span>
+    </a>
+
+    <a href="/courses/chapters.html?subject=islamic" class="course-card">
+      <div class="course-icon">☪️</div>
+      <h2 class="course-title">ইসলাম ধর্ম ও নৈতিকতা</h2>
+      <p class="course-eng">Islamic Studies</p>
+      <p class="course-chapters">৬টি অধ্যায় • Quran, Hadith, Practices</p>
+      <span class="course-badge">▶ YouTube টিউটোরিয়াল</span>
+    </a>
+  </div>
+
+  <div style="text-align:center;padding:40px 20px;color:var(--text-muted);font-size:13px;">
+    <p>© 2026 HSC Academic Hub | hsctutorbd.com</p>
+    <p>WhatsApp: 01616200174 | ৳999 একবার · HSC পরীক্ষা পর্যন্ত</p>
+  </div>
 </body>
 </html>

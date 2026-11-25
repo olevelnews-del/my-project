@@ -1,35 +1,36 @@
 {
+  "useSearchFallback": true,
+  "_README": "YouTube search URLs are generated dynamically via youtube-search.js",
   "videos": {
-    "bio-ch3": "https://www.youtube.com/embed/IaY8ObXDuIQ",
-    "bangla-2nd": "https://www.youtube.com/embed/C9qf3Cy70tU",
-    "phy-ch4": "https://www.youtube.com/embed/JZXaKO9ETGw",
-    "chem-ch2": "https://www.youtube.com/embed/E8DG5EzA7wU",
-    "math-ch1": "https://www.youtube.com/embed/Lf7L_EcxLWk",
-    "acct-ch1": "https://www.youtube.com/embed/uNgPk9U5U6g",
-    "physics-ch2": "",
-    "chemistry-ch3": ""
+    "physics-ch1": {"subject": "Physics", "chapter": "ভৌত জগৎ ও পরিমাপ"},
+    "physics-ch2": {"subject": "Physics", "chapter": "ভেক্টর"},
+    "physics-ch3": {"subject": "Physics", "chapter": "গতিবিদ্যা"},
+    "physics-ch4": {"subject": "Physics", "chapter": "নিউটনীয় বলবিদ্যা"},
+    "physics-ch5": {"subject": "Physics", "chapter": "কাজ শক্তি কক্ষমতা"},
+    "physics-ch6": {"subject": "Physics", "chapter": "মহাকরষ ও অভিকর্ষ"},
+    "physics-ch7": {"subject": "Physics", "chapter": "পদার্থের গাঁঠনিক ধর্ম"},
+    "physics-ch8": {"subject": "Physics", "chapter": "পর্যাবৃত্তিক গততি"},
+    "physics-ch9": {"subject": "Physics", "chapter": "তরংগ"},
+    "physics-ch10": {"subject": "Physics", "chapter": "আদর্শ গ্যাস"},
+    "chemistry-ch1": {"subject": "Chemistry", "chapter": "ল্যাবরেটরি নিরাপদ ব্যবহার"},
+    "chemistry-ch2": {"subject": "Chemistry", "chapter": "গুণগত রসায়ন"},
+    "chemistry-ch3": {"subject": "Chemistry", "chapter": "মৌলের পর্যায়বৃত্ত ধর্ম"},
+    "chemistry-ch4": {"subject": "Chemistry", "chapter": "রাসায়নিক বন্ধন"},
+    "chemistry-ch5": {"subject": "Chemistry", "chapter": "রাসায়নিক পরিবর্তন"},
+    "biology-ch1": {"subject": "Biology", "chapter": "কোষ ও এর গঠন"},
+    "biology-ch2": {"subject": "Biology", "chapter": "কোষ বিভাজন"},
+    "biology-ch3": {"subject": "Biology", "chapter": "কোষ রসায়ন"},
+    "math-ch1": {"subject": "Mathematics", "chapter": "ম্যাট্রিক্স ও নির্ণায়ক"},
+    "math-ch2": {"subject": "Mathematics", "chapter": "ভেক্টর"},
+    "math-ch3": {"subject": "Mathematics", "chapter": "সরলরেখা"},
+    "math-ch4": {"subject": "Mathematics", "chapter": "বৃত্ত"},
+    "ict-ch1": {"subject": "ICT", "chapter": "বিশ্ব ও বাংলাদেশ প্রেক্ষিতে"},
+    "ict-ch2": {"subject": "ICT", "chapter": "যোগাযোগ সিস্টেম"},
+    "ict-ch3": {"subject": "ICT", "chapter": "সংখ্যা পদ্ধতি"},
+    "ict-ch4": {"subject": "ICT", "chapter": "ওয়েব ডিজাইন ও HTML"}
   },
-  "notes": {
-    "bio-ch3": "",
-    "bangla-2nd": "",
-    "phy-ch4": "",
-    "chem-ch2": "",
-    "math-ch1": "",
-    "acct-ch1": "",
-    "physics-ch2": "",
-    "chemistry-ch3": ""
-  },
-  "notebooklm": {
-    "adminDemo": "https://notebooklm.google.com/"
-  },
+  "notes": {},
   "tests": {
-    "bio-ch3": "",
-    "bangla-2nd": "",
-    "phy-ch4": "",
-    "chem-ch2": "",
-    "math-ch1": "",
-    "acct-ch1": "",
-    "physics-ch2": "",
-    "chemistry-ch3": ""
+    "all-hsc-tests": {"testUrl": "https://quizkutir.com/free-tests", "title": "Quiz Kutir - All HSC Subjects", "status": "EXTERNAL"}
   }
 }
