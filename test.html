@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>টেস্ট — HSC Academic Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="/config.js"></script>
+  <link rel="stylesheet" href="/css/dashboard.css" />
+  <style>
+    /* Test page specific */
+    .test-layout { display: flex; flex-direction: column; min-height: 100vh; }
+    .test-main { flex: 1; padding: 28px; display: flex; flex-direction: column; align-items: center; }
+    .question-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px;
+      max-width: 720px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(0,0,0,.3);
+    }
+    .q-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .meta-badge {
+      background: rgba(124,58,237,.15);
+      color: var(--accent-purple);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+    .q-number { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+    .q-text {
+      font-family: 'Noto Serif Bengali', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .options-list { display: flex; flex-direction: column; gap: 10px; }
+    .option-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-base);
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      text-align: left;
+      width: 100%;
+      cursor: pointer;
+      transition: border-color .15s, background .15s, color .15s;
+    }
+    .option-btn:hover:not(:disabled) { border-color: var(--accent-purple); background: rgba(139,92,246,.08); color: var(--text-primary); }
+    .option-btn.correct { border-color: #22C55E; background: rgba(34,197,94,.12); color: #86EFAC; }
+    .option-btn.wrong { border-color: var(--danger); background: rgba(239,68,68,.1); color: #FCA5A5; }
+    .option-btn:disabled { cursor: default; }
+    .option-letter {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .option-btn.correct .option-letter { background: #22C55E; color: white; }
+    .option-btn.wrong .option-letter { background: var(--danger); color: white; }
+    .explanation-area {
+      margin-top: 20px;
+      padding: 16px;
+      background: rgba(124,58,237,.08);
+      border: 1px solid rgba(124,58,237,.3);
+      border-radius: 12px;
+      display: none;
+    }
+    .exp-title { font-size: 12px; font-weight: 700; color: var(--accent-purple); margin-bottom: 6px; }
+    .exp-text { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+    .next-btn-wrap { display: flex; justify-content: flex-end; margin-top: 20px; }
+    #next-btn { display: none; }
+
+    /* Results area */
+    #results-area { display: none; max-width: 720px; width: 100%; }
+    .results-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+    }
+    .results-icon { font-size: 48px; margin-bottom: 12px; }
+    .results-title { font-family: 'Noto Serif Bengali', serif; font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; }
+    .results-stats { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+    .res-stat { background: var(--bg-base); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px 24px; min-width: 100px; }
+    .res-stat-val { font-size: 28px; font-weight: 900; }
+    .res-stat-val.green { color: #22C55E; }
+    .res-stat-val.red { color: var(--danger); }
+    .res-stat-val.yellow { color: var(--cta-yellow); }
+    .res-stat-lbl { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+    .results-feedback { font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.7; }
+    .results-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .results-note { font-size: 11px; color: var(--text-muted); margin-top: 16px; line-height: 1.6; }
+    .results-note strong { color: var(--accent-purple); }
+    /* Progress bar */
+    .progress-bar-wrap { max-width: 720px; width: 100%; margin-bottom: 16px; }
+    .progress-bar-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
+    .progress-bar-track { background: var(--border-color); border-radius: 999px; height: 6px; overflow: hidden; }
+    .progress-bar-fill { background: linear-gradient(90deg, var(--accent-violet), var(--accent-pink)); height: 100%; border-radius: 999px; transition: width .3s ease; }
+  </style>
+</head>
+<body>
+
+<!-- SIDEBAR (compact) -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <a href="/" class="brand-link">
+      <span class="brand-icon">🎓</span>
+      <div class="brand-text"><strong>HSC Academic Hub</strong><small>hsctutorbd.com</small></div>
+    </a>
+    <button class="mobile-close-btn" id="sidebarClose">×</button>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="/" class="nav-item"><span class="nav-icon">🏠</span><span>হোম</span></a>
+    <a href="/scorecard.html" class="nav-item"><span class="nav-icon">📊</span><span>স্কোর কার্ড</span></a>
+    <a href="/revision.html" class="nav-item"><span class="nav-icon">🔄</span><span>রিভিশন</span></a>
+    <a href="/pricing.html" class="nav-item"><span class="nav-icon">💳</span><span>প্ল্যান ও মূল্য</span></a>
+  </nav>
+</aside>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="mobile-menu-toggle" id="menuToggle" aria-label="মেনু">☰</button>
+  </div>
+  <div class="topbar-right">
+    <button class="upgrade-topbar-btn" onclick="location.href='/pricing.html'">⬆ আপগ্রেড</button>
+    <div class="hsc-countdown-badge">HSC 2027 — <span id="hsc-countdown">...</span></div>
+  </div>
+</header>
+
+<!-- TEST MAIN -->
+<main class="main-content">
+  <div class="test-layout">
+    <!-- Progress bar -->
+    <div class="progress-bar-wrap" style="padding:0 28px">
+      <div class="progress-bar-label">
+        <span id="prog-label">প্রশ্ন ১ of ১০</span>
+        <span id="prog-score">স্কোর: ০/০</span>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="prog-fill" style="width:10%"></div>
+      </div>
+    </div>
+
+    <div class="test-main">
+      <!-- Question Area -->
+      <div id="question-area">
+        <div class="question-card">
+          <div class="q-meta">
+            <span class="meta-badge" id="meta-subject">সাঁধারণ</span>
+            <span class="meta-badge" id="meta-chapter">অধ্যায় ?</span>
+            <span class="meta-badge" id="meta-difficulty">—</span>
+          </div>
+          <p class="q-number" id="q-number">প্রশ্ন ১ of ১০</p>
+          <div class="q-text" id="question-text">লেড হচ্ছে...</div>
+          <div class="options-list" id="options-list"></div>
+          <div class="explanation-area" id="explanation-area">
+            <div class="exp-title">✅ ব্যাখ্যা:</div>
+            <div class="exp-text" id="explanation-text"></div>
+          </div>
+          <div class="next-btn-wrap">
+            <button class="cta-btn cta-violet" id="next-btn" style="display:none">পরবর্তী →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Area -->
+      <div id="results-area">
+        <div class="results-card">
+          <div class="results-icon" id="result-icon">🏆</div>
+          <div class="results-title" id="result-title">টেস্ট সম্পন্ন!</div>
+          <div class="results-stats">
+            <div class="res-stat">
+              <div class="res-stat-val yellow" id="result-accuracy">০%</div>
+              <div class="res-stat-lbl">নির্ভুলতা</div>
+            </div>
+            <div class="res-stat">
+              <div class="res-stat-val" id="result-total">০</div>
+              <div class="res-stat-lbl">মোট প্রশ্ন</div>
+            </div>
+            <div class="res-stat">
+              <div class="res-stat-val green" id="result-correct">০</div>
+              <div class="res-stat-lbl">সঠিক</div>
+            </div>
+            <div class="res-stat">
+              <div class="res-stat-val red" id="result-wrong">০</div>
+              <div class="res-stat-lbl">ভুল</div>
+            </div>
+            <div class="res-stat">
+              <div class="res-stat-val" id="result-time">০:০০</div>
+              <div class="res-stat-lbl">সময়</div>
+            </div>
+          </div>
+          <div class="results-feedback" id="result-feedback"></div>
+          <div class="results-actions">
+            <a href="/test.html" class="cta-btn cta-violet">আবার টেস্ট দাও</a>
+            <a href="/revision.html" class="cta-btn cta-white">রিভিশন দেখো</a>
+            <a href="/scorecard.html" class="cta-btn cta-outline">স্কোরকার্ড</a>
+          </div>
+          <p class="results-note">
+            <strong>তোমি কেন বুঝলে?</strong><br/>
+            সঠিক উত্তর এবং প্রতিটি ভুল অপশন কেন ভুল — এটা দেখলে বুঝবে।<br/>
+            <strong>রিভিশনে জমা হবে</strong> — ভুল করলে তা রিভিশন কيوতে চলে যাবে।<br/>
+            <strong>অগ্রগতিতে দেখাবে</strong> — বিষয়ভিত্তিক নির্ভুলতা আপনাকে বলবে পরবর্তী ঘন্টাটি কোথায় যেতে হবে।<br/>
+            <strong>আটকে থাকলে জিজ্ঞেস করো</strong> — NotebookLM উৎস দেখাবে।
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="/js/dashboard.js"></script>
+</body>
+</html>

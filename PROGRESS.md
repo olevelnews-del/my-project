@@ -29,6 +29,17 @@ Chapter detail pages and `video-player.html` let students save and open Notebook
 Static HTML was opened in the integrated browser, but root-relative scripts and JSON cannot load from `file://`. A local HTTP server, build, and command-line validation could not run because the shell sandbox lacks `slirp4netns`. Production payment/cloud sync also remain unverified until the webhook and Cloudflare secrets are configured.
 
 
+## Complete Dark Dashboard Rebuild (Way To IAS & PrelimsAI Inspired)
+- **Design System**: Dark dashboard theme (#0F0F1A background, #1A1A2E cards, #7C3AED violet accent, #FFC800 yellow CTAs, Hind Siliguri font, Bengali language).
+- **Navigation Layout**: Fixed left sidebar + scrollable main content area with responsive mobile drawer.
+- **Pages Created/Updated**:
+  - `dashboard.html` — Main HSC Academic Hub dashboard (greeting, popular courses, practice row, 3-column HSC/Board/Preparation, free plan box, ৳999 one-time upgrade cards, continue section, score tabs, syllabus coverage grid, footer).
+  - `scorecard.html` — Performance analytics page (overall accuracy svg ring, stat tiles, trend area, subject/source breakdown, weak topic fixes, revision test entry).
+  - `revision.html` — Bookmark-based revision review system (filter by subject, test launch per question, batch revision test trigger).
+  - `test.html` — Interactive MCQ question runner engine (option A/B/C/D with real-time feedback, detailed explanation area, bookmark wrong answers, result summary with score saving).
+  - `js/dashboard.js` — IIFE engine powering test flow, localStorage state (`hscDashboardProgress`, `hscBookmarks`), sidebar navigation, tab switching, and score persistence.
+  - `css/dashboard.css` — Complete dark dashboard stylesheet.
+
 ## Repositioning Complete
 - **Positioning Change**: Teacher language → Consultant / HSC Study System
 - **Accountability**: #1 feature - Streak, Daily Check-In, Focus Timer
