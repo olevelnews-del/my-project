@@ -5,339 +5,393 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HSC প্ল্যাটফর্ম | আপনার সফলতার গন্তব্য</title>
   <meta name="description" content="HSC পরীক্ষার জন্য সম্পূর্ণ অনলাইন কোর্স। বিজ্ঞান, ব্যবসা শিক্ষা, মানবিক ও সাধারণ শিক্ষা গ্রুপের সকল বিষয়ে ভিডিও ক্লাস।" />
-  <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="stylesheet" href="/css/additional.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: "#FFF9F0",
+            lavender: "#F5F3FF",
+            violet: "#7C3AED",
+            pink: "#EC4899",
+            orange: "#F97316",
+            blue: "#2563EB",
+            cyan: "#06B6D4",
+            yellow: "#FACC15",
+            mint: "#10B981",
+            coral: "#FF3B30",
+            navy: "#111827",
+            gold: "#FFC800",
+          },
+          fontFamily: {
+            hind: ["'Hind Siliguri'", "sans-serif"],
+            noto: ["'Noto Serif Bengali'", "serif"],
+          },
+        },
+      },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {font-family: var(--tw-font-family-hind); background: #FFF9F0; color: #111827;}
+    h1, h2, h3, h4 {font-family: var(--tw-font-family-noto);}
+    .btn-primary {background: linear-gradient(135deg, var(--tw-gradient-stops)); --tw-gradient-from: #7C3AED; --tw-gradient-to: #EC4899; color:#fff; border-radius:9999px; padding:.5rem 1.5rem; box-shadow:0 2px 4px rgba(0,0,0,0.1); transition:transform .2s, box-shadow .2s;}
+    .btn-primary:hover {transform:scale(1.04); box-shadow:0 4px 8px rgba(0,0,0,0.2);}
+    .btn-outline {border:2px solid #7C3AED; color:#7C3AED; border-radius:9999px; padding:.5rem 1.5rem; transition:background .2s, color .2s;}
+    .btn-outline:hover {background:#7C3AED; color:#fff;}
+    .gradient-btn {background: linear-gradient(135deg, #7C3AED, #EC4899); color:#fff;}
+    .card {background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.05); transition:transform .2s, box-shadow .2s;}
+    .card:hover {transform:translateY(-8px); box-shadow:0 6px 12px rgba(0,0,0,0.15);}
+    .top-strip {height:4px;}
+    .badge {position:absolute; top:0.5rem; right:0.5rem; background:#FF3B30; color:#fff; padding:0.25rem 0.5rem; border-radius:0.5rem; font-size:0.75rem;}
+    .floating {animation:float 3s ease-in-out infinite;}
+    @keyframes float {0%{transform:translateY(0);}50%{transform:translateY(-8px);}100%{transform:translateY(0);}}
+    .marquee {background:#FFC800; color:#111827; padding:.5rem 0; overflow:hidden; white-space:nowrap;}
+    .marquee span {display:inline-block; padding-left:100%; animation:marquee 15s linear infinite;}
+    @keyframes marquee {0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
+    .accordion {border-top:1px solid #e5e7eb;}
+    .accordion-header {cursor:pointer; padding:.75rem; font-weight:600;}
+    .accordion-body {display:none; padding:.75rem;}
+    .accordion.open .accordion-body {display:block;}
+    .countdown {font-weight:700; color:#FF3B30;}
+    .sticky-bar {position:fixed; bottom:0; left:0; right:0; background:#111827; color:#fff; display:flex; justify-content:space-between; align-items:center; padding:.75rem 1rem; z-index:50;}
+    .sticky-bar .btn {background:#FFC800; color:#111827; border-radius:9999px; padding:.5rem 1rem;}
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <a href="/index.html" class="logo">
-        <span class="logo-icon">📚</span>
-        <div class="logo-text">
-          <div class="logo-title">HSC প্ল্যাটফর্ম</div>
-          <div class="logo-sub">আপনার সফলতার গন্তব্য</div>
+  <!-- Marquee -->
+  <div class="marquee"><span>HSC 2026 • Live Class • Board Question • 50% ছাড় • সর্বোচ্চ ৭ দিনের মানি ব্যাক গ্যারান্টি</span></div>
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm">
+    <div class="container mx-auto flex justify-between items-center py-4 px-4">
+      <a href="/" class="flex items-center space-x-2">
+        <span class="text-2xl">📚</span>
+        <div>
+          <div class="text-xl font-bold">HSC প্ল্যাটফর্ম</div>
+          <div class="text-sm text-gray-500">আপনার সফলতার গন্তব্য</div>
         </div>
       </a>
-      <nav class="main-nav">
-        <a href="/index.html">হোম</a>
-        <a href="/bundles/">বান্ডিল</a>
-        <a href="/courses/">কোর্স সমূহ</a>
-        <a href="/pricing/">মূল্য তালিকা</a>
-        <a href="/bundles/" class="btn btn-primary">এখনই শুরু করুন</a>
+      <nav class="space-x-4 hidden md:block">
+        <a href="/" class="text-gray-700 hover:text-violet-600">হোম</a>
+        <a href="/bundles/" class="text-gray-700 hover:text-violet-600">বান্ডিল</a>
+        <a href="/courses/" class="text-gray-700 hover:text-violet-600">কোর্স সমূহ</a>
+        <a href="/pricing/" class="text-gray-700 hover:text-violet-600">মূল্য তালিকা</a>
+        <a href="/pricing/" class="gradient-btn text-white px-4 py-2 rounded-full shadow">এখনই শুরু করুন</a>
       </nav>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1>HSC পরীক্ষার জন্য সম্পূর্ণ অনলাইন কোর্স</h1>
-        <p>বিজ্ঞান, ব্যবসা শিক্ষা, মানবিক ও সাধারণ শিক্ষা গ্রুপের সকল বিষয়ে ভিডিও ক্লাস। প্রতিটি অধ্যায় অভিজ্ঞ শিক্ষকের দ্বারা পরিচালিত।</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
-          <a href="/courses/" class="btn btn-primary">কোর্স দেখুন</a>
-          <a href="/bundles/" class="btn btn-outline">বান্ডিল কিনুন</a>
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-violet to-pink text-white py-16">
+    <div class="container mx-auto flex flex-col md:flex-row items-center px-4">
+      <div class="md:w-1/2">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">HSC পরীক্ষায় <span class="bg-yellow-400 text-black px-2 py-1 rounded">A+ পাওয়ার সবচেয়ে সহজ উপায়</span></h1>
+        <p class="mb-6">বিজ্ঞান, ব্যবসা শিক্ষা, মানবিক ও সাধারণ শিক্ষা গ্রুপের সকল বিষয়ে ভিডিও ক্লাস। প্রতিটি অধ্যায় অভিজ্ঞ শিক্ষকের দ্বারা পরিচালিত।</p>
+        <div class="flex space-x-4">
+          <a href="/courses/" class="btn-primary">কোর্স দেখুন</a>
+          <a href="/bundles/" class="btn-outline">ফ্রি ক্লাস দেখুন</a>
+        </div>
+        <div class="flex space-x-4 mt-6">
+          <div class="bg-white text-violet-600 px-3 py-1 rounded-full shadow">29 কোর্স</div>
+          <div class="bg-white text-violet-600 px-3 py-1 rounded-full shadow">200+ অধ্যায়</div>
+          <div class="bg-coral text-white px-3 py-1 rounded-full shadow">৳2999 ফুল প্যাকেজ</div>
         </div>
       </div>
-      <div class="hero-stats">
-        <div class="stat"><div class="stat-num">29</div><div class="stat-label">কোর্স</div></div>
-        <div class="stat"><div class="stat-num">200</div><div class="stat-label">অধ্যায়</div></div>
-        <div class="stat"><div class="stat-num">৳2999</div><div class="stat-label">সবচেয়ে সস্তা প্যাকেজ</div></div>
+      <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center">
+        <img src="/images/hero-illustration.png" alt="Students studying" class="max-w-full w-80 floating" />
       </div>
     </div>
   </section>
 
-  <section class="features-section">
-    <div class="container">
-      <div class="section-title">কেন আমাদের পছন্দ করবেন?</div>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div style="font-size:48px;margin-bottom:16px">৳</div>
-          <h3>সস্তা মূল্য</h3>
+  <!-- Why Us -->
+  <section class="py-12 bg-cream">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">কেন আমাদের পছন্দ করবেন?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 bg-yellow-100 rounded-2xl text-center">
+          <div class="text-4xl mb-2">💰</div>
+          <h3 class="font-semibold mb-2">সস্তা মূল্য</h3>
           <p>কোনো কোর্স বা বান্ডিলের দাম বাজারের চেয়ে ৫০% কম।</p>
         </div>
-        <div class="feature-card">
-          <div style="font-size:48px;margin-bottom:16px">📱</div>
-          <h3>অফলাইন মোড</h3>
+        <div class="p-6 bg-blue-100 rounded-2xl text-center">
+          <div class="text-4xl mb-2">📱</div>
+          <h3 class="font-semibold mb-2">অফলাইন মোড</h3>
           <p>কোর্স ডাউনলোড করে যেকোনো সময় অফলাইনে দেখুন।</p>
         </div>
-        <div class="feature-card">
-          <div style="font-size:48px;margin-bottom:16px">💬</div>
-          <h3>WhatsApp সাপোর্ট</h3>
+        <div class="p-6 bg-green-100 rounded-2xl text-center">
+          <div class="text-4xl mb-2">💬</div>
+          <h3 class="font-semibold mb-2">WhatsApp সাপোর্ট</h3>
           <p>৩০ মিনিটের মধ্যে আপনার প্রশ্নের উত্তর পান।</p>
         </div>
-        <div class="feature-card">
-          <div style="font-size:48px;margin-bottom:16px">📊</div>
-          <h3>বোর্ড ব্লুপ্রিন্ট</h3>
+        <div class="p-6 bg-pink-100 rounded-2xl text-center">
+          <div class="text-4xl mb-2">📊</div>
+          <h3 class="font-semibold mb-2">বোর্ড ব্লুপ্রিন্ট</h3>
           <p>প্রতিটি অধ্যায়ে ১০ বছরের বোর্ড প্রশ্ন সমাধান।</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="courses-preview-section">
-    <div class="container">
-      <div class="section-title">জনপ্রিয় কোর্সগুলো</div>
-      <div class="courses-grid">
-        <div class="course-card">
-          <div class="course-card-header">
-            <span class="course-emoji">🔬</span>
-            <div class="course-info">
-              <h3>ACCOUNTING</h3>
-              <p>1St Paper</p>
-            </div>
-          </div>
-          <div class="course-card-body">
-            <div class="course-stats">
-              <span>8 অধ্যায়</span>
-              <span>৳499</span>
-            </div>
-            <div class="course-tags">
-              <span class="tag">ভিডিও ক্লাস</span>
-              <span class="tag">বোর্ড প্রশ্ন</span>
-            </div>
-            <div style="margin-top:16px">
-              <a href="/courses/accounting-1st-paper/" class="btn btn-primary" style="width:100%">কোর্স দেখুন →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-card-header">
-            <span class="course-emoji">🔬</span>
-            <div class="course-info">
-              <h3>ACCOUNTING</h3>
-              <p>2Nd Paper</p>
-            </div>
-          </div>
-          <div class="course-card-body">
-            <div class="course-stats">
-              <span>7 অধ্যায়</span>
-              <span>৳499</span>
-            </div>
-            <div class="course-tags">
-              <span class="tag">ভিডিও ক্লাস</span>
-              <span class="tag">বোর্ড প্রশ্ন</span>
-            </div>
-            <div style="margin-top:16px">
-              <a href="/courses/accounting-2nd-paper/" class="btn btn-primary" style="width:100%">কোর্স দেখুন →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-card-header">
-            <span class="course-emoji">🔬</span>
-            <div class="course-info">
-              <h3>BANGLA</h3>
-              <p>1St Paper</p>
-            </div>
-          </div>
-          <div class="course-card-body">
-            <div class="course-stats">
-              <span>6 অধ্যায়</span>
-              <span>৳499</span>
-            </div>
-            <div class="course-tags">
-              <span class="tag">ভিডিও ক্লাস</span>
-              <span class="tag">বোর্ড প্রশ্ন</span>
-            </div>
-            <div style="margin-top:16px">
-              <a href="/courses/bangla-1st-paper/" class="btn btn-primary" style="width:100%">কোর্স দেখুন →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-card-header">
-            <span class="course-emoji">🔬</span>
-            <div class="course-info">
-              <h3>BANGLA</h3>
-              <p>2Nd Paper</p>
-            </div>
-          </div>
-          <div class="course-card-body">
-            <div class="course-stats">
-              <span>6 অধ্যায়</span>
-              <span>৳499</span>
-            </div>
-            <div class="course-tags">
-              <span class="tag">ভিডিও ক্লাস</span>
-              <span class="tag">বোর্ড প্রশ্ন</span>
-            </div>
-            <div style="margin-top:16px">
-              <a href="/courses/bangla-2nd-paper/" class="btn btn-primary" style="width:100%">কোর্স দেখুন →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-card-header">
-            <span class="course-emoji">🔬</span>
-            <div class="course-info">
-              <h3>BIOLOGY</h3>
-              <p>1St Paper</p>
-            </div>
-          </div>
-          <div class="course-card-body">
-            <div class="course-stats">
-              <span>10 অধ্যায়</span>
-              <span>৳499</span>
-            </div>
-            <div class="course-tags">
-              <span class="tag">ভিডিও ক্লাস</span>
-              <span class="tag">বোর্ড প্রশ্ন</span>
-            </div>
-            <div style="margin-top:16px">
-              <a href="/courses/biology-1st-paper/" class="btn btn-primary" style="width:100%">কোর্স দেখুন →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="course-card">
-          <div class="course-card-header">
-            <span class="course-emoji">🔬</span>
-            <div class="course-info">
-              <h3>BIOLOGY</h3>
-              <p>2Nd Paper</p>
-            </div>
-          </div>
-          <div class="course-card-body">
-            <div class="course-stats">
-              <span>10 অধ্যায়</span>
-              <span>৳499</span>
-            </div>
-            <div class="course-tags">
-              <span class="tag">ভিডিও ক্লাস</span>
-              <span class="tag">বোর্ড প্রশ্ন</span>
-            </div>
-            <div style="margin-top:16px">
-              <a href="/courses/biology-2nd-paper/" class="btn btn-primary" style="width:100%">কোর্স দেখুন →</a>
-            </div>
-          </div>
-        </div>
-
+  <!-- Courses -->
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">জনপ্রিয় কোর্সগুলো</h2>
+      <div class="flex justify-center space-x-4 mb-6">
+        <button class="filter-tab active" data-group="all">সব</button>
+        <button class="filter-tab" data-group="science">বিজ্ঞান</button>
+        <button class="filter-tab" data-group="business_studies">ব্যবসা শিক্ষা</button>
+        <button class="filter-tab" data-group="humanities">মানবিক</button>
+        <button class="filter-tab" data-group="compulsory_subjects">সাধারণ শিক্ষা</button>
       </div>
-      <div style="text-align:center;margin-top:32px">
-        <a href="/courses/" class="btn btn-outline">সকল কোর্স দেখুন (29 টি)</a>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="courses-grid">
+        <!-- Course cards will be injected via JS from site-data.js -->
+      </div>
+      <div class="text-center mt-8">
+        <a href="/courses/" class="btn-outline">সকল কোর্স দেখুন (29 টি)</a>
       </div>
     </div>
   </section>
 
-  <section class="bundles-preview-section">
-    <div class="container">
-      <div class="section-title">সবচেয়ে জনপ্রিয় বান্ডিল</div>
-      <div class="bundles-grid">
-        <div class="bundle-card">
-          <div class="bundle-card-header">
-            <span class="bundle-icon">🎯</span>
-            <h3>HSC সম্পূর্ণ প্ল্যাটফর্ম (৪টি গ্রুপ)</h3>
-          </div>
-          <div class="bundle-card-body">
-            <p style="color:#64748b;margin-bottom:16px">বিশ্ববিদ্যালয় ভর্তির জন্য সবচেয়ে সস্তা ও সম্পূর্ণ অনলাইন কোর্স। বিজ্ঞান, ব্যবস...</p>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-              <div>
-                <span style="font-size:14px;color:#94a3b8;text-decoration:line-through">৳14471</span>
-                <div class="price-tag" style="font-size:32px">৳2999</div>
-              </div>
-              <span class="discount-badge">79% ছাড়</span>
-            </div>
-            <div style="margin-top:16px">
-              <a href="/bundles/full-platform/" class="btn btn-primary" style="width:100%">বান্ডিল দেখুন →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="bundle-card">
-          <div class="bundle-card-header">
-            <span class="bundle-icon">💼</span>
-            <h3>HSC ব্যবসায় শিক্ষা গ্রুপ সম্পূর্ণ প্যাকেজ</h3>
-          </div>
-          <div class="bundle-card-body">
-            <p style="color:#64748b;margin-bottom:16px">ব্যবসায় শিক্ষা গ্রুপের সকল 6টি বিষয়ের সমন্বিত কোর্্স। বোর্ড প্রস্তুতি থেকে ভর্...</p>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-              <div>
-                <span style="font-size:14px;color:#94a3b8;text-decoration:line-through">৳2994</span>
-                <div class="price-tag" style="font-size:32px">৳1999</div>
-              </div>
-              <span class="discount-badge">33% ছাড়</span>
-            </div>
-            <div style="margin-top:16px">
-              <a href="/bundles/business-studies/" class="btn btn-primary" style="width:100%">বান্ডিল দেখুন →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="bundle-card">
-          <div class="bundle-card-header">
-            <span class="bundle-icon">📚</span>
-            <h3>HSC সাধারণ শিক্ষা গ্রুপ সম্পূর্ণ প্যাকেজ</h3>
-          </div>
-          <div class="bundle-card-body">
-            <p style="color:#64748b;margin-bottom:16px">সাধারণ শিক্ষা গ্রুপের সকল 5টি বিষয়ের সমন্বিত কোর্্স। বোর্ড প্রস্তুতি থেকে ভর্তি...</p>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-              <div>
-                <span style="font-size:14px;color:#94a3b8;text-decoration:line-through">৳2495</span>
-                <div class="price-tag" style="font-size:32px">৳0</div>
-              </div>
-              <span class="discount-badge">100% ছাড়</span>
-            </div>
-            <div style="margin-top:16px">
-              <a href="/bundles/compulsory-subjects/" class="btn btn-primary" style="width:100%">বান্ডিল দেখুন →</a>
-            </div>
-          </div>
-        </div>
-
+  <!-- Bundles -->
+  <section class="py-12 bg-cream">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">সবচেয়ে জনপ্রিয় বান্ডিল</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="bundles-grid">
+        <!-- Bundle cards injected via JS -->
       </div>
-      <div style="text-align:center;margin-top:32px">
-        <a href="/bundles/" class="btn btn-outline">সকল বান্ডিল দেখুন (5 টি)</a>
+      <div class="text-center mt-8">
+        <a href="/bundles/" class="btn-outline">সকল বান্ডিল দেখুন (5 টি)</a>
       </div>
     </div>
   </section>
 
-  <section class="cta-section" style="background:linear-gradient(135deg,#3b82f6,#06b6d4)">
-    <div class="container">
-      <h2>এখনই আপনার পরীক্ষার জন্য প্রস্তুত হন</h2>
-      <p style="color:#fff;margin-bottom:24px">৭ দিনের মানি ব্যাক গ্যারান্টি সহ। নির্দ্বিধায় কিনুন এবং আপনার সফলতার পথে এগিয়ে যান।</p>
-      <a href="/pricing/" class="btn btn-white" style="width:100%;max-width:300px">এখনই শুরু করুন</a>
+  <!-- How It Works -->
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">কিভাবে শুরু করবেন? ৩ ধাপে</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 bg-white rounded-2xl shadow text-center">
+          <div class="text-4xl mb-2">🎓</div>
+          <h3 class="font-semibold mb-2">Free class দেখো</h3>
+          <p>উদাহরণ ক্লাসগুলো দেখুন, কোনো ঝুঁকি নেই।</p>
+        </div>
+        <div class="p-6 bg-white rounded-2xl shadow text-center">
+          <div class="text-4xl mb-2">🛒</div>
+          <h3 class="font-semibold mb-2">Bundle নাও</h3>
+          <p>আপনার প্রয়োজনের বান্ডিল বেছে নিন, বিশাল ছাড়ে।</p>
+        </div>
+        <div class="p-6 bg-white rounded-2xl shadow text-center">
+          <div class="text-4xl mb-2">📅</div>
+          <h3 class="font-semibold mb-2">Routine অনুযায়ী পড়ো</h3>
+          <p>নির্ধারিত রুটিনে ভিডিও ক্লাস অনুসরণ করুন।</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="logo"><span class="logo-icon">📚</span><div class="logo-title">HSC প্ল্যাটফর্ম</div></div>
-          <p>HSC পরীক্ষার্থীদের জন্য নির্ভরযোগ্য ও মানসম্মত শিক্ষা উপকরণ। প্রতিটি কোর্স অভিজ্ঞ শিক্ষকের দ্বারা পরিচালিত।</p>
+  <!-- Testimonials -->
+  <section class="py-12 bg-cream">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Students Love Us</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 bg-white rounded-2xl shadow">
+          <p class="italic mb-4">"এই কোর্সে আমার GPA ৩.৯৯ে উঠে গেল!"</p>
+          <p class="font-semibold">সাইফুল ইসলাম, ঢাকা কলেজ</p>
+          <p class="text-sm text-gray-500">⭐️⭐️⭐️⭐️⭐️</p>
         </div>
-        <div class="footer-links">
-          <h4>দ্রুত লিংক</h4>
-          <a href="/index.html">হোম পেজ</a>
-          <a href="/bundles/">বান্ডিল কোর্স</a>
-          <a href="/courses/">সকল কোর্স</a>
-          <a href="/pricing/">মূল্য তালিকা</a>
+        <div class="p-6 bg-white rounded-2xl shadow">
+          <p class="italic mb-4">"অফলাইন মোডে যেকোনো জায়গা থেকে পড়া সম্ভব।"</p>
+          <p class="font-semibold">রেহানা শাহী, চট্টগ্রাম ইউনিভার্সিটি</p>
+          <p class="text-sm text-gray-500">⭐️⭐️⭐️⭐️⭐️</p>
         </div>
-        <div class="footer-links">
-          <h4>গ্রুপ সমূহ</h4>
-          <a href="/bundles/?group=science">বিজ্ঞান</a>
-          <a href="/bundles/?group=business-studies">ব্যবসা শিক্ষা</a>
-          <a href="/bundles/?group=humanities">মানবিক</a>
-          <a href="/bundles/?group=compulsory-subjects">সাধারণ শিক্ষা</a>
+        <div class="p-6 bg-white rounded-2xl shadow">
+          <p class="italic mb-4">"WhatsApp সাপোর্ট ৩ মিনিটের মধ্যে উত্তর দিল।"</p>
+          <p class="font-semibold">মোঃ রাকিব, রংপুর হাই স্কুল</p>
+          <p class="text-sm text-gray-500">⭐️⭐️⭐️⭐️⭐️</p>
         </div>
-        <div class="footer-links">
-          <h4>যোগাযোগ</h4>
-          <p>📧 support@hsplatform.edu.bd</p>
-          <p>📞 ০১XXX-XXXXXX</p>
-          <p style="margin-top:8px">💬 WhatsApp সাপোর্ট</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© ২০২৫ HSC প্ল্যাটফর্ম। সকল অধিকার সংরক্ষিত।</p>
       </div>
     </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">প্রায়শই জিজ্ঞাসিত প্রশ্ন</h2>
+      <div class="max-w-2xl mx-auto">
+        <div class="accordion">
+          <div class="accordion-header">টাকা ফেরত পাবো?</div>
+          <div class="accordion-body">হ্যাঁ, ৭ দিনের মধ্যে মানি ব্যাক গ্যারান্টি। শর্তাবলী প্রযোজ্য।</div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">অফলাইনে দেখা যাবে?</div>
+          <div class="accordion-body">ক্লাস ডাউনলোড করে অফলাইন মোডে যেকোনো ডিভাইসে দেখুন।</div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-header">বিনামূল্যে ট্রায়াল আছে?</div>
+          <div class="accordion-body">হ্যাঁ, ফ্রি ক্লাসে সীমিত বিষয়ের প্রিভিউ আছে।</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 bg-navy text-white">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">৭ দিনের মানি ব্যাক গ্যারান্টি</h2>
+      <p class="mb-6">সন্তোষজনক না হলে পুরো টাকা ফেরত। কোনো ঝুঁকি নেই!</p>
+      <a href="/pricing/" class="gradient-btn px-8 py-3 rounded-full text-xl">এখনই ভর্তি হন</a>
+    </div>
+  </section>
+
+  <!-- Sticky Mobile Bar -->
+  <div class="sticky-bar md:hidden">
+    <div class="text-lg font-semibold">৳2999 ফুল বান্ডিল</div>
+    <a href="/pricing/" class="btn">এখনই ভর্তি হও →</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white py-8">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 px-4">
+      <div>
+        <div class="flex items-center space-x-2 mb-2">
+          <span class="text-2xl">📚</span>
+          <div class="font-bold">HSC প্ল্যাটফর্ম</div>
+        </div>
+        <p>HSC পরীক্ষার্থীদের জন্য নির্ভরযোগ্য ও মানসম্মত শিক্ষা উপকরণ। প্রতিটি কোর্স অভিজ্ঞ শিক্ষকের দ্বারা পরিচালিত।</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">দ্রুত লিংক</h4>
+        <ul class="space-y-1">
+          <li><a href="/" class="text-gray-600 hover:text-violet-600">হোম পেজ</a></li>
+          <li><a href="/bundles/" class="text-gray-600 hover:text-violet-600">বান্ডিল কোর্স</a></li>
+          <li><a href="/courses/" class="text-gray-600 hover:text-violet-600">সকল কোর্স</a></li>
+          <li><a href="/pricing/" class="text-gray-600 hover:text-violet-600">মূল্য তালিকা</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">গ্রুপ সমূহ</h4>
+        <ul class="space-y-1">
+          <li><a href="/bundles/?group=science" class="text-gray-600 hover:text-violet-600">বিজ্ঞান</a></li>
+          <li><a href="/bundles/?group=business-studies" class="text-gray-600 hover:text-violet-600">ব্যবসা শিক্ষা</a></li>
+          <li><a href="/bundles/?group=humanities" class="text-gray-600 hover:text-violet-600">মানবিক</a></li>
+          <li><a href="/bundles/?group=compulsory-subjects" class="text-gray-600 hover:text-violet-600">সাধারণ শিক্ষা</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">যোগাযোগ</h4>
+        <p>📧 support@hsplatform.edu.bd</p>
+        <p>📞 ০১XXX-XXXXXX</p>
+        <p class="mt-2">💬 WhatsApp সাপোর্ট</p>
+      </div>
+    </div>
+    <div class="text-center mt-6 text-gray-500">© ২০২৫ HSC প্ল্যাটফর্ম। সকল অধিকার সংরক্ষিত।</div>
   </footer>
 
+  <!-- Site Data & Scripts -->
   <script src="/js/site-data.js"></script>
+  <script>
+    // Render Courses
+    const coursesGrid = document.getElementById('courses-grid');
+    const bundlesGrid = document.getElementById('bundles-grid');
+    const groupColors = {
+      science: ['#2563EB', '#06B6D4'],
+      business_studies: ['#F97316', '#FACC15'],
+      humanities: ['#EC4899', '#8B5CF6'],
+      compulsory_subjects: ['#10B981', '#10B981'],
+      all: ['#64748b']
+    };
+    function renderCourses(filter='all') {
+      coursesGrid.innerHTML='';
+      siteData.courses.filter(c=>filter==='all' || c.group===filter).forEach(c=>{
+        const topColor = groupColors[c.group][0];
+        const emojiMap = {
+          ACCOUNTING:'🧾', BANGLA:'📖', BIOLOGY:'🧬', CHEMISTRY:'⚗️', PHYSICS:'⚡', HIGHER_MATHEMATICS:'➗',
+          CIVICS:'⚖️', ECONOMICS:'💹', ENGLISH:'📚', FINANCE_BANKING_INSURANCE:'💰', GEOGRAPHY:'🗺️',
+          HISTORY:'🏛️', ICT:'💻', LOGIC:'🧠', BUSINESS_ORGANIZATION_MANAGEMENT:'🏢'
+        };
+        const emoji = emojiMap[c.subject]||'📘';
+        const card = document.createElement('div');
+        card.className='card relative';
+        card.innerHTML=`
+          <div class="top-strip" style="background:${topColor}"></div>
+          <div class="p-4">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="text-2xl">${emoji}</span>
+              <h3 class="font-semibold">${c.subject}</h3>
+            </div>
+            <p class="text-sm mb-2">${c.paper}</p>
+            <div class="flex justify-between items-center mb-2">
+              <span>${c.total_chapters} অধ্যায়</span>
+              <span class="font-bold text-xl">৳${c.price}</span>
+            </div>
+            <div class="flex space-x-2 mb-2">
+              <span class="tag bg-gray-100 px-2 py-1 rounded">ভিডিও ক্লাস</span>
+              <span class="tag bg-gray-100 px-2 py-1 rounded">বোর্ড প্রশ্ন</span>
+            </div>
+            <a href="/courses/${c.slug}/" class="btn-primary w-full">কোর্স দেখুন →</a>
+          </div>
+        `;
+        coursesGrid.appendChild(card);
+      });
+    }
+    // Render Bundles
+    function renderBundles(){
+      bundlesGrid.innerHTML='';
+      siteData.bundles.forEach(b=>{
+        const colorMap = {
+          all:'#2563EB', business_studies:'#F97316', compulsory_subjects:'#10B981', science:'#2563EB', humanities:'#EC4899'
+        };
+        const topColor = colorMap[b.group]||'#64748b';
+        const card = document.createElement('div');
+        card.className='card relative';
+        let badge='';
+        if(b.slug==='full-platform') badge='<div class="badge">MOST POPULAR 🔥</div>';
+        if(b.bundle_price===0) badge='<div class="badge" style="background:#FFC800;color:#111827;">ফ্রি তে শুরু করো!</div>';
+        card.innerHTML=`
+          ${badge}
+          <div class="top-strip" style="background:${topColor}"></div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-2">${b.name}</h3>
+            <p class="text-sm mb-2" style="color:#64748b;">${b.description}</p>
+            <div class="flex justify-between items-center mb-2">
+              <div>
+                <span class="text-sm line-through text-gray-500">৳${b.original_price}</span>
+                <div class="text-2xl font-bold">৳${b.bundle_price}</div>
+              </div>
+              <span class="badge" style="background:#FF3B30;">${b.discount_percent}% ছাড়</span>
+            </div>
+            <a href="/bundles/${b.slug}/" class="btn-primary w-full">বান্ডিল দেখুন →</a>
+          </div>
+        `;
+        bundlesGrid.appendChild(card);
+      });
+    }
+    // Filter tabs
+    document.querySelectorAll('.filter-tab').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.filter-tab').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        renderCourses(btn.dataset.group);
+      });
+    });
+    // Accordion
+    document.querySelectorAll('.accordion-header').forEach(h=>{
+      h.addEventListener('click',()=>{
+        const parent=h.parentElement;
+        parent.classList.toggle('open');
+      });
+    });
+    // Initial render
+    renderCourses();
+    renderBundles();
+    // Countdown (example static)
+    const countdownEl=document.createElement('div');
+    countdownEl.className='countdown text-center mt-4';
+    countdownEl.textContent='অফার শেষ হতে বাকি: 02:14:33';
+    document.querySelector('.cta-section')?.appendChild(countdownEl);
+  </script>
 </body>
 </html>
