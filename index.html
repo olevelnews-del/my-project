@@ -95,9 +95,9 @@
           <a href="/bundles/" class="btn-outline">ফ্রি ক্লাস দেখুন</a>
         </div>
         <div class="flex space-x-4 mt-6">
-          <div class="bg-white text-violet-600 px-3 py-1 rounded-full shadow">29 কোর্স</div>
-          <div class="bg-white text-violet-600 px-3 py-1 rounded-full shadow">200+ অধ্যায়</div>
-          <div class="bg-coral text-white px-3 py-1 rounded-full shadow">৳2999 ফুল প্যাকেজ</div>
+          <div class="bg-white/10 backdrop-blur border border-white/20 px-4 py-2 rounded-full shadow"><div class="text-gold font-bold text-xl leading-none">29</div><div class="text-xs text-white">কোর্স</div></div>
+          <div class="bg-white/10 backdrop-blur border border-white/20 px-4 py-2 rounded-full shadow"><div class="text-gold font-bold text-xl leading-none">200+</div><div class="text-xs text-white">অধ্যায়</div></div>
+          <div class="bg-gold text-black px-4 py-2 rounded-full shadow"><div class="font-bold text-xl leading-none">৳999</div><div class="text-xs font-semibold">ফুল প্যাকেজ</div></div>
         </div>
       </div>
       <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center">
@@ -216,33 +216,15 @@
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="py-12">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-8">প্রায়শই জিজ্ঞাসিত প্রশ্ন</h2>
-      <div class="max-w-2xl mx-auto">
-        <div class="accordion">
-          <div class="accordion-header">টাকা ফেরত পাবো?</div>
-          <div class="accordion-body">হ্যাঁ, ৭ দিনের মধ্যে মানি ব্যাক গ্যারান্টি। শর্তাবলী প্রযোজ্য।</div>
-        </div>
-        <div class="accordion">
-          <div class="accordion-header">অফলাইনে দেখা যাবে?</div>
-          <div class="accordion-body">ক্লাস ডাউনলোড করে অফলাইন মোডে যেকোনো ডিভাইসে দেখুন।</div>
-        </div>
-        <div class="accordion">
-          <div class="accordion-header">বিনামূল্যে ট্রায়াল আছে?</div>
-          <div class="accordion-body">হ্যাঁ, ফ্রি ক্লাসে সীমিত বিষয়ের প্রিভিউ আছে।</div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- FAQ - REMOVED (empty) -->
+  <section class="py-12"></section>
 
   <!-- Final CTA -->
   <section class="py-16 bg-navy text-white">
     <div class="container mx-auto text-center">
       <h2 class="text-3xl font-bold mb-4">৭ দিনের মানি ব্যাক গ্যারান্টি</h2>
       <p class="mb-6">সন্তোষজনক না হলে পুরো টাকা ফেরত। কোনো ঝুঁকি নেই!</p>
-      <a href="/pricing/" class="gradient-btn px-8 py-3 rounded-full text-xl">এখনই ভর্তি হন</a>
+      <a href="/pricing/" class="btn-yellow px-8 py-3 rounded-full text-xl" style="background:#FFC800;color:#111827;font-weight:700;">এখনই ভর্তি হন</a>
     </div>
   </section>
 
@@ -283,7 +265,7 @@
       <div>
         <h4 class="font-semibold mb-2">যোগাযোগ</h4>
         <p>📧 support@hsplatform.edu.bd</p>
-        <p>📞 ০১XXX-XXXXXX</p>
+        <p>📞 ০১XXXXXXXXX</p>
         <p class="mt-2">💬 WhatsApp সাপোর্ট</p>
       </div>
     </div>
@@ -309,9 +291,14 @@
         const topColor = groupColors[c.group][0];
         const emojiMap = {
           ACCOUNTING:'🧾', BANGLA:'📖', BIOLOGY:'🧬', CHEMISTRY:'⚗️', PHYSICS:'⚡', HIGHER_MATHEMATICS:'➗',
-          CIVICS:'⚖️', ECONOMICS:'💹', ENGLISH:'📚', FINANCE_BANKING_INSURANCE:'💰', GEOGRAPHY:'🗺️',
-          HISTORY:'🏛️', ICT:'💻', LOGIC:'🧠', BUSINESS_ORGANIZATION_MANAGEMENT:'🏢'
+          CIVICS:'⚖️', ECONOMICS:'💹', ENGLISH:'📘', FINANCE_BANKING_INSURANCE:'💰', GEOGRAPHY:'🌍',
+          HISTORY:'🏛️', ICT:'💻', LOGIC:'🧠', BUSINESS_ORGANIZATION_MANAGEMENT:'🧑‍💼'
         };
+        // Display name for BUSINESS_ORGANIZATION_MANAGEMENT
+        let displayName = c.subject;
+        if (c.subject === 'BUSINESS_ORGANIZATION_MANAGEMENT') {
+          displayName = 'ব্যবসায় সংগঠন ও ব্যবস্থাপনা';
+        }
         const emoji = emojiMap[c.subject]||'📘';
         const card = document.createElement('div');
         card.className='card relative';
@@ -320,7 +307,10 @@
           <div class="p-4">
             <div class="flex items-center space-x-2 mb-2">
               <span class="text-2xl">${emoji}</span>
-              <h3 class="font-semibold">${c.subject}</h3>
+              <div>
+                <h3 class="font-semibold">${displayName}</h3>
+                <p class="text-[11px] text-gray-400">${c.subject.replace(/_/g,' ')}</p>
+              </div>
             </div>
             <p class="text-sm mb-2">${c.paper}</p>
             <div class="flex justify-between items-center mb-2">
