@@ -136,7 +136,7 @@ img { max-width: 100%; }
 .price { font-size: 20px; font-weight: 900; color: #059669; }
 .course-footer .btn { padding: 8px 16px; font-size: 13px; }
 
-/* Bundle Card */
+/* Membership card */
 .bundle-card {
   background: white; border-radius: 20px; overflow: hidden;
   border: 1px solid #e2e8f0; transition: all 0.3s;
@@ -233,3 +233,29 @@ img { max-width: 100%; }
 /* Animations */
 .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* HSC Tutor brand refresh */
+body { font-family: 'Hind Siliguri', sans-serif; background: #FFF9F0; color: #111827; }
+h1, h2, h3, h4 { font-family: 'Noto Serif Bengali', serif; }
+.logo-title { color: #7C3AED; }
+.main-nav a:hover, .footer-links a:hover { color: #EC4899; }
+.btn { border-radius: 999px; transition: transform .2s, box-shadow .2s; }
+.btn:hover { transform: scale(1.04); box-shadow: 0 6px 16px #11182722; }
+.btn-primary { background: linear-gradient(110deg, #7C3AED, #EC4899, #F97316); color: #fff; }
+.btn-primary:hover { background: linear-gradient(110deg, #6D28D9, #DB2777, #EA580C); }
+.btn-yellow { background: #FFC800; color: #111827; }
+.btn-outline { border-color: #7C3AED; color: #7C3AED; }
+.btn-outline:hover { background: #7C3AED; color: #fff; }
+.hero { background: linear-gradient(110deg, #7C3AED, #EC4899, #F97316); }
+.hero p { color: #fff; }
+.highlight, .stat-num { color: #FFC800; }
+.site-footer { background: #111827; }
+.course-search { max-width: 420px; width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 999px; font: inherit; }
+.filter-tab { padding: 8px 16px; border: 1px solid #d1d5db; border-radius: 999px; background: #fff; cursor: pointer; }
+.filter-tab.active, .filter-tab:hover { background: #7C3AED; border-color: #7C3AED; color: #fff; }
+.included-label { color: #15803d; font-weight: 700; }
+.course-detail-grid .price-tag { color: #15803d; }
+.course-detail-grid .included-label { margin: 12px 0; }
+.full-platform-stats .stat-item { border-radius: 16px; background: #7C3AED; color: #fff; padding: 12px; text-align: center; }
+.full-platform-stats .stat-num { color: #FFC800; }
+.full-platform-stats .stat-label { color: #fff; }

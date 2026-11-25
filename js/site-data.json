@@ -2303,8 +2303,8 @@
   "bundles": [
     {
       "slug": "full-platform",
-      "name": "HSC COMPLETE PACKAGE",
-      "description": "সব বিভাগের ২৯টি কোর্স ও ২০০টির বেশি অধ্যায়—একটি সম্পূর্ণ প্যাকেজে।",
+      "name": "Personal Tutor Membership",
+      "description": "সাপ্তাহিক ব্যক্তিগত শিক্ষক, AI Tutor, পরীক্ষা ও পড়ার সহায়তা।",
       "original_price": 4999,
       "bundle_price": 999,
       "discount_percent": 80,

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>সম্পূর্ণ প্যাক | HSC প্ল্যাটফর্ম</title>
-  <meta name="description" content="HSC এর সকল ২৯টি কোর্স মাত্ৰ ৳999 তে। আগের দাম ৳4999, ৮০% ছাড়।" />
+  <title>তোমার Personal Tutor | HSC Tutor</title>
+  <meta name="description" content="HSC Tutor Membership: Dedicated Teacher, AI Tutor ও Exam System. প্রথম ৩ দিন বিনামূল্যে চেষ্টা করো।" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = { theme: { extend: { colors: { cream:"#FFF9F0", violet:"#7C3AED", pink:"#EC4899", gold:"#FFC800", coral:"#FF3B30", navy:"#111827" } } } };
@@ -13,8 +13,15 @@
   <style>
     body { font-family:'Hind Siliguri',sans-serif; background:#FFF9F0; color:#111827; }
     h1,h2,h3 { font-family:'Noto Serif Bengali',serif; }
-    .card { background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.08); transition:transform .2s,box-shadow .2s; }
+    .card { background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.08); transition:transform .2s,box-shadow .2s; }
     .card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(124,58,237,0.15); }
+    .payment-form {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;text-align:left}
+    .payment-form label {display:grid;gap:6px;font-weight:600}
+    .payment-form input,.payment-form select {width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:12px;font:inherit}
+    .form-full {grid-column:1/-1}
+    .countdown {display:inline-block;color:#FF3B30;font-weight:700;animation:pulse 2s infinite}
+    @keyframes pulse {50%{transform:scale(1.05)}}
+    @media(max-width:600px){.payment-form{grid-template-columns:1fr}.form-full{grid-column:auto}}
   </style>
 </head>
 <body>
@@ -23,13 +30,13 @@
     <div class="container mx-auto flex justify-between items-center py-4 px-4">
       <a href="/" class="flex items-center space-x-2">
         <span class="text-2xl">📚</span>
-        <div><div class="text-xl font-bold">HSC প্ল্যাটফর্ম</div><div class="text-sm text-gray-500">আপনার সফলতার গন্তব্য</div></div>
+        <div><div class="text-xl font-bold">HSC Tutor</div><div class="text-sm text-gray-500">শুধু তোমার জন্য</div></div>
       </a>
       <nav class="space-x-4 hidden md:block">
         <a href="/" class="text-gray-700 hover:text-violet-600">হোম</a>
-        <a href="/bundles/" class="text-gray-700 font-semibold text-violet-600">বান্ডিল</a>
-        <a href="/courses/" class="text-gray-700 hover:text-violet-600">কোর্স সমূহ</a>
-        <a href="/pricing/" class="text-gray-700 hover:text-violet-600">মূল্য তালিকা</a>
+        <a href="/bundles/" class="text-gray-700 font-semibold text-violet-600">Membership-এ Join</a>
+        <a href="/courses/" class="text-gray-700 hover:text-violet-600">পাঠসমূহ</a>
+        <a href="/pricing/" class="text-gray-700 hover:text-violet-600">Membership</a>
       </nav>
     </div>
   </header>
@@ -37,23 +44,23 @@
   <!-- Page Hero -->
   <section class="bg-gradient-to-br from-violet to-pink text-white py-10">
     <div class="container mx-auto px-4 text-center">
-      <h1 class="text-3xl md:text-4xl font-bold mb-3">একটাই বান্ডিল — সবকিছু</h1>
-      <p class="opacity-90 max-w-lg mx-auto">বিজ্ঞান · বয্যবসাশিক্ষা · মানবিক · সাধারণ শিক্ষা — সব গ্রুপের সকল কোর্স একই দামে।</p>
+      <h1 class="text-3xl md:text-4xl font-bold mb-3">তোমার Personal Tutor</h1>
+      <p class="opacity-90 max-w-lg mx-auto">HSC Tutor — শুধু তোমার জন্য। Dedicated Teacher + AI Tutor + Exam System.</p>
     </div>
   </section>
 
-  <!-- Single Package Card -->
+  <!-- Single Membership Card -->
   <section class="py-12 -mt-6">
     <div class="container mx-auto px-4 max-w-2xl">
       <div class="card relative overflow-visible">
         <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-          <span class="inline-block bg-coral text-white px-5 py-1.5 rounded-full text-sm font-bold shadow-lg">🔥 ৮০% ছাড় — মাত্র ৳999</span>
+          <span class="inline-block bg-coral text-white px-5 py-1.5 rounded-full text-sm font-bold shadow-lg">🔥 ৮০% ছাড় · ৩ দিন ফ্রি ট্রায়াল</span>
         </div>
         <div class="h-2 bg-gradient-to-r from-violet to-pink"></div>
         <div class="p-8 pt-12 text-center">
           <div class="text-6xl mb-4">🎯</div>
-          <h2 class="text-2xl font-bold mb-2"> সম্পূর্ণ HSC প্ল্যাটফর্ম</h2>
-          <p class="text-gray-600 mb-6">৪টি গ্রুপের সকল ২৯টি কোরস, ২০০+ অধ্যায়ের ভিডিও ক্লাস + বোর্ড প্রশ্ন + মডেল টেস্ট + নোট PDF + WhatsApp সাপোর্ট + লাইফটাইম এক্সেস।</p>
+          <h2 class="text-2xl font-bold mb-2">Personal Tutor Membership</h2>
+          <p class="text-gray-600 mb-6">প্রতি সপ্তাহে ১-অন-১ Video Call, ২৪/৭ AI Tutor, সাপ্তাহিক পরীক্ষা ও ব্যক্তিগত পড়ার পরিকল্পনা।</p>
 
           <div class="flex items-center justify-center gap-4 mb-6">
             <div>
@@ -63,25 +70,41 @@
             <div class="h-10 w-px bg-gray-300"></div>
             <div>
               <span class="block text-5xl font-extrabold text-violet-600">৳999</span>
-              <span class="text-xs text-gray-500">এককালীন</span>
+              <span class="text-xs text-gray-500">প্রতি মাসে</span>
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-3 mb-6 text-left max-w-sm mx-auto">
-            <div class="flex items-center gap-2 text-sm"><span class="text-green-500 text-base">✓</span> ২৯টি সকল কোরস</div>
-            <div class="flex items-center gap-2 text-sm"><span class="text-green-500 text-base">✓</span> ২০০+ অধ্যায়</div>
-            <div class="flex items-center gap-2 text-sm"><span class="text-green-500 text-base">✓</span> ভিডিও ক্লাস</div>
-            <div class="flex items-center gap-2 text-sm"><span class="text-green-500 text-base">✓</span> বোর্ড প্রশ্ন + মডেল টেস্ট</div>
-            <div class="flex items-center gap-2 text-sm"><span class="text-green-500 text-base">✓</span> নোট PDF ডাউনলোড</div>
-            <div class="flex items-center gap-2 text-sm"><span class="text-green-500 text-base">✓</span> WhatsApp সাপোর্ট (৩০ মিনিট)</div>
-            <div class="flex items-center gap-2 text-sm"><span class="text-green-500 text-base">✓</span> Parent Dashboard</div>
-            <div class="flex items-center gap-2 text-sm"><span class="text-green-500 text-base">✓</span> লাইফটাইম এক্সেস + বার্ষিক আপডেট</div>
+            <div class="flex items-center gap-2 text-sm"><span class="text-green-500 text-base">✓</span> সপ্তাহে ১-অন-১ Video Call</div>
+            <div class="flex items-center gap-2 text-sm"><span class="text-green-500 text-base">✓</span> Dedicated Teacher + AI Tutor</div>
+            <div class="flex items-center gap-2 text-sm"><span class="text-green-500 text-base">✓</span> Weekly MCQ + Monthly Model Test</div>
+            <div class="flex items-center gap-2 text-sm"><span class="text-green-500 text-base">✓</span> Parent Dashboard + WhatsApp Report</div>
+            <div class="flex items-center gap-2 text-sm"><span class="text-green-500 text-base">✓</span> সন্ধ্যা ৭টা–৯টা Live Doubt Room</div>
+            <div class="flex items-center gap-2 text-sm"><span class="text-green-500 text-base">✓</span> ৫০০০+ প্রশ্ন, নোট ও Flashcards</div>
           </div>
 
-          <a href="/pricing/" class="inline-block rounded-full py-3.5 px-10 font-bold text-lg shadow-lg transition hover:shadow-xl" style="background:#FFC800;color:#111827;">ভর্তি হও →</a>
+          <a href="#payment" class="inline-block rounded-full py-3.5 px-10 font-bold text-lg shadow-lg transition hover:shadow-xl" style="background:#FFC800;color:#111827;">Free Trial নাও →</a>
 
-          <p class="text-sm text-gray-500 mt-4">⏰ এই অফার সীমিত সময়ের জন্য। ৭ দিনের মানি ব্যাক গ্যারান্টি।</p>
+          <p class="text-sm text-gray-500 mt-4">⏰ আজকের দিন শেষ হতে বাকি <span class="countdown" data-countdown>--:--:--</span> · ৭ দিনের মানি ব্যাক।</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="payment" class="py-10">
+    <div class="container mx-auto px-4 max-w-2xl">
+      <div class="card p-7">
+        <h2 class="text-2xl font-bold text-center mb-2">৩ দিনের Free Trial শুরু করো</h2>
+        <p class="text-gray-600 text-center mb-5">নাম, ফোন, বিভাগ ও পেমেন্ট তথ্য দাও। পেমেন্ট নম্বর জানতে support@hsplatform.edu.bd-এ যোগাযোগ করো।</p>
+        <form id="payment-form" class="payment-form">
+          <label>নাম<input name="name" autocomplete="name" required /></label>
+          <label>ফোন<input name="phone" type="tel" inputmode="tel" autocomplete="tel" pattern="[0-9+ -]{10,15}" required /></label>
+          <label>বিভাগ<select name="group" required><option value="">বিভাগ বাছাই করো</option><option>বিজ্ঞান</option><option>ব্যবসায়</option><option>মানবিক</option></select></label>
+          <label>পেমেন্ট মাধ্যম<select name="method" required><option value="">মাধ্যম বাছাই করো</option><option>bKash</option><option>Nagad</option><option>Rocket</option></select></label>
+          <label class="form-full">লেনদেন নম্বর (TrxID)<input name="transaction" autocomplete="off" /></label>
+          <button type="submit" class="form-full rounded-full px-6 py-3 font-bold" style="background:#FFC800;color:#111827">Free Trial নাও →</button>
+          <p id="payment-status" class="form-full text-gray-600" aria-live="polite"></p>
+        </form>
       </div>
     </div>
   </section>
@@ -89,9 +112,10 @@
   <!-- Footer -->
   <footer class="bg-white py-6 border-t">
     <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
-      <p>© ২০২৫ HSC প্ল্যাটফর্ম। সকল অধিকার সংরক্ষিত।</p>
+      <p>© ২০২৬ HSC Tutor · শুধু তোমার জন্য</p>
       <p class="mt-1">📧 support@hsplatform.edu.bd &nbsp;|&nbsp; 📞 ০১XXXXXXXXX</p>
     </div>
   </footer>
+  <script src="/js/app.js"></script>
 </body>
 </html>

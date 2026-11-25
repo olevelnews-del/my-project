@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HSC প্ল্যাটফর্ম | আপনার সফলতার গন্তব্য</title>
-  <meta name="description" content="HSC পরীক্ষার জন্য সম্পূর্ণ অনলাইন কোর্স। বিজ্ঞান, ব্যবসা শিক্ষা, মানবিক ও সাধারণ শিক্ষা গ্রুপের সকল বিষয়ে ভিডিও ক্লাস।" />
+  <title>HSC Tutor - তোমার Personal Tutor | শুধু তোমার জন্য</title>
+  <meta name="description" content="HSC Tutor - তোমার Personal Tutor. শুধু তোমার জন্য। প্রতি মাসে ৯৯৯ টাকায় Dedicated Teacher, AI Tutor ও Exam System." />
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -35,14 +35,21 @@
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    body {font-family: var(--tw-font-family-hind); background: #FFF9F0; color: #111827;}
-    h1, h2, h3, h4 {font-family: var(--tw-font-family-noto);}
+    body {font-family: 'Hind Siliguri', sans-serif; background: #FFF9F0; color: #111827;}
+    h1, h2, h3, h4 {font-family: 'Noto Serif Bengali', serif;}
     .btn-primary {background: linear-gradient(135deg, var(--tw-gradient-stops)); --tw-gradient-from: #7C3AED; --tw-gradient-to: #EC4899; color:#fff; border-radius:9999px; padding:.5rem 1.5rem; box-shadow:0 2px 4px rgba(0,0,0,0.1); transition:transform .2s, box-shadow .2s;}
+    .btn-primary {position:relative;overflow:hidden}
+    .btn-primary::after {content:"";position:absolute;top:-50%;left:-80%;width:45%;height:200%;background:linear-gradient(90deg,transparent,#ffffff70,transparent);transform:skewX(-20deg);transition:left .5s;pointer-events:none}
+    .btn-primary:hover::after {left:130%}
+    .btn-yellow,.gradient-btn {position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+    .btn-yellow:hover,.gradient-btn:hover {transform:scale(1.04);box-shadow:0 6px 16px #11182722}
+    .btn-yellow::after,.gradient-btn::after {content:"";position:absolute;top:-50%;left:-80%;width:45%;height:200%;background:linear-gradient(90deg,transparent,#ffffff70,transparent);transform:skewX(-20deg);transition:left .5s;pointer-events:none}
+    .btn-yellow:hover::after,.gradient-btn:hover::after {left:130%}
     .btn-primary:hover {transform:scale(1.04); box-shadow:0 4px 8px rgba(0,0,0,0.2);}
     .btn-outline {border:2px solid #7C3AED; color:#7C3AED; border-radius:9999px; padding:.5rem 1.5rem; transition:background .2s, color .2s;}
     .btn-outline:hover {background:#7C3AED; color:#fff;}
     .gradient-btn {background: linear-gradient(135deg, #7C3AED, #EC4899); color:#fff;}
-    .card {background:#fff; border-radius:1rem; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.05); transition:transform .2s, box-shadow .2s;}
+    .card {background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.05); transition:transform .2s, box-shadow .2s;}
     .card:hover {transform:translateY(-8px); box-shadow:0 6px 12px rgba(0,0,0,0.15);}
     .top-strip {height:4px;}
     .badge {position:absolute; top:0.5rem; right:0.5rem; background:#FF3B30; color:#fff; padding:0.25rem 0.5rem; border-radius:0.5rem; font-size:0.75rem;}
@@ -55,10 +62,13 @@
     .accordion-header {cursor:pointer; padding:.75rem; font-weight:600;}
     .accordion-body {display:none; padding:.75rem;}
     .accordion.open .accordion-body {display:block;}
-    .countdown {font-weight:700; color:#FF3B30;}
+    .countdown {font-weight:700; color:#FF3B30;animation:pulse 2s infinite;}
     .sticky-bar {position:fixed; bottom:0; left:0; right:0; background:#111827; color:#fff; display:flex; justify-content:space-between; align-items:center; padding:.75rem 1rem; z-index:50;}
     .sticky-bar .btn {background:#FFC800; color:#111827; border-radius:9999px; padding:.5rem 1rem;}
     .hero-stats {display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+    .stat-pill {min-width:100px;border:1px solid #ffffff55;border-radius:999px;background:#11182755;color:#fff;padding:.65rem 1rem;text-align:center;box-shadow:0 4px 15px #11182722}
+    .stat-pill strong {display:block;color:#FFC800;font-size:1.3rem}
+    .stat-pill span {font-size:.8rem}
     .course-search {width:100%;max-width:420px;padding:.8rem 1rem;border:1px solid #d1d5db;border-radius:9999px}
     .payment-form {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;text-align:left}
     .payment-form label {display:grid;gap:.4rem;font-weight:600}
@@ -81,7 +91,7 @@
 </head>
 <body>
   <!-- Marquee -->
-  <div class="marquee"><span>HSC 2026 • Live Class • Board Question • মাত্র ৳999 — ৮০% ছাড় • ৭ দিনের মানি ব্যাক গ্যারান্টি</span></div>
+  <div class="marquee"><span>HSC 2026 • Live Class • Board Question • সাপ্তাহিক পরীক্ষা • Dedicated Teacher • মাত্র ৯৯৯ টাকা</span></div>
 
   <!-- Header -->
   <header class="bg-white shadow-sm">
@@ -89,16 +99,16 @@
       <a href="/" class="flex items-center space-x-2">
         <span class="text-2xl">📚</span>
         <div>
-          <div class="text-xl font-bold">HSC প্ল্যাটফর্ম</div>
-          <div class="text-sm text-gray-500">আপনার সফলতার গন্তব্য</div>
+          <div class="text-xl font-bold">HSC Tutor</div>
+          <div class="text-sm text-gray-500">তোমার Personal Tutor · শুধু তোমার জন্য</div>
         </div>
       </a>
       <nav class="space-x-4 hidden md:block">
         <a href="/" class="text-gray-700 hover:text-violet-600">হোম</a>
-        <a href="/bundles/" class="text-gray-700 hover:text-violet-600">বান্ডিল</a>
-        <a href="/courses/" class="text-gray-700 hover:text-violet-600">কোর্স সমূহ</a>
-        <a href="/pricing/" class="text-gray-700 hover:text-violet-600">মূল্য তালিকা</a>
-        <a href="/pricing/" class="gradient-btn text-white px-4 py-2 rounded-full shadow">এখনই শুরু করুন</a>
+        <a href="/video-player.html?video=bio-ch3" class="text-gray-700 hover:text-violet-600">আমার Tutor দেখো</a>
+        <a href="/courses/" class="text-gray-700 hover:text-violet-600">পাঠসমূহ</a>
+        <a href="/pricing/" class="text-gray-700 hover:text-violet-600">Membership</a>
+        <a href="/bundles/#payment" class="gradient-btn text-white px-4 py-2 rounded-full shadow">Free Trial নাও</a>
       </nav>
     </div>
   </header>
@@ -107,60 +117,65 @@
   <section class="text-white py-16" style="background:linear-gradient(110deg,#7C3AED 0%,#EC4899 55%,#F97316 100%)">
     <div class="container mx-auto flex flex-col md:flex-row items-center px-4">
       <div class="md:w-1/2">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">HSC পরীক্ষায় <span class="bg-yellow-400 text-black px-2 py-1 rounded">A+ পাওয়ার সবচেয়ে সহজ উপায়</span></h1>
-        <p class="mb-6">বাংলাদেশের এইচএসসি শিক্ষার্থীদের জন্য সব বিভাগের কোর্স, অধ্যায়ভিত্তিক পাঠ ও পরীক্ষার প্রস্তুতি—একটি প্যাকেজে।</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">তোমার নিজের <span class="bg-yellow-400 text-black px-2 py-1 rounded">Personal Tutor, মাত্র ৯৯৯ টাকায়</span></h1>
+        <p class="mb-6">একজন শিক্ষক, যিনি শুধু তোমাকেই পড়াবেন। HSC এর প্রতিটি অধ্যায়, পরীক্ষা, সমস্যার সমাধান - Dedicated Teacher + AI Tutor + Exam System দিয়ে।</p>
         <div class="flex space-x-4">
-          <a href="/courses/" class="btn-primary">কোর্স দেখুন</a>
-          <a href="/bundles/#payment" class="btn-outline">প্যাকেজে ভর্তি হন</a>
+          <a href="/bundles/#payment" class="btn-primary" style="background:#FFC800;color:#111827;">Free Trial নাও - 3 দিন ফ্রি</a>
+          <a href="/video-player.html?video=bio-ch3" class="btn-outline" style="background:#fff;color:#7C3AED">আমার Tutor দেখো</a>
         </div>
         <div class="hero-stats">
-          <div class="bg-white/10 backdrop-blur border border-white/20 px-4 py-2 rounded-full shadow"><div class="text-gold font-bold text-xl leading-none">29</div><div class="text-xs text-white">কোর্স</div></div>
-          <div class="bg-white/10 backdrop-blur border border-white/20 px-4 py-2 rounded-full shadow"><div class="text-gold font-bold text-xl leading-none">200+</div><div class="text-xs text-white">অধ্যায়</div></div>
-          <div class="bg-gold text-black px-4 py-2 rounded-full shadow text-center"><div class="flex items-baseline justify-center gap-1"><span class="text-sm line-through opacity-60">৳4999</span><span class="font-bold text-xl leading-none">৳999</span></div><div class="text-xs font-bold mt-0.5">80% ছাড়</div></div>
+          <div class="stat-pill"><strong>29</strong><span>পাঠ</span></div>
+          <div class="stat-pill"><strong>200+</strong><span>অধ্যায়</span></div>
+          <div class="stat-pill"><strong>999 ৳</strong><span>মাসিক Membership</span></div>
         </div>
       </div>
       <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center">
-        <div class="floating rounded-3xl bg-white/15 border border-white/25 p-10 text-center shadow-xl" aria-label="এইচএসসি সম্পূর্ণ প্যাকেজ">
-          <div class="text-8xl mb-4">📚</div><div class="text-2xl font-bold">একসাথে সব প্রস্তুতি</div>
+        <div class="floating rounded-3xl bg-white/15 border border-white/25 p-10 text-center shadow-xl" aria-label="তোমার HSC Tutor">
+          <div class="text-8xl mb-4">📚</div><div class="text-2xl font-bold">তোমার ব্যক্তিগত শিক্ষক</div>
           <div class="mt-2">বিজ্ঞান • ব্যবসায় • মানবিক</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Why Us -->
+  <!-- Tutor facilities -->
   <section class="py-12 bg-cream">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-8">কেন আমাদের পছন্দ করবেন?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="p-6 bg-yellow-100 rounded-2xl text-center">
-          <div class="text-4xl mb-2">💰</div>
-          <h3 class="font-semibold mb-2">সস্তা মূল্য</h3>
-          <p>সব বিভাগের ২৯টি কোর্স একসাথে একটি নির্দিষ্ট মূল্যে।</p>
-        </div>
-        <div class="p-6 bg-blue-100 rounded-2xl text-center">
-          <div class="text-4xl mb-2">📱</div>
-          <h3 class="font-semibold mb-2">অফলাইন মোড</h3>
-          <p>অধ্যায়ভিত্তিক পাঠ ও অনুশীলনের মাধ্যমে প্রস্তুতি নিন।</p>
-        </div>
-        <div class="p-6 bg-green-100 rounded-2xl text-center">
-          <div class="text-4xl mb-2">💬</div>
-          <h3 class="font-semibold mb-2">WhatsApp সাপোর্ট</h3>
-          <p>পরিকল্পিত পাঠে নিজের প্রস্তুতির অগ্রগতি ধরে রাখুন।</p>
-        </div>
-        <div class="p-6 bg-pink-100 rounded-2xl text-center">
-          <div class="text-4xl mb-2">📊</div>
-          <h3 class="font-semibold mb-2">বোর্ড ব্লুপ্রিন্ট</h3>
-          <p>প্রতিটি অধ্যায়ে ১০ বছরের বোর্ড প্রশ্ন সমাধান।</p>
-        </div>
+      <h2 class="text-3xl font-bold text-center mb-8">তোমার Personal Tutor-এর সুবিধা</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="card p-6 text-center reveal bg-yellow-100"><div class="text-4xl mb-2">👩‍🏫</div><h3 class="font-semibold mb-2">Personal Tutor</h3><p>সপ্তাহে ১-অন-১ Video Call ও Dedicated Teacher।</p></article>
+        <article class="card p-6 text-center reveal bg-violet-100"><div class="text-4xl mb-2">🤖</div><h3 class="font-semibold mb-2">AI Problem Solver</h3><p>২৪/৭ AI Tutor Chatbot-এ প্রশ্ন করো, পাঠ থেকেই উত্তর নাও।</p></article>
+        <article class="card p-6 text-center reveal bg-pink-100"><div class="text-4xl mb-2">📝</div><h3 class="font-semibold mb-2">সাপ্তাহিক পরীক্ষা</h3><p>Weekly MCQ, Monthly Model Test ও Adaptive Report।</p></article>
+        <article class="card p-6 text-center reveal bg-blue-100"><div class="text-4xl mb-2">👨‍👩‍👧</div><h3 class="font-semibold mb-2">অভিভাবক ড্যাশবোর্ড</h3><p>Parent Dashboard ও সাপ্তাহিক WhatsApp Report।</p></article>
+        <article class="card p-6 text-center reveal bg-orange-100"><div class="text-4xl mb-2">🔴</div><h3 class="font-semibold mb-2">Live Doubt Room</h3><p>প্রতিদিন সন্ধ্যা ৭টা–৯টা প্রশ্নের উত্তর নাও।</p></article>
+        <article class="card p-6 text-center reveal bg-green-100"><div class="text-4xl mb-2">🗂️</div><h3 class="font-semibold mb-2">পড়ার উপকরণ</h3><p>Flashcards, নোট ও ৫০০০+ প্রশ্নের ভান্ডার।</p></article>
       </div>
+    </div>
+  </section>
+
+  <!-- Student dashboard preview -->
+  <section class="py-12">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h2 class="text-3xl font-bold text-center mb-8">তোমার পড়ার অগ্রগতি</h2>
+      <article class="card p-6 reveal">
+        <div class="flex flex-wrap justify-between items-center gap-3">
+          <h3 class="text-2xl font-bold">👋 হ্যালো রাহাত!</h3>
+          <span class="rounded-full bg-orange-100 px-4 py-2 font-bold">🔥 Streak: 12 দিন</span>
+        </div>
+        <div class="mt-5 grid gap-4 md:grid-cols-2">
+          <div class="rounded-2xl bg-violet-50 p-4"><strong>📊 এই সপ্তাহে: 78%</strong><p class="mt-1">গত সপ্তাহে 72%</p><div class="mt-3 h-3 overflow-hidden rounded-full bg-white"><div class="h-full rounded-full bg-violet-600" style="width:72%"></div></div><small>সাপ্তাহিক লক্ষ্যের ৭২%</small></div>
+          <div class="rounded-2xl bg-yellow-50 p-4"><strong>🎯 আজকের কাজ</strong><p>Physics Ch 4 - ২টি ভিডিও + ১০টি MCQ</p><a class="btn-primary mt-2 inline-flex rounded-full px-4 py-2" href="/video-player.html?video=phy-ch4">শুরু করো →</a></div>
+          <div class="rounded-2xl bg-orange-50 p-4"><strong>⚠️ অনুশীলন দরকার</strong><p>দুর্বল অধ্যায়: Physics Ch 4</p><a href="/video-player.html?video=phy-ch4">অনুশীলন করো →</a></div>
+          <div class="rounded-2xl bg-pink-50 p-4"><strong>🏆 Rank: 3rd/20</strong><p class="mt-2">Badges: <span class="rounded-full bg-white px-3 py-1">7-Day Streak</span> <span class="rounded-full bg-white px-3 py-1">Biology Master</span></p></div>
+        </div>
+      </article>
     </div>
   </section>
 
   <!-- Courses -->
   <section class="py-12">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-8">জনপ্রিয় কোর্সগুলো</h2>
+      <h2 class="text-3xl font-bold text-center mb-8">তোমার জন্য পাঠসমূহ</h2>
       <div class="flex flex-col md:flex-row justify-center items-center gap-4 mb-6">
         <div class="flex flex-wrap justify-center gap-2">
         <button class="filter-tab active" data-group="all">সব</button>
@@ -168,32 +183,33 @@
         <button class="filter-tab" data-group="business_studies">ব্যবসায়</button>
         <button class="filter-tab" data-group="humanities">মানবিক</button>
         </div>
-        <label class="sr-only" for="course-search">কোর্স খুঁজুন</label>
+        <label class="sr-only" for="course-search">পাঠ খুঁজুন</label>
         <input id="course-search" class="course-search" type="search" placeholder="কোর্স খুঁজুন..." />
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="courses-grid">
         <!-- Course cards will be injected via JS from site-data.js -->
       </div>
       <div class="text-center mt-8">
-        <a href="/courses/" class="btn-outline">সকল কোর্স দেখুন (29 টি)</a>
+        <a href="/courses/" class="btn-outline">সব পাঠ দেখো →</a>
       </div>
     </div>
   </section>
 
-  <!-- Bundles -->
+  <!-- Membership -->
   <section class="py-12 bg-cream">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-8">সবচেয়ে জনপ্রিয় বান্ডিল</h2>
+      <h2 class="text-3xl font-bold text-center mb-8">Personal Tutor Membership</h2>
       <article class="card max-w-3xl mx-auto p-8 text-center reveal">
         <span class="inline-block bg-red-100 text-red-700 px-4 py-1 rounded-full font-bold">৮০% ছাড়</span>
-        <h3 class="text-2xl font-bold mt-4">HSC COMPLETE PACKAGE - 999 TK Only</h3>
-        <p class="mt-2 text-gray-600">২৯টি কোর্স ও ২০০টির বেশি অধ্যায়—বিজ্ঞান, ব্যবসায় ও মানবিক বিভাগের জন্য।</p>
-        <div class="my-4"><span class="offer-old-price">৳4999</span><div class="offer-price">৳999</div></div>
+        <span class="inline-block bg-green-100 text-green-700 px-4 py-1 rounded-full font-bold">৩ দিন ফ্রি ট্রায়াল</span>
+        <h3 class="text-2xl font-bold mt-4">Personal Tutor Membership</h3>
+        <p class="mt-2 text-gray-600">Dedicated Teacher + AI Tutor + Exam System — শুধু তোমার জন্য।</p>
+        <div class="my-4"><span class="offer-old-price">৳4999</span><div class="offer-price">৳999 / মাস</div></div>
         <p>আজকের দিন শেষ হতে বাকি: <span class="countdown" data-countdown>--:--:--</span></p>
-        <a href="/bundles/#payment" class="btn-primary inline-block mt-5 px-8 py-3 rounded-full">ভর্তি হও →</a>
+        <a href="/bundles/#payment" class="btn-primary inline-block mt-5 px-8 py-3 rounded-full">Free Trial নাও →</a>
       </article>
       <div class="text-center mt-8">
-        <a href="/bundles/" class="btn-outline">প্যাকেজ ও পেমেন্টের তথ্য দেখুন →</a>
+        <a href="/pricing/" class="btn-outline">Membership সম্পর্কে জানো →</a>
       </div>
     </div>
   </section>
@@ -229,17 +245,17 @@
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-8">কিভাবে শুরু করবেন? ৩ ধাপে</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="p-6 bg-white rounded-2xl shadow text-center">
+        <div class="card p-6 bg-white rounded-2xl shadow text-center reveal">
           <div class="text-4xl mb-2">🎓</div>
-          <h3 class="font-semibold mb-2">নমুনা ক্লাস দেখুন</h3>
+          <h3 class="font-semibold mb-2">Free Demo দেখো</h3>
           <p>উদাহরণ ক্লাসগুলো দেখুন, কোনো ঝুঁকি নেই।</p>
         </div>
-        <div class="p-6 bg-white rounded-2xl shadow text-center">
+        <div class="card p-6 bg-white rounded-2xl shadow text-center reveal">
           <div class="text-4xl mb-2">🛒</div>
-          <h3 class="font-semibold mb-2">প্যাকেজে ভর্তি হন</h3>
-          <p>একটি প্যাকেজে সব বিভাগের কোর্স নিন।</p>
+          <h3 class="font-semibold mb-2">৯৯৯ টাকায় Join করো</h3>
+          <p>তোমার Personal Tutor Membership শুরু করো।</p>
         </div>
-        <div class="p-6 bg-white rounded-2xl shadow text-center">
+        <div class="card p-6 bg-white rounded-2xl shadow text-center reveal">
           <div class="text-4xl mb-2">📅</div>
           <h3 class="font-semibold mb-2">রুটিন অনুযায়ী পড়ুন</h3>
           <p>নির্ধারিত রুটিনে ভিডিও ক্লাস অনুসরণ করুন।</p>
@@ -253,19 +269,19 @@
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-8">শিক্ষার্থীদের অভিজ্ঞতা</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="p-6 bg-white rounded-2xl shadow">
-          <p class="italic mb-4">"অধ্যায়ভিত্তিক পাঠে পরীক্ষার প্রস্তুতি গুছিয়ে নিতে পেরেছি।"</p>
-          <p class="font-semibold">সাইফুল ইসলাম, ঢাকা কলেজ</p>
+        <div class="card p-6 bg-white rounded-2xl shadow reveal">
+          <p class="italic mb-4">"Dedicated Tutor-এর সাথে নিয়মিত পড়ে HSC-তে GPA 5.00 পেয়েছি।"</p>
+          <p class="font-semibold">রাহাত, Dhaka College · GPA 5.00</p>
           <p class="text-sm text-gray-500">⭐️⭐️⭐️⭐️⭐️</p>
         </div>
-        <div class="p-6 bg-white rounded-2xl shadow">
-          <p class="italic mb-4">"সব বিষয় এক জায়গায় পেয়ে পড়ার পরিকল্পনা সহজ হয়েছে।"</p>
-          <p class="font-semibold">রেহানা শাহী, চট্টগ্রাম ইউনিভার্সিটি</p>
+        <div class="card p-6 bg-white rounded-2xl shadow reveal">
+          <p class="italic mb-4">"আমার প্রশ্ন অনুযায়ী পড়ানোয় প্রস্তুতি অনেক গুছানো হয়েছে।"</p>
+          <p class="font-semibold">মিম, Viqarunnisa · GPA 4.92</p>
           <p class="text-sm text-gray-500">⭐️⭐️⭐️⭐️⭐️</p>
         </div>
-        <div class="p-6 bg-white rounded-2xl shadow">
-          <p class="italic mb-4">"অনুশীলনের প্রশ্নগুলো বিষয় বুঝতে সাহায্য করেছে।"</p>
-          <p class="font-semibold">মোঃ রাকিব, রংপুর হাই স্কুল</p>
+        <div class="card p-6 bg-white rounded-2xl shadow reveal">
+          <p class="italic mb-4">"ব্যবসায়ের বিষয়গুলোতে ব্যক্তিগত সহায়তা পেয়েছি।"</p>
+          <p class="font-semibold">সাকিব, Business বিভাগ · GPA 4.83</p>
           <p class="text-sm text-gray-500">⭐️⭐️⭐️⭐️⭐️</p>
         </div>
       </div>
@@ -277,12 +293,12 @@
     <div class="container mx-auto px-4 max-w-3xl">
       <h2 class="text-3xl font-bold text-center mb-8">সচরাচর জিজ্ঞাসা</h2>
       <div class="space-y-3">
-        <details class="card p-5 reveal"><summary class="font-bold cursor-pointer">৯৯৯ টাকায় কী কী পাব?</summary><p class="mt-3">বিজ্ঞান, ব্যবসায় ও মানবিক বিভাগের ২৯টি কোর্স এবং ২০০টির বেশি অধ্যায়ের অ্যাক্সেস পাবেন।</p></details>
-        <details class="card p-5 reveal"><summary class="font-bold cursor-pointer">কীভাবে পেমেন্ট করব?</summary><p class="mt-3">bKash, Nagad অথবা Rocket-এ পেমেন্ট করে ফর্মে লেনদেন নম্বর দিন।</p></details>
-        <details class="card p-5 reveal"><summary class="font-bold cursor-pointer">কোন কোন বিভাগ অন্তর্ভুক্ত?</summary><p class="mt-3">বিজ্ঞান, ব্যবসায় শিক্ষা এবং মানবিক বিভাগের কোর্স অন্তর্ভুক্ত।</p></details>
-        <details class="card p-5 reveal"><summary class="font-bold cursor-pointer">কোর্সগুলো কীভাবে দেখব?</summary><p class="mt-3">ভর্তি নিশ্চিত হলে কোর্স পেজ থেকে অধ্যায়ভিত্তিক পাঠ ও অনুশীলন দেখুন।</p></details>
-        <details class="card p-5 reveal"><summary class="font-bold cursor-pointer">পেমেন্টের পর কী তথ্য দিতে হবে?</summary><p class="mt-3">আপনার নাম, ফোন, বিভাগ, পেমেন্ট মাধ্যম ও লেনদেন নম্বর দিন।</p></details>
-        <details class="card p-5 reveal"><summary class="font-bold cursor-pointer">কোনো বিষয় খুঁজে না পেলে কী করব?</summary><p class="mt-3">কোর্স তালিকার সার্চ ব্যবহার করুন অথবা প্যাকেজ পেজে দেওয়া যোগাযোগের মাধ্যমে সহায়তা নিন।</p></details>
+        <details class="card p-5 reveal"><summary class="font-bold cursor-pointer">৯৯৯ টাকায় কি সব বিভাগ পাব?</summary><p class="mt-3">হ্যাঁ, বিজ্ঞান, ব্যবসায় শিক্ষা ও মানবিক বিভাগের HSC পাঠ ও পরীক্ষার প্রস্তুতি থাকবে।</p></details>
+        <details class="card p-5 reveal"><summary class="font-bold cursor-pointer">Dedicated Teacher কীভাবে পাব?</summary><p class="mt-3">Membership শুরু হলে সাপ্তাহিক ১-অন-১ Video Call-এর সময়সূচি নির্ধারণ করা হবে।</p></details>
+        <details class="card p-5 reveal"><summary class="font-bold cursor-pointer">টাকা কীভাবে দেব?</summary><p class="mt-3">bKash, Nagad অথবা Rocket-এ পেমেন্ট করে Membership পেজের ফর্মে TrxID দাও।</p></details>
+        <details class="card p-5 reveal"><summary class="font-bold cursor-pointer">মানি ব্যাক সুবিধা আছে?</summary><p class="mt-3">Membership কেনার পর প্রথম ৭ দিনের মধ্যে সহায়তা চাইলে আমাদের ইমেইলে যোগাযোগ করো।</p></details>
+        <details class="card p-5 reveal"><summary class="font-bold cursor-pointer">পরীক্ষা কীভাবে হবে?</summary><p class="mt-3">সাপ্তাহিক MCQ, মাসিক Model Test ও Adaptive Report-এর মাধ্যমে অগ্রগতি দেখা যাবে।</p></details>
+        <details class="card p-5 reveal"><summary class="font-bold cursor-pointer">অফলাইনে পড়তে পারব?</summary><p class="mt-3">নোট ও Flashcards সংরক্ষণ করে অফলাইনে পড়া যাবে; ভিডিও চালাতে ইন্টারনেট লাগবে।</p></details>
       </div>
     </div>
   </section>
@@ -290,16 +306,16 @@
   <!-- Final CTA -->
   <section class="py-16 bg-navy text-white">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-4">HSC COMPLETE PACKAGE - 999 TK Only</h2>
-      <p class="mb-6">বিজ্ঞান, ব্যবসায় ও মানবিক বিভাগের ২৯টি কোর্স একসাথে।</p>
-      <a href="/bundles/#payment" class="btn-yellow px-8 py-3 rounded-full text-xl" style="background:#FFC800;color:#111827;font-weight:700;">ভর্তি হও →</a>
+      <h2 class="text-3xl font-bold mb-4">তোমার Personal Tutor, শুধু তোমার জন্য</h2>
+      <p class="mb-6">প্রথম ৩ দিন বিনামূল্যে চেষ্টা করো।</p>
+      <a href="/bundles/#payment" class="btn-yellow px-8 py-3 rounded-full text-xl" style="background:#FFC800;color:#111827;font-weight:700;">Free Trial নাও →</a>
     </div>
   </section>
 
   <!-- Sticky Mobile Bar -->
   <div class="sticky-bar md:hidden">
-    <div class="text-lg font-semibold">৳999 — সমগ্র HSC একই দামে</div>
-    <a href="/pricing/" class="btn">এখনই ভর্তি হও →</a>
+    <div class="text-lg font-semibold">999 ৳ Personal Tutor Membership</div>
+    <a href="/bundles/#payment" class="btn">Free Trial নাও →</a>
   </div>
 
   <!-- Footer -->
@@ -308,26 +324,26 @@
       <div>
         <div class="flex items-center space-x-2 mb-2">
           <span class="text-2xl">📚</span>
-          <div class="font-bold">HSC প্ল্যাটফর্ম</div>
+          <div class="font-bold">HSC Tutor - তোমার Personal Tutor</div>
         </div>
-        <p>HSC পরীক্ষার্থীদের জন্য নির্ভরযোগ্য ও মানসম্মত শিক্ষা উপকরণ। প্রতিটি কোর্স অভিজ্ঞ শিক্ষকের দ্বারা পরিচালিত।</p>
+        <p>তোমার HSC প্রস্তুতিতে ব্যক্তিগত শিক্ষক, AI Tutor ও পরীক্ষার সহায়তা।</p>
       </div>
       <div>
         <h4 class="font-semibold mb-2">দ্রুত লিংক</h4>
         <ul class="space-y-1">
           <li><a href="/" class="text-gray-600 hover:text-violet-600">হোম পেজ</a></li>
-          <li><a href="/bundles/" class="text-gray-600 hover:text-violet-600">বান্ডিল কোর্স</a></li>
-          <li><a href="/courses/" class="text-gray-600 hover:text-violet-600">সকল কোর্স</a></li>
-          <li><a href="/pricing/" class="text-gray-600 hover:text-violet-600">মূল্য তালিকা</a></li>
+          <li><a href="/bundles/#payment" class="text-gray-600 hover:text-violet-600">Membership-এ Join করো</a></li>
+          <li><a href="/courses/" class="text-gray-600 hover:text-violet-600">সকল পাঠ</a></li>
+          <li><a href="/pricing/" class="text-gray-600 hover:text-violet-600">Membership মূল্য</a></li>
         </ul>
       </div>
       <div>
         <h4 class="font-semibold mb-2">গ্রুপ সমূহ</h4>
         <ul class="space-y-1">
-          <li><a href="/bundles/?group=science" class="text-gray-600 hover:text-violet-600">বিজ্ঞান</a></li>
-          <li><a href="/bundles/?group=business-studies" class="text-gray-600 hover:text-violet-600">ব্যবসা শিক্ষা</a></li>
-          <li><a href="/bundles/?group=humanities" class="text-gray-600 hover:text-violet-600">মানবিক</a></li>
-          <li><a href="/bundles/?group=compulsory-subjects" class="text-gray-600 hover:text-violet-600">সাধারণ শিক্ষা</a></li>
+          <li><a href="/courses/">বিজ্ঞান</a></li>
+          <li><a href="/courses/">ব্যবসায়</a></li>
+          <li><a href="/courses/">মানবিক</a></li>
+          <li><a href="/courses/">সাধারণ বিষয়</a></li>
         </ul>
       </div>
       <div>
@@ -337,87 +353,11 @@
         <p class="mt-2">💬 WhatsApp সাপোর্ট</p>
       </div>
     </div>
-    <div class="text-center mt-6 text-gray-500">© ২০২৫ HSC প্ল্যাটফর্ম। সকল অধিকার সংরক্ষিত।</div>
+    <div class="text-center mt-6 text-gray-500">© ২০২৬ HSC Tutor · শুধু তোমার জন্য</div>
   </footer>
 
   <!-- Site Data & Scripts -->
   <script src="/js/site-data.js"></script>
-  <script>
-    // Render Courses
-    const coursesGrid = document.getElementById('courses-grid');
-    const bundlesGrid = document.getElementById('bundles-grid');
-    const groupColors = {
-      science: ['#2563EB', '#06B6D4'],
-      business_studies: ['#F97316', '#FACC15'],
-      humanities: ['#EC4899', '#8B5CF6'],
-      compulsory_subjects: ['#10B981', '#10B981'],
-      all: ['#64748b']
-    };
-    function renderCourses(filter='all') {
-      coursesGrid.innerHTML='';
-      siteData.courses.filter(c=>filter==='all' || c.group===filter).forEach(c=>{
-        const topColor = groupColors[c.group][0];
-        const emojiMap = {
-          ACCOUNTING:'🧾', BANGLA:'📖', BIOLOGY:'🧬', CHEMISTRY:'⚗️', PHYSICS:'⚡', HIGHER_MATHEMATICS:'➗',
-          CIVICS:'⚖️', ECONOMICS:'💹', ENGLISH:'📘', FINANCE_BANKING_INSURANCE:'💰', GEOGRAPHY:'🌍',
-          HISTORY:'🏛️', ICT:'💻', LOGIC:'🧠', BUSINESS_ORGANIZATION_MANAGEMENT:'🧑‍💼'
-        };
-        // Display name for BUSINESS_ORGANIZATION_MANAGEMENT
-        let displayName = c.subject;
-        if (c.subject === 'BUSINESS_ORGANIZATION_MANAGEMENT') {
-          displayName = 'ব্যবসায় সংগঠন ও ব্যবস্থাপনা';
-        }
-        const emoji = emojiMap[c.subject]||'📘';
-        const card = document.createElement('div');
-        card.className='card relative';
-        card.innerHTML=`
-          <div class="top-strip" style="background:${topColor}"></div>
-          <div class="badge" style="background:#FFC800;color:#111827;font-size:0.7rem;font-weight:700;">✅ ৳999 এ Included</div>
-          <div class="p-4">
-            <div class="flex items-center space-x-2 mb-2">
-              <span class="text-2xl">${emoji}</span>
-              <div>
-                <h3 class="font-semibold">${displayName}</h3>
-                <p class="text-[11px] text-gray-400">${c.subject.replace(/_/g,' ')}</p>
-              </div>
-            </div>
-            <p class="text-sm mb-2">${c.paper}</p>
-            <div class="flex items-center gap-2 mb-2 flex-wrap">
-              <span class="text-sm text-gray-500">${c.total_chapters} অধ্যায়</span>
-              <span class="tag bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs">ভিডিও ক্লাস</span>
-              <span class="tag bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">বোর্ড প্রশ্ন</span>
-            </div>
-            <a href="/pricing/" class="block w-full text-center rounded-full py-2 font-bold text-base" style="background:#7C3AED;color:#fff;">ভর্তি হও →</a>
-          </div>
-        `;
-        coursesGrid.appendChild(card);
-      });
-    }
-    // Bundles section is replaced by the single-price hero card above — nothing to render here
-    function renderBundles(){ bundlesGrid.innerHTML='<p class="text-gray-500 text-center col-span-3 py-8">উপরকার প্যাকেজ দেখুন — ৳999 তে সব কিছু</p>'; }
-    // Filter tabs
-    document.querySelectorAll('.filter-tab').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        document.querySelectorAll('.filter-tab').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        renderCourses(btn.dataset.group);
-      });
-    });
-    // Accordion
-    document.querySelectorAll('.accordion-header').forEach(h=>{
-      h.addEventListener('click',()=>{
-        const parent=h.parentElement;
-        parent.classList.toggle('open');
-      });
-    });
-    // Initial render
-    renderCourses();
-    renderBundles();
-    // Countdown (example static)
-    const countdownEl=document.createElement('div');
-    countdownEl.className='countdown text-center mt-4';
-    countdownEl.textContent='অফার শেষ হতে বাকি: 02:14:33';
-    document.querySelector('.cta-section')?.appendChild(countdownEl);
-  </script>
+  <script src="/js/app.js"></script>
 </body>
 </html>
