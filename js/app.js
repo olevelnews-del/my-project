@@ -62,6 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
           ? 'Business Organization & Management'
           : course.subject.replaceAll('_', ' ');
         const paper = course.paper === '1St Paper' ? '১ম পত্র' : '২য় পত্র';
+      const chapterId = sampleVideos[course.subject];
+      const watchUrl = chapterId
+        ? `/video-player.html?video=${encodeURIComponent(chapterId)}`
+        : `/courses/${encodeURIComponent(course.slug)}.html`;
       return `
         <article class="card relative reveal">
           <div class="top-strip" style="background:#7C3AED"></div>
@@ -71,10 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
               <div><h3 class="font-semibold"><a href="/courses/${encodeURIComponent(course.slug)}.html">${escapeHTML(subject)}</a></h3><p class="text-xs text-gray-500">${escapeHTML(englishSubject)}</p><p class="text-sm text-gray-500">${paper}</p></div>
             </div>
             <p class="text-sm mb-4">${escapeHTML(groupLabels[course.group] || 'সাধারণ বিষয়')} · ${course.total_chapters} অধ্যায়</p>
-            <p class="included-label mb-4">✅ 999 এ Included</p>
+            <p class="included-label mb-4">✅ ৳999 একবারে সব অন্তর্ভুক্ত</p>
             <div class="grid grid-cols-2 gap-2">
-              <a href="/video-player.html?video=${sampleVideos[course.subject] || 'bio-ch3'}" class="btn-outline inline-flex justify-center rounded-full px-3 py-2">Watch ▶</a>
-              <a href="/bundles/#payment" class="btn-primary inline-flex justify-center rounded-full px-3 py-2">ভর্তি হও →</a>
+              <a href="${watchUrl}" class="btn-outline inline-flex justify-center rounded-full px-3 py-2">পাঠ দেখো ▶</a>
+              <a href="/pricing.html#package" class="btn-primary inline-flex justify-center rounded-full px-3 py-2">ভর্তি হও →</a>
             </div>
           </div>
         </article>`;
@@ -89,32 +93,53 @@ document.addEventListener('DOMContentLoaded', () => {
   search?.addEventListener('input', renderCourses);
   renderCourses();
 
-  document.querySelectorAll('.mcq-option').forEach(option => {
-    option.addEventListener('click', () => {
-      const result = option.parentElement?.querySelector('.mcq-result');
-      if (!result) return;
-      const correct = option.dataset.correct === 'true';
-      result.textContent = correct ? 'সঠিক উত্তর! আলোর বেগ প্রায় ৩ × ১০⁸ মিটার/সেকেন্ড।' : 'উত্তরটি সঠিক নয়। আবার চেষ্টা করুন।';
-      result.style.color = correct ? '#15803d' : '#b91c1c';
-    });
-  });
-
   const paymentForm = document.getElementById('payment-form');
-  paymentForm?.addEventListener('submit', event => {
+  paymentForm?.addEventListener('submit', async event => {
     event.preventDefault();
     const values = new FormData(paymentForm);
-    const details = [
-      `নাম: ${values.get('name')}`,
-      `ফোন: ${values.get('phone')}`,
-      `বিভাগ: ${values.get('group')}`,
-      `পেমেন্ট মাধ্যম: ${values.get('method')}`,
-      `লেনদেন নম্বর: ${values.get('transaction')}`
-    ].join('\n');
-    const subject = encodeURIComponent('Personal Tutor Membership-এর তথ্য');
-    const body = encodeURIComponent(`HSC Tutor Membership — 999 টাকা / মাস\n\n${details}`);
+    const config = window.HSCTUTOR_CONFIG;
     const status = document.getElementById('payment-status');
-    if (status) status.textContent = 'আপনার ইমেইল অ্যাপে তথ্যসহ খসড়া খুলবে। ইমেইল পাঠালেই ভর্তি অনুরোধ যাবে।';
-    window.location.href = `mailto:support@hsplatform.edu.bd?subject=${subject}&body=${body}`;
+    if (!config) {
+      if (status) status.textContent = 'WhatsApp সংযোগ তৈরি করা যায়নি। পেজটি আবার লোড করে চেষ্টা করো।';
+      console.error('HSC Academic Hub config.js did not load.');
+      return;
+    }
+    const submitButton = paymentForm.querySelector('[type="submit"]');
+    if (submitButton) submitButton.disabled = true;
+    if (status) status.textContent = 'পেমেন্ট provider-এর কাছে যাচাই করা হচ্ছে…';
+    const phone = String(values.get('phone') || '').trim();
+    try {
+      localStorage.setItem('hscStudentPhone', phone);
+      const response = await fetch('/api/payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: values.get('name'),
+          phone,
+          group: values.get('group'),
+          method: values.get('method'),
+          transaction: values.get('transaction')
+        })
+      });
+      const result = await response.json();
+      if (!response.ok || result.ok !== true || result.verified !== true) {
+        throw new Error(result.error || 'পেমেন্ট যাচাই করা যায়নি।');
+      }
+      const details = [
+        `নাম: ${values.get('name')}`,
+        `ফোন: ${phone}`,
+        `বিভাগ: ${values.get('group')}`,
+        `পেমেন্ট মাধ্যম: ${values.get('method')}`,
+        `যাচাইকৃত TrxID: ${result.trxId}`
+      ].join('\n');
+      if (status) status.textContent = 'পেমেন্ট যাচাই ও সংরক্ষণ হয়েছে। WhatsApp খুলছে…';
+      window.location.href = config.whatsappLinkWithDetails(details);
+    } catch (error) {
+      if (status) status.textContent = error instanceof Error ? error.message : 'পেমেন্ট যাচাই করা যায়নি।';
+      console.error('Payment verification failed.', error);
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
   });
 
   function observeReveals() {

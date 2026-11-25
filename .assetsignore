@@ -1,0 +1,9 @@
+.git/
+.github/
+node_modules/
+.assetsignore
+.env*
+wrangler.jsonc
+AUDIT-REPORT.md
+PROGRESS.md
+api/

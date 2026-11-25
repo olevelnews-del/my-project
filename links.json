@@ -1,0 +1,35 @@
+{
+  "videos": {
+    "bio-ch3": "https://www.youtube.com/embed/IaY8ObXDuIQ",
+    "bangla-2nd": "https://www.youtube.com/embed/C9qf3Cy70tU",
+    "phy-ch4": "https://www.youtube.com/embed/JZXaKO9ETGw",
+    "chem-ch2": "https://www.youtube.com/embed/E8DG5EzA7wU",
+    "math-ch1": "https://www.youtube.com/embed/Lf7L_EcxLWk",
+    "acct-ch1": "https://www.youtube.com/embed/uNgPk9U5U6g",
+    "physics-ch2": "",
+    "chemistry-ch3": ""
+  },
+  "notes": {
+    "bio-ch3": "",
+    "bangla-2nd": "",
+    "phy-ch4": "",
+    "chem-ch2": "",
+    "math-ch1": "",
+    "acct-ch1": "",
+    "physics-ch2": "",
+    "chemistry-ch3": ""
+  },
+  "notebooklm": {
+    "adminDemo": "https://notebooklm.google.com/"
+  },
+  "tests": {
+    "bio-ch3": "",
+    "bangla-2nd": "",
+    "phy-ch4": "",
+    "chem-ch2": "",
+    "math-ch1": "",
+    "acct-ch1": "",
+    "physics-ch2": "",
+    "chemistry-ch3": ""
+  }
+}

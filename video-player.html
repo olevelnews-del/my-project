@@ -3,90 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ভিডিও পাঠ, নোট এবং HSC AI Tutor-এ প্রশ্নোত্তর।" />
-  <title>ভিডিও পাঠ ও HSC AI Tutor | HSC Tutor</title>
+  <meta name="description" content="HSC Academic Hub অধ্যায়ের ভিডিও, নোট, অনুশীলন ও NotebookLM এক জায়গায়।" />
+  <title>অধ্যায় | HSC Academic Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/video-player.css" />
 </head>
 <body>
   <header class="study-header">
-    <a class="brand" href="/"><span>📚</span><span><strong>HSC Tutor</strong><small>শুধু তোমার জন্য</small></span></a>
-    <nav><a href="/courses/">পাঠসমূহ</a><a href="/pricing/">Membership</a></nav>
+    <a class="brand" href="/"><span>🎓</span><span><strong>HSC Academic Hub</strong><small>hsctutorbd.com</small></span></a>
+    <span class="one-time-label">৳999 একবার · একজন শিক্ষার্থী · সব অ্যাক্সেস</span>
   </header>
-  <main class="study-layout">
-    <section class="video-column" id="video-panel">
-      <div class="video-frame">
-        <video id="lesson-video" controls playsinline preload="metadata" aria-label="পাঠের ভিডিও"></video>
-        <div class="video-placeholder" id="video-placeholder"><span>▶</span><p>এই পাঠের ভিডিও প্রস্তুত হচ্ছে</p></div>
+  <nav class="chapter-tabs" aria-label="অধ্যায়ের অংশ">
+    <button type="button" class="active" data-mobile-tab="video">Video</button>
+    <button type="button" data-mobile-tab="notes">Notes</button>
+    <button type="button" data-mobile-tab="notebooklm">NotebookLM</button>
+  </nav>
+  <main class="chapter-layout" data-notebooklm-chapter>
+    <section class="chapter-column video-column" data-chapter-panel="video">
+      <h1 id="video-title">অধ্যায় লোড হচ্ছে</h1>
+      <div class="video-frame" id="video-frame">
+        <iframe id="lesson-video" title="অধ্যায়ের YouTube ভিডিও" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden></iframe>
+        <p class="media-empty" id="video-empty">ভিডিও আসছে - YouTube link links.json এ যোগ করো</p>
       </div>
-      <h1 id="video-title">Biology Ch 3 - কোষ বিভাজন</h1>
-      <div class="video-progress"><div class="progress-label"><span>তোমার অগ্রগতি</span><strong>৬৫%</strong></div><div class="progress-track"><span style="width:65%"></span></div></div>
-      <div class="player-actions">
-        <button type="button" id="previous-video">← আগের পাঠ</button>
-        <button type="button" id="next-video">পরের পাঠ →</button>
-        <button type="button" id="speed-button">১× গতি</button>
-        <button type="button" data-study-tab="notes">📝 নোট</button>
-        <button type="button" data-study-tab="quiz">❓ কুইজ</button>
+      <p data-links-status role="status"></p>
+      <div class="progress-actions">
+        <label class="progress-phone">অগ্রগতির ফোন<input id="progress-phone" type="tel" inputmode="tel" placeholder="তোমার ফোন নম্বর" autocomplete="tel" /></label>
+        <button class="notebooklm-button notebooklm-button-white" type="button" data-mark-video>ভিডিও দেখেছি</button>
+        <span data-progress-message role="status"></span>
       </div>
-      <div class="study-tabs" role="tablist">
-        <button class="study-tab active" role="tab" data-study-tab="notes">নোট</button>
-        <button class="study-tab" role="tab" data-study-tab="quiz">কুইজ</button>
-        <button class="study-tab" role="tab" data-study-tab="flashcards">ফ্ল্যাশকার্ড</button>
-      </div>
-      <section class="study-content" id="study-content" aria-live="polite"></section>
     </section>
-
-    <section class="chat-column" id="chat-panel">
-      <div class="chat-header">
-        <div><h2>🤖 HSC AI Tutor - Personal Study Chatbot</h2><p><span class="online-dot"></span> Online ✅ · তোমার পাঠের সহায়ক</p></div>
-        <button type="button" id="connect-sources">+ নোট যোগ করো</button>
+    <section class="chapter-column notes-column" data-chapter-panel="notes">
+      <h2>অধ্যায়ের নোট ও অনুশীলন</h2>
+      <p id="notes-empty" class="media-empty">নোট আসছে - Google Drive preview link links.json এ যোগ করো</p>
+      <div class="drive-frame" id="drive-frame" hidden>
+        <iframe id="chapter-notes-frame" title="Google Drive অধ্যায়ের নোট" loading="lazy"></iframe>
       </div>
-      <div class="source-box">
-        <div class="source-title"><strong>এই পাঠের Sources</strong><span id="source-count">৩টি উৎস</span></div>
-        <ul id="source-list">
-          <li>✅ ভিডিও Transcript</li>
-          <li>✅ PDF নোট</li>
-          <li>✅ বোর্ড প্রশ্ন</li>
-        </ul>
-        <button class="source-link" type="button" id="open-source-modal">+ NotebookLM / নোট যোগ করো</button>
+      <p id="notes-text" class="chapter-notes-text"></p>
+      <a id="open-drive" class="notebooklm-button notebooklm-button-white" hidden target="_blank" rel="noopener noreferrer">Open in Drive ↗</a>
+      <h3>Practice</h3>
+      <div id="practice-questions" class="practice-list" aria-live="polite"></div>
+      <p id="question-empty" class="media-empty" hidden>এই অধ্যায়ের প্রশ্ন এখনো যোগ করা হয়নি।</p>
+      <a id="external-test" class="notebooklm-button notebooklm-button-primary" hidden target="_blank" rel="noopener noreferrer">📝 Take Test on Quizizz / Google Form ↗</a>
+      <p id="test-empty" class="media-empty">বাহ্যিক পরীক্ষার লিংক links.json এ যোগ করো</p>
+      <button class="notebooklm-button notebooklm-button-white" type="button" data-mark-test>বাহ্যিক পরীক্ষা শেষ করেছি</button>
+    </section>
+    <section class="chapter-column notebooklm-section" data-notebooklm-section data-chapter-id="">
+      <h2>Connect Your NotebookLM - One Time</h2>
+      <p>একবার Connect করলেই সব Subject এ কাজ করবে - আলাদা করে Connect করতে হবে না। NotebookLM নতুন ট্যাবে খুলবে - Google iframe block করে।</p>
+      <div class="notebooklm-actions">
+        <button class="notebooklm-button notebooklm-button-primary" type="button" data-open-notebooklm>🔗 Connect Your NotebookLM</button>
+        <button class="notebooklm-button notebooklm-button-white" type="button" data-download-chapter>📥 Download Chapter Sources for NotebookLM</button>
       </div>
-      <div class="quick-actions" aria-label="দ্রুত সহায়তা">
-        <button type="button" data-quick="summary">📝 সারাংশ</button>
-        <button type="button" data-quick="mindmap">🗺️ Mind Map</button>
-        <button type="button" data-quick="flashcards">🃏 Flashcards</button>
-        <button type="button" data-quick="quiz">❓ Quiz Me</button>
-      </div>
-      <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
-      <div class="photo-preview" id="photo-preview" hidden></div>
-      <form class="chat-composer" id="chat-form">
-        <textarea id="chat-input" rows="2" placeholder="এই ভিডিও নিয়ে কিছু জিজ্ঞাসা করো..." aria-label="প্রশ্ন লিখো"></textarea>
-        <div class="composer-actions">
-          <label class="icon-button" title="ছবি যোগ করো">📷<input id="photo-input" type="file" accept="image/*" capture="environment" hidden /></label>
-          <button class="icon-button" type="button" id="mic-button" aria-label="কথা বলে প্রশ্ন করো">🎤</button>
-          <button class="send-button" type="submit">পাঠাও ↑</button>
-        </div>
-      </form>
-      <p class="privacy-note">তোমার প্রশ্ন ও কথোপকথন এই ব্রাউজারেই সংরক্ষিত থাকবে।</p>
+      <div data-connection-card aria-live="polite"></div>
+      <p data-notebooklm-error role="status"></p>
     </section>
   </main>
-
-  <div class="mobile-tabs" role="tablist" aria-label="পাঠের অংশ বেছে নাও">
-    <button class="active" type="button" data-mobile-panel="video-panel">ভিডিও</button>
-    <button type="button" data-mobile-panel="chat-panel">চ্যাট</button>
-  </div>
-
-  <dialog id="source-modal" class="source-modal">
-    <form method="dialog"><button class="modal-close" aria-label="বন্ধ করো">×</button></form>
-    <h2>তোমার নোট ও উৎস যোগ করো</h2>
-    <label>NotebookLM শেয়ার লিংক<input id="notebook-link" type="url" placeholder="https://notebooklm.google.com/..." /></label>
-    <button type="button" id="save-notebook" class="modal-action">লিংক সংরক্ষণ করো</button>
-    <label class="upload-label">PDF নোট আপলোড<input id="pdf-input" type="file" accept="application/pdf,.pdf" /></label>
-    <label>YouTube ভিডিও লিংক<input id="youtube-link" type="url" placeholder="https://youtube.com/watch?v=..." /></label>
-    <button type="button" id="save-youtube" class="modal-action">YouTube লিংক সংরক্ষণ করো</button>
-    <p id="source-status" aria-live="polite"></p>
+  <dialog id="notebooklm-modal" class="notebooklm-modal">
+    <button class="modal-close" type="button" data-close-notebooklm aria-label="বন্ধ করো">×</button>
+    <h2>Connect Your NotebookLM - One Time</h2>
+    <section class="modal-step">
+      <h3>ধাপ ১: NotebookLM খোলো</h3>
+      <button class="notebooklm-button notebooklm-button-primary" type="button" data-open-notebooklm-site>🔗 Connect Your NotebookLM</button>
+    </section>
+    <section class="modal-step">
+      <h3>ধাপ ২: তোমার NotebookLM share link দাও</h3>
+      <label class="modal-field">তোমার ফোন নম্বর (অন্য ডিভাইসে link পেতে)<input id="notebooklm-phone" class="notebooklm-input" type="tel" inputmode="tel" placeholder="তোমার ফোন নম্বর" autocomplete="tel" /></label>
+      <label class="modal-field">Paste Your NotebookLM Share Link<input id="notebooklm-link" class="notebooklm-input" type="url" placeholder="Paste Your NotebookLM Share Link" autocomplete="url" /></label>
+      <button class="notebooklm-button notebooklm-button-primary" type="button" data-save-notebooklm>Save Once</button>
+    </section>
+    <p class="modal-note">একবার Connect করলেই সব Subject এ কাজ করবে - আলাদা করে Connect করতে হবে না। NotebookLM নতুন ট্যাবে খুলবে - Google iframe block করে।</p>
+    <p id="notebooklm-modal-status" role="status" aria-live="polite"></p>
   </dialog>
-
-  <script src="/js/chat.js"></script>
+  <script src="/config.js"></script>
+  <script src="/js/notebooklm.js"></script>
+  <script src="/js/progress.js"></script>
 </body>
 </html>

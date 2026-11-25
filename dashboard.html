@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>অগ্রগতি | HSC Academic Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/video-player.css" />
+</head>
+<body>
+  <header class="study-header">
+    <a class="brand" href="/"><span>🎓</span><span><strong>HSC Academic Hub</strong><small>hsctutorbd.com</small></span></a>
+    <a class="notebooklm-button notebooklm-button-white" href="/workspace.html">NotebookLM Workspace</a>
+  </header>
+  <main class="dashboard-layout">
+    <section class="workspace-column">
+      <h1>তোমার পড়ার অগ্রগতি</h1>
+      <p>শুধু ফোন নম্বর ও অধ্যায়ভিত্তিক দেখা/পরীক্ষা সম্পন্নের তথ্য রাখা হয়। বড় ফাইল বা অতিরিক্ত profile data সংরক্ষণ করা হয় না।</p>
+      <label class="modal-field">শিক্ষার্থীর ফোন নম্বর<input id="dashboard-phone" class="notebooklm-input" type="tel" inputmode="tel" placeholder="তোমার ফোন নম্বর" autocomplete="tel" /></label>
+      <button id="dashboard-load" class="notebooklm-button notebooklm-button-primary" type="button">অগ্রগতি দেখো</button>
+      <p id="dashboard-status" role="status">Demo - Connect Firebase to enable progress saving.</p>
+      <div id="dashboard-progress" class="workspace-list"></div>
+    </section>
+  </main>
+  <script src="/config.js"></script>
+  <script src="/js/progress.js"></script>
+</body>
+</html>
