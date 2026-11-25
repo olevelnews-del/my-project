@@ -1,0 +1,90 @@
+name: Test Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check HTML validity
+        run: |
+          echo "Checking all HTML files..."
+          count=0
+          for f in $(find . -name '*.html' -not -path './.git/*'); do
+            count=$((count + 1))
+            if ! grep -q '<!DOCTYPE html>' "$f"; then
+              echo "ERROR: $f missing DOCTYPE"
+              exit 1
+            fi
+            if ! grep -q '</html>' "$f"; then
+              echo "ERROR: $f missing closing html tag"
+              exit 1
+            fi
+            if ! grep -q '</head>' "$f"; then
+              echo "ERROR: $f missing closing head tag"
+              exit 1
+            fi
+            if ! grep -q '</body>' "$f"; then
+              echo "ERROR: $f missing closing body tag"
+              exit 1
+            fi
+          done
+          echo "✓ All $count HTML files pass basic validation"
+      
+      - name: Verify JS data loads
+        run: |
+          if [ -f "js/site-data.js" ]; then
+            # Check it exports siteData correctly
+            if grep -q 'const siteData' js/site-data.js; then
+              echo "✓ site-data.js has correct export"
+            else
+              echo "ERROR: site-data.js missing siteData export"
+              exit 1
+            fi
+            size=$(wc -c < js/site-data.js)
+            echo "✓ site-data.js is ${size} bytes"
+          else
+            echo "WARNING: site-data.js not found (optional)"
+          fi
+          
+          if [ -f "js/site-data.json" ]; then
+            python3 -c "import json; d=json.load(open('js/site-data.json')); print(f'✓ JSON valid: {len(d[\"courses\"])} courses, {len(d[\"bundles\"])} bundles')"
+          else
+            echo "WARNING: site-data.json not found (optional)"
+          fi
+          
+      - name: Check page links
+        run: |
+          errors=0
+          for f in $(find . -name '*.html' -not -path './.git/*' -not -path './node_modules/*'); do
+            hrefs=$(grep -oE 'href="[^"]*"' "$f" | sed 's/href="//;s/"$//' | grep -v '^http' | grep -v '^#' | grep -v '^javascript:' | grep -v '^//')
+            for h in $hrefs; do
+              target="${h#/}"
+              if [ -n "$target" ] && [ "$target" != "/" ]; then
+                if [ ! -f "$target" ] && [ ! -f "./$target" ]; then
+                  echo "BROKEN LINK in $(basename $f): $h"
+                  errors=$((errors + 1))
+                fi
+              fi
+            done
+          done
+          if [ $errors -gt 0 ]; then
+            echo "✗ Found $errors broken link(s)"
+            exit 1
+          else
+            echo "✓ No broken internal links found"
+          fi
+          
+      - name: Count deliverables
+        run: |
+          html=$(find . -name '*.html' -not -path './.git/*' | wc -l)
+          css=$(find . -name '*.css' -not -path './.git/*' | wc -l)
+          js=$(find . -name '*.js' -not -path './.git/*' | wc -l)
+          total=$(find . -type f -not -path './.git/*' | wc -l)
+          echo "📊 Summary: $html HTML pages, $css CSS files, $js JS files ($total files total)"
