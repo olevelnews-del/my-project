@@ -82,6 +82,11 @@ jobs:
                 html_path="${target}.html"
                 if grep -qF "$html_path" /tmp/valid_files.txt; then found=true; fi
               fi
+              # Case 4: strip trailing slash then add .html (e.g., bundles/full-platform/)
+              if [ "$found" = false ]; then
+                html_path="$(echo "$target" | sed 's|/$||').html"
+                if grep -qF "$html_path" /tmp/valid_files.txt; then found=true; fi
+              fi
               if [ "$found" = false ]; then
                 echo "BROKEN LINK in $(basename $f): $h"
                 errors=$((errors + 1))
