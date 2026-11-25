@@ -62,7 +62,7 @@
 </head>
 <body>
   <!-- Marquee -->
-  <div class="marquee"><span>HSC 2026 • Live Class • Board Question • 50% ছাড় • সর্বোচ্চ ৭ দিনের মানি ব্যাক গ্যারান্টি</span></div>
+  <div class="marquee"><span>HSC 2026 • Live Class • Board Question • মাত্র ৳999 — ৮০% ছাড় • ৭ দিনের মানি ব্যাক গ্যারান্টি</span></div>
 
   <!-- Header -->
   <header class="bg-white shadow-sm">
@@ -97,7 +97,7 @@
         <div class="flex space-x-4 mt-6">
           <div class="bg-white/10 backdrop-blur border border-white/20 px-4 py-2 rounded-full shadow"><div class="text-gold font-bold text-xl leading-none">29</div><div class="text-xs text-white">কোর্স</div></div>
           <div class="bg-white/10 backdrop-blur border border-white/20 px-4 py-2 rounded-full shadow"><div class="text-gold font-bold text-xl leading-none">200+</div><div class="text-xs text-white">অধ্যায়</div></div>
-          <div class="bg-gold text-black px-4 py-2 rounded-full shadow"><div class="font-bold text-xl leading-none">৳999</div><div class="text-xs font-semibold">ফুল প্যাকেজ</div></div>
+          <div class="bg-gold text-black px-4 py-2 rounded-full shadow text-center"><div class="flex items-baseline justify-center gap-1"><span class="text-sm line-through opacity-60">৳4999</span><span class="font-bold text-xl leading-none">৳999</span></div><div class="text-xs font-bold mt-0.5">80% ছাড়</div></div>
         </div>
       </div>
       <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center">
@@ -230,7 +230,7 @@
 
   <!-- Sticky Mobile Bar -->
   <div class="sticky-bar md:hidden">
-    <div class="text-lg font-semibold">৳2999 ফুল বান্ডিল</div>
+    <div class="text-lg font-semibold">৳999 — সমগ্র HSC একই দামে</div>
     <a href="/pricing/" class="btn">এখনই ভর্তি হও →</a>
   </div>
 
@@ -304,6 +304,7 @@
         card.className='card relative';
         card.innerHTML=`
           <div class="top-strip" style="background:${topColor}"></div>
+          <div class="badge" style="background:#FFC800;color:#111827;font-size:0.7rem;font-weight:700;">✅ ৳999 এ Included</div>
           <div class="p-4">
             <div class="flex items-center space-x-2 mb-2">
               <span class="text-2xl">${emoji}</span>
@@ -313,52 +314,19 @@
               </div>
             </div>
             <p class="text-sm mb-2">${c.paper}</p>
-            <div class="flex justify-between items-center mb-2">
-              <span>${c.total_chapters} অধ্যায়</span>
-              <span class="font-bold text-xl">৳${c.price}</span>
+            <div class="flex items-center gap-2 mb-2 flex-wrap">
+              <span class="text-sm text-gray-500">${c.total_chapters} অধ্যায়</span>
+              <span class="tag bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs">ভিডিও ক্লাস</span>
+              <span class="tag bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">বোর্ড প্রশ্ন</span>
             </div>
-            <div class="flex space-x-2 mb-2">
-              <span class="tag bg-gray-100 px-2 py-1 rounded">ভিডিও ক্লাস</span>
-              <span class="tag bg-gray-100 px-2 py-1 rounded">বোর্ড প্রশ্ন</span>
-            </div>
-            <a href="/courses/${c.slug}/" class="btn-primary w-full">কোর্স দেখুন →</a>
+            <a href="/pricing/" class="block w-full text-center rounded-full py-2 font-bold text-base" style="background:#7C3AED;color:#fff;">ভর্তি হও →</a>
           </div>
         `;
         coursesGrid.appendChild(card);
       });
     }
-    // Render Bundles
-    function renderBundles(){
-      bundlesGrid.innerHTML='';
-      siteData.bundles.forEach(b=>{
-        const colorMap = {
-          all:'#2563EB', business_studies:'#F97316', compulsory_subjects:'#10B981', science:'#2563EB', humanities:'#EC4899'
-        };
-        const topColor = colorMap[b.group]||'#64748b';
-        const card = document.createElement('div');
-        card.className='card relative';
-        let badge='';
-        if(b.slug==='full-platform') badge='<div class="badge">MOST POPULAR 🔥</div>';
-        if(b.bundle_price===0) badge='<div class="badge" style="background:#FFC800;color:#111827;">ফ্রি তে শুরু করো!</div>';
-        card.innerHTML=`
-          ${badge}
-          <div class="top-strip" style="background:${topColor}"></div>
-          <div class="p-4">
-            <h3 class="font-semibold mb-2">${b.name}</h3>
-            <p class="text-sm mb-2" style="color:#64748b;">${b.description}</p>
-            <div class="flex justify-between items-center mb-2">
-              <div>
-                <span class="text-sm line-through text-gray-500">৳${b.original_price}</span>
-                <div class="text-2xl font-bold">৳${b.bundle_price}</div>
-              </div>
-              <span class="badge" style="background:#FF3B30;">${b.discount_percent}% ছাড়</span>
-            </div>
-            <a href="/bundles/${b.slug}/" class="btn-primary w-full">বান্ডিল দেখুন →</a>
-          </div>
-        `;
-        bundlesGrid.appendChild(card);
-      });
-    }
+    // Bundles section is replaced by the single-price hero card above — nothing to render here
+    function renderBundles(){ bundlesGrid.innerHTML='<p class="text-gray-500 text-center col-span-3 py-8">উপরকার প্যাকেজ দেখুন — ৳999 তে সব কিছু</p>'; }
     // Filter tabs
     document.querySelectorAll('.filter-tab').forEach(btn=>{
       btn.addEventListener('click',()=>{

@@ -3,170 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HSC মানবিক গ্রুপ সম্পূর্ণ প্যাকেজ | HSC বান্ডিল</title>
-  <meta name="description" content="HSC পরীক্ষার জন্য সম্পূর্ণ অনলাইন কোর্স। বিজ্ঞান, ব্যবসা শিক্ষা, মানবিক ও সাধারণ শিক্ষা গ্রুপের সকল বিষয়ে ভিডিও ক্লাস।" />
-  <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="stylesheet" href="/css/additional.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <title>HSC সম্পূর্ণ প্যাক | HSC প্ল্যাটফর্ম</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { cream:"#FFF9F0", violet:"#7C3AED", pink:"#EC4899", gold:"#FFC800", coral:"#FF3B30", navy:"#111827" } } } };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family:'Hind Siliguri',sans-serif; background:#FFF9F0; color:#111827; }
+    h1,h2,h3 { font-family:'Noto Serif Bengali',serif; }
+    .card { background:#fff; border-radius:1rem; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <a href="/index.html" class="logo">
-        <span class="logo-icon">📚</span>
-        <div class="logo-text">
-          <div class="logo-title">HSC প্ল্যাটফর্ম</div>
-          <div class="logo-sub">আপনার সফলতার গন্তব্য</div>
-        </div>
+  <header class="bg-white shadow-sm">
+    <div class="container mx-auto flex justify-between items-center py-4 px-4">
+      <a href="/" class="flex items-center space-x-2">
+        <span class="text-2xl">📚</span>
+        <div><div class="text-xl font-bold">HSC প্ল্যাটফর্ম</div><div class="text-sm text-gray-500">আপনান সফলতার গন্তব্য</div></div>
       </a>
-      <nav class="main-nav">
-        <a href="/index.html">হোম</a>
-        <a href="/bundles/">বান্ডিল</a>
-        <a href="/courses/">কোর্স সমূহ</a>
-        <a href="/pricing/">মূল্য তালিকা</a>
-        <a href="/bundles/" class="btn btn-primary">এখনই শুরু করুন</a>
+      <nav class="space-x-4 hidden md:block">
+        <a href="/" class="text-gray-700 hover:text-violet-600">হোম</a>
+        <a href="/bundles/" class="text-gray-700 hover:text-violet-600">বান্ডিল</a>
+        <a href="/courses/" class="text-gray-700 hover:text-violet-600">কোর্স সমূহ</a>
+        <a href="/pricing/" class="text-gray-700 hover:text-violet-600">মূল্য তালিকা</a>
       </nav>
     </div>
   </header>
-  <section class="page-hero bundle-hero" style="background:linear-gradient(135deg,#f97316,#f59e0b)">
-    <div class="container">
-      <div class="breadcrumb"><a href="/bundles/">বান্ডিল</a> <span>/</span> HSC মানবিক গ্রুপ সম্পূর্ণ প্যাকেজ</div>
-      <h1>📜 HSC মানবিক গ্রুপ সম্পূর্ণ প্যাকেজ</h1>
-      <p>মানবিক গ্রুপের সকল 10টি বিষয়ের সমন্বিত কোর্্স। বোর্ড প্রস্তুতি থেকে ভর্তি পরীক্ষা পর্যন্ত।</p>
-      <div class="hero-stats-inline">
-        <span>📚 10 টি কোর্স</span>
-        <span>📖 61+ অধ্যায়</span>
-        <span class="highlight-badge">70% ছাড়</span>
-      </div>
+
+  <section class="bg-gradient-to-br from-violet to-pink text-white py-10">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-3">সম্পূর্ণ HSC প্ল্যাকেকজ</h1>
+      <p class="opacity-90 max-w-lg mx-auto">একটাই দাম — সব কোর্স, সব গ্রুপ, সব অধ্যায়।</p>
     </div>
   </section>
 
-  <section class="bundle-detail-section">
-    <div class="container">
-      <div class="bundle-detail-grid">
-        <div class="bundle-detail-main">
-          <div class="section-title">📋 এই বান্ডিলে যেসব কোর্স আছে</div>
-          <div class="bundle-courses-table">        <div class="bundle-course-item">
-          <span class="bc-group" style="background:#f9731620;color:#f97316">📜 মানবিক</span>
-          <span class="bc-name">CIVICS</span>
-          <span class="bc-paper">1St Paper</span>
-          <span class="bc-chapters">7 অধ্যায়</span>
+  <section class="py-12 -mt-6">
+    <div class="container mx-auto px-4 max-w-2xl">
+      <div class="card relative overflow-visible p-0">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+          <span class="inline-block bg-coral text-white px-5 py-1.5 rounded-full text-sm font-bold shadow-lg">🔥 মাত্ৰ ৳999</span>
         </div>
-        <div class="bundle-course-item">
-          <span class="bc-group" style="background:#f9731620;color:#f97316">📜 মানবিক</span>
-          <span class="bc-name">CIVICS</span>
-          <span class="bc-paper">2Nd Paper</span>
-          <span class="bc-chapters">6 অধ্যায়</span>
-        </div>
-        <div class="bundle-course-item">
-          <span class="bc-group" style="background:#f9731620;color:#f97316">📜 মানবিক</span>
-          <span class="bc-name">ECONOMICS</span>
-          <span class="bc-paper">1St Paper</span>
-          <span class="bc-chapters">6 অধ্যায়</span>
-        </div>
-        <div class="bundle-course-item">
-          <span class="bc-group" style="background:#f9731620;color:#f97316">📜 মানবিক</span>
-          <span class="bc-name">ECONOMICS</span>
-          <span class="bc-paper">2Nd Paper</span>
-          <span class="bc-chapters">6 অধ্যায়</span>
-        </div>
-        <div class="bundle-course-item">
-          <span class="bc-group" style="background:#f9731620;color:#f97316">📜 মানবিক</span>
-          <span class="bc-name">GEOGRAPHY</span>
-          <span class="bc-paper">1St Paper</span>
-          <span class="bc-chapters">6 অধ্যায়</span>
-        </div>
-        <div class="bundle-course-item">
-          <span class="bc-group" style="background:#f9731620;color:#f97316">📜 মানবিক</span>
-          <span class="bc-name">GEOGRAPHY</span>
-          <span class="bc-paper">2Nd Paper</span>
-          <span class="bc-chapters">6 অধ্যায়</span>
-        </div>
-        <div class="bundle-course-item">
-          <span class="bc-group" style="background:#f9731620;color:#f97316">📜 মানবিক</span>
-          <span class="bc-name">HISTORY</span>
-          <span class="bc-paper">1St Paper</span>
-          <span class="bc-chapters">6 অধ্যায়</span>
-        </div>
-        <div class="bundle-course-item">
-          <span class="bc-group" style="background:#f9731620;color:#f97316">📜 মানবিক</span>
-          <span class="bc-name">HISTORY</span>
-          <span class="bc-paper">2Nd Paper</span>
-          <span class="bc-chapters">6 অধ্যায়</span>
-        </div>
-        <div class="bundle-course-item">
-          <span class="bc-group" style="background:#f9731620;color:#f97316">📜 মানবিক</span>
-          <span class="bc-name">LOGIC</span>
-          <span class="bc-paper">1St Paper</span>
-          <span class="bc-chapters">6 অধ্যায়</span>
-        </div>
-        <div class="bundle-course-item">
-          <span class="bc-group" style="background:#f9731620;color:#f97316">📜 মানবিক</span>
-          <span class="bc-name">LOGIC</span>
-          <span class="bc-paper">2Nd Paper</span>
-          <span class="bc-chapters">6 অধ্যায়</span>
-        </div>
-</div>
-        </div>
-        <div class="bundle-sidebar">
-          <div class="sidebar-card">
-            <div style="text-align:center;margin-bottom:16px">
-              <span style="font-size:14px;color:#94a3b8;text-decoration:line-through">৳4990</span>
-              <div class="price-tag" style="font-size:40px">৳1499</div>
-              <span class="discount-badge" style="font-size:14px">70% সেভ করুন</span>
-            </div>
-            <a href="/pricing/" class="btn btn-primary" style="width:100%;margin-bottom:8px">এখনই কিনুন</a>
-            <a href="/courses/?group=humanities" class="btn btn-outline" style="width:100%">কোর্সগুলো দেখুন →</a>
+        <div class="h-2 bg-gradient-to-r from-violet to-pink"></div>
+        <div class="p-8 pt-12 text-center">
+          <div class="text-6xl mb-4">🎯</div>
+          <h2 class="text-2xl font-bold mb-2"> সকল ২৯টি কোর্স একই দামে</h2>
+          <p class="text-gray-600 mb-6">বিজ্ঞান · বয্যবসাশিক্ষা · মানবিক · সাধারণ শিক্ষা — সব গ্রুপের সকল বিষয়, ২০০+ অধ্যায়।</p>
+          <div class="flex items-center justify-center gap-4 mb-6">
+            <div><span class="block text-xl text-gray-400 line-through">৳4999</span><span class="text-xs text-gray-500">আগের দাম</span></div>
+            <div class="h-10 w-px bg-gray-300"></div>
+            <div><span class="block text-5xl font-extrabold text-violet-600">৳999</span><span class="text-xs text-gray-500">এককালীন</span></div>
           </div>
-          <div class="sidebar-card">
-            <h4>বান্ডিল সুবিধাসমূহ</h4>
-            <div class="feature-item">✅ 10 টি কোর্সের সম্পূর্ণ অ্যাক্সেস</div>
-            <div class="feature-item">✅ লাইফটাইম + বার্ষিক আপডেট</div>
-            <div class="feature-item">✅ WhatsApp সাপোর্ট</div>
-            <div class="feature-item">✅ অফলাইন ডাউনলোড</div>
-            <div class="feature-item">✅ Parent Dashboard</div>
-            <div class="feature-item">✅ বোর্ড ব্লুপ্রিন্ট</div>
-            <div class="feature-item">✅ ৭ দিনের মানি ব্যাক</div>
+          <div class="grid grid-cols-2 gap-3 mb-6 text-left max-w-sm mx-auto">
+            <div class="flex items-center gap-2 text-sm"><span class="text-green-500">✓</span> ২৯টি সকল কোর্স</div>
+            <div class="flex items-center gap-2 text-sm"><span class="text-green-500">✓</span> ২০০+ অধ্যায়</div>
+            <div class="flex items-center gap-2 text-sm"><span class="text-green-500">✓</span> ভিডিও ক্লাস</div>
+            <div class="flex items-center gap-2 text-sm"><span class="text-green-500">✓</span> বোর্ড প্রশ্ন + মডেল টেস্ট</div>
+            <div class="flex items-center gap-2 text-sm"><span class="text-green-500">✓</span> নোট PDF ডাউনলোড</div>
+            <div class="flex items-center gap-2 text-sm"><span class="text-green-500">✓</span> WhatsApp সাপোর্ট</div>
+            <div class="flex items-center gap-2 text-sm"><span class="text-green-500">✓</span> Parent Dashboard</div>
+            <div class="flex items-center gap-2 text-sm"><span class="text-green-500">✓</span> লাইফটাইম এক্সেস</div>
           </div>
+          <a href="/pricing/" class="inline-block rounded-full py-3.5 px-10 font-bold text-lg shadow-lg" style="background:#FFC800;color:#111827;">ভর্তি হও →</a>
+          <p class="text-sm text-gray-500 mt-4">⏰ সীমিত সময়ের অফার · ৭ দিনের মানি ব্যাক গ্যারান্টি</p>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="logo"><span class="logo-icon">📚</span><div class="logo-title">HSC প্ল্যাটফর্ম</div></div>
-          <p>HSC পরীক্ষার্থীদের জন্য নির্ভরযোগ্য ও মানসম্মত শিক্ষা উপকরণ। প্রতিটি কোর্স অভিজ্ঞ শিক্ষকের দ্বারা পরিচালিত।</p>
-        </div>
-        <div class="footer-links">
-          <h4>দ্রুত লিংক</h4>
-          <a href="/index.html">হোম পেজ</a>
-          <a href="/bundles/">বান্ডিল কোর্স</a>
-          <a href="/courses/">সকল কোর্স</a>
-          <a href="/pricing/">মূল্য তালিকা</a>
-        </div>
-        <div class="footer-links">
-          <h4>গ্রুপ সমূহ</h4>
-          <a href="/bundles/?group=science">বিজ্ঞান</a>
-          <a href="/bundles/?group=business-studies">ব্যবসা শিক্ষা</a>
-          <a href="/bundles/?group=humanities">মানবিক</a>
-          <a href="/bundles/?group=compulsory-subjects">সাধারণ শিক্ষা</a>
-        </div>
-        <div class="footer-links">
-          <h4>যোগাযোগ</h4>
-          <p>📧 support@hsplatform.edu.bd</p>
-          <p>📞 ০১XXX-XXXXXX</p>
-          <p style="margin-top:8px">💬 WhatsApp সাপোর্ট</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© ২০২৫ HSC প্ল্যাটফর্ম। সকল অধিকার সংরক্ষিত।</p>
-      </div>
+  <footer class="bg-white py-6 border-t">
+    <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
+      <p>© ২০২৫ HSC প্ল্যাকফরম। সকল অধিকার সংরক্ষিত।</p>
     </div>
   </footer>
-  <script src="/js/site-data.js"></script>
 </body>
 </html>
