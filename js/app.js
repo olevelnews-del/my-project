@@ -1,141 +1,170 @@
-/* Add pricing.css to index.html head via JS — already statically linked */
-
-// === Home Page JS ===
-document.addEventListener('DOMContentLoaded', function() {
-  if (!window.HSC_DATA) return;
-
-  const courses = window.HSC_DATA.courses || [];
-  const bundles = window.HSC_DATA.bundles || [];
-  const groupNames = {
-    'science': 'বিজ্ঞান',
-    'business-studies': 'ব্যবসায় শিক্ষা',
-    'humanities': 'মানবিক',
-    'compulsory-subjects': 'সাধারণ শিক্ষা'
+document.addEventListener('DOMContentLoaded', () => {
+  const courses = window.HSC_DATA?.courses || [];
+  const grid = document.getElementById('courses-grid');
+  const search = document.getElementById('course-search');
+  const tabs = [...document.querySelectorAll('.filter-tab')];
+  const groupLabels = {
+    science: 'বিজ্ঞান',
+    business_studies: 'ব্যবসায়',
+    humanities: 'মানবিক',
+    compulsory_subjects: 'সাধারণ বিষয়'
   };
-  const thumbClasses = {
-    'science': 'thumb-sci',
-    'business-studies': 'thumb-bus',
-    'humanities': 'thumb-hum',
-    'compulsory-subjects': 'thumb-com'
+  const subjectLabels = {
+    ACCOUNTING: 'হিসাববিজ্ঞান',
+    BANGLA: 'বাংলা',
+    BIOLOGY: 'জীববিজ্ঞান',
+    BUSINESS_ORGANIZATION_MANAGEMENT: 'ব্যবসায় সংগঠন ও ব্যবস্থাপনা',
+    CHEMISTRY: 'রসায়ন',
+    CIVICS: 'পৌরনীতি ও সুশাসন',
+    ECONOMICS: 'অর্থনীতি',
+    ENGLISH: 'ইংরেজি',
+    FINANCE_BANKING_INSURANCE: 'ফিন্যান্স, ব্যাংকিং ও বিমা',
+    GEOGRAPHY: 'ভূগোল',
+    HIGHER_MATHEMATICS: 'উচ্চতর গণিত',
+    HISTORY: 'ইতিহাস',
+    ICT: 'তথ্য ও যোগাযোগ প্রযুক্তি',
+    LOGIC: 'যুক্তিবিদ্যা',
+    PHYSICS: 'পদার্থবিজ্ঞান'
   };
+  const emojis = {
+    ACCOUNTING: '🧾', BANGLA: '📖', BIOLOGY: '🧬',
+    BUSINESS_ORGANIZATION_MANAGEMENT: '💼', CHEMISTRY: '⚗️',
+    CIVICS: '⚖️', ECONOMICS: '📊', ENGLISH: '📘',
+    FINANCE_BANKING_INSURANCE: '💰', GEOGRAPHY: '🌍',
+    HIGHER_MATHEMATICS: '➗', HISTORY: '🏛️', ICT: '💻',
+    LOGIC: '🧠', PHYSICS: '⚡'
+  };
+  const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[char]);
 
-  // Stats
-  const sc = document.getElementById('stat-courses');
-  const sb = document.getElementById('stat-bundles');
-  if (sc) sc.textContent = courses.length + '+';
-  if (sb) sb.textContent = bundles.length;
+  function renderCourses() {
+    if (!grid) return;
+    const activeGroup = tabs.find(tab => tab.classList.contains('active'))?.dataset.group || 'all';
+    const query = search?.value.trim().toLocaleLowerCase('bn') || '';
+    const matching = courses.filter(course => {
+      const subject = subjectLabels[course.subject] || course.subject;
+      const searchable = `${subject} ${course.subject} ${course.paper} ${groupLabels[course.group] || ''}`;
+      return (activeGroup === 'all' || course.group === activeGroup)
+        && (!query || searchable.toLocaleLowerCase('bn').includes(query));
+    });
 
-  // Course count
-  const cc = document.getElementById('course-count');
-  if (cc) cc.textContent = `${courses.length} কোর্স • প্রতিটিতে ফ্রি প্রিভিউ`;
-
-  // Featured bundles (top 6 by discount)
-  const featuredBundles = bundles.sort((a,b) => b.discount_percent - a.discount_percent).slice(0, 6);
-  const fbContainer = document.getElementById('featured-bundles');
-  if (fbContainer && featuredBundles.length > 0) {
-    fbContainer.innerHTML = featuredBundles.map(b => `
-      <div class="bundle-card">
-        ${b.is_featured ? '<div class="bundle-featured">⭐ জনপ্রিয় বান্ডিল</div>' : ''}
-        <div class="bundle-body">
-          <div class="bundle-header">
-            <div class="bundle-icon">${b.icon}</div>
-            <div>
-              <h3>${b.name}</h3>
-              <div class="desc">${b.description}</div>
+    grid.innerHTML = matching.length ? matching.map(course => {
+      const subject = subjectLabels[course.subject] || course.subject;
+      const paper = course.paper === '1St Paper' ? '১ম পত্র' : '২য় পত্র';
+      return `
+        <article class="card relative reveal">
+          <div class="top-strip" style="background:#7C3AED"></div>
+          <div class="p-5">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl" aria-hidden="true">${emojis[course.subject] || '📘'}</span>
+              <div><h3 class="font-semibold"><a href="/courses/${encodeURIComponent(course.slug)}.html">${escapeHTML(subject)}</a></h3><p class="text-sm text-gray-500">${paper}</p></div>
             </div>
+            <p class="text-sm mb-4">${escapeHTML(groupLabels[course.group] || 'সাধারণ বিষয়')} · ${course.total_chapters} অধ্যায়</p>
+            <p class="included-label mb-4">✅ 999 এ Included</p>
+            <a href="/bundles/#payment" class="btn-primary inline-flex w-full justify-center px-4 py-3 rounded-xl">ভর্তি হও →</a>
           </div>
-          <div class="bundle-stats">
-            <span>📚 ${b.courses?.length || 0} টি কোর্স</span>
-            <span>📖 ${b.total_chapters || 0} অধ্যায়</span>
-          </div>
-          <div class="bundle-pricing">
-            <span class="bundle-price">৳${formatPrice(b.bundle_price)}</span>
-            <span class="bundle-original">৳${formatPrice(b.original_price)}</span>
-            <span class="bundle-discount">${b.discount_percent}% ছাড়</span>
-          </div>
-          <a href="/bundles/" class="btn btn-primary">বিস্তারিত দেখুন</a>
-        </div>
-      </div>
-    `).join('');
+        </article>`;
+    }).join('') : '<p class="col-span-full text-center text-gray-600">এই নামে কোনো কোর্স পাওয়া যায়নি।</p>';
+    observeReveals();
   }
 
-  // Home courses grid (first 12)
-  const hcContainer = document.getElementById('home-courses');
-  const showMoreWrap = document.getElementById('show-more-wrap');
-  const moreCount = document.getElementById('more-count');
-  if (hcContainer) {
-    const display = courses.slice(0, 12);
-    renderCourses(hcContainer, display);
-    if (courses.length > 12) {
-      showMoreWrap.style.display = 'block';
-      if (moreCount) moreCount.textContent = courses.length - 12;
+  tabs.forEach(tab => tab.addEventListener('click', () => {
+    tabs.forEach(item => item.classList.toggle('active', item === tab));
+    renderCourses();
+  }));
+  search?.addEventListener('input', renderCourses);
+  renderCourses();
+
+  document.querySelectorAll('.mcq-option').forEach(option => {
+    option.addEventListener('click', () => {
+      const result = option.parentElement?.querySelector('.mcq-result');
+      if (!result) return;
+      const correct = option.dataset.correct === 'true';
+      result.textContent = correct ? 'সঠিক উত্তর! আলোর বেগ প্রায় ৩ × ১০⁸ মিটার/সেকেন্ড।' : 'উত্তরটি সঠিক নয়। আবার চেষ্টা করুন।';
+      result.style.color = correct ? '#15803d' : '#b91c1c';
+    });
+  });
+
+  const paymentForm = document.getElementById('payment-form');
+  paymentForm?.addEventListener('submit', event => {
+    event.preventDefault();
+    const values = new FormData(paymentForm);
+    const details = [
+      `নাম: ${values.get('name')}`,
+      `ফোন: ${values.get('phone')}`,
+      `বিভাগ: ${values.get('group')}`,
+      `পেমেন্ট মাধ্যম: ${values.get('method')}`,
+      `লেনদেন নম্বর: ${values.get('transaction')}`
+    ].join('\n');
+    const subject = encodeURIComponent('HSC সম্পূর্ণ প্যাকেজের পেমেন্ট তথ্য');
+    const body = encodeURIComponent(`HSC COMPLETE PACKAGE — 999 টাকা\n\n${details}`);
+    const status = document.getElementById('payment-status');
+    if (status) status.textContent = 'আপনার ইমেইল অ্যাপে তথ্যসহ খসড়া খুলবে। ইমেইল পাঠালেই ভর্তি অনুরোধ যাবে।';
+    window.location.href = `mailto:support@hsplatform.edu.bd?subject=${subject}&body=${body}`;
+  });
+
+  function observeReveals() {
+    const hidden = document.querySelectorAll('.reveal:not(.visible)');
+    if (!('IntersectionObserver' in window)) {
+      hidden.forEach(element => element.classList.add('visible'));
+      return;
+    }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    hidden.forEach(element => observer.observe(element));
+  }
+  observeReveals();
+
+  const countdowns = document.querySelectorAll('[data-countdown]');
+  if (countdowns.length) {
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Asia/Dhaka', year: 'numeric', month: '2-digit', day: '2-digit'
+    }).formatToParts(new Date()).reduce((result, part) => {
+      if (part.type !== 'literal') result[part.type] = Number(part.value);
+      return result;
+    }, {});
+    const endOfDay = Date.UTC(parts.year, parts.month - 1, parts.day, 18);
+    const updateCountdown = () => {
+      const remaining = Math.max(0, Math.floor((endOfDay - Date.now()) / 1000));
+      const time = [Math.floor(remaining / 3600), Math.floor((remaining % 3600) / 60), remaining % 60]
+        .map(value => String(value).padStart(2, '0')).join(':');
+      countdowns.forEach(element => { element.textContent = time; });
+    };
+    updateCountdown();
+    window.setInterval(updateCountdown, 1000);
+  }
+
+  document.querySelectorAll('a[href*="#payment"]').forEach(link => {
+    link.addEventListener('click', event => {
+      const target = new URL(link.href, window.location.href);
+      if (target.pathname === window.location.pathname && document.querySelector('#payment')) {
+        event.preventDefault();
+        launchConfetti();
+        document.querySelector('#payment').scrollIntoView({ behavior: 'smooth' });
+        window.history.replaceState(null, '', '#payment');
+      } else {
+        launchConfetti();
+      }
+    });
+  });
+
+  function launchConfetti() {
+    const colors = ['#7C3AED', '#EC4899', '#F97316', '#FACC15'];
+    for (let index = 0; index < 28; index += 1) {
+      const piece = document.createElement('span');
+      piece.className = 'confetti-piece';
+      piece.style.left = `${Math.random() * 100}vw`;
+      piece.style.backgroundColor = colors[index % colors.length];
+      piece.style.setProperty('--drift', `${Math.random() * 150 - 75}px`);
+      document.body.appendChild(piece);
+      window.setTimeout(() => piece.remove(), 1300);
     }
   }
-
-  // Show more button
-  window.showMoreCourses = function() {
-    if (!hcContainer) return;
-    hcContainer.innerHTML = '';
-    renderCourses(hcContainer, courses);
-    if (showMoreWrap) showMoreWrap.style.display = 'none';
-  };
 });
-
-function renderCourses(container, courseList) {
-  container.className = 'courses-grid';
-  container.style.display = 'grid';
-  container.style.gridTemplateColumns = 'repeat(auto-fill, minmax(280px, 1fr))';
-  container.style.gap = '24px';
-
-  container.innerHTML = courseList.map(c => `
-    <div class="course-card fade-in">
-      <div class="course-thumb ${thumbClasses[c.group] || 'thumb-sci'}">
-        ${getSubjectEmoji(c.subject)}
-        ${c.price === 0 || c.is_free ? '<span class="badge-free">ফ্রি পাইলট</span>' : ''}
-        <span class="badge-chapters">${c.total_chapters} অধ্যায়</span>
-      </div>
-      <div class="course-body">
-        <h3>${c.subject}</h3>
-        <div class="paper">${c.paper || c.group_name || ''}</div>
-        <div class="course-meta">
-          <span>🎥 ${c.total_chapters} ভিডিও</span>
-          <span>📝 মডেল টেস্ট</span>
-        </div>
-        <div class="course-footer">
-          <span class="price">${c.price > 0 ? '৳' + formatPrice(c.price) : 'ফ্রি'}</span>
-          <a href="/courses/" class="btn btn-primary" style="padding:8px 16px;font-size:13px;">দেখুন →</a>
-        </div>
-      </div>
-    </div>
-  `).join('');
-
-  // Animate fade-ins
-  setTimeout(() => {
-    container.querySelectorAll('.fade-in').forEach((el, i) => {
-      setTimeout(() => el.classList.add('visible'), i * 60);
-    });
-  }, 50);
-}
-
-function getSubjectEmoji(subject) {
-  const s = subject.toLowerCase();
-  if (s.includes('physics') || s.includes('পদার্থ')) return '⚛️';
-  if (s.includes('chemistry') || s.includes('রসায়ন')) return '🧪';
-  if (s.includes('biology') || s.includes('জীববিজ্ঞান') || s.includes('বাংলা')) return '🧬';
-  if (s.includes('math') || s.includes('গণিত') || s.includes('Higher Math')) return '📐';
-  if (s.includes('ict') || s.includes('তথ্য')) return '💻';
-  if (s.includes('english')) return '📖';
-  if (s.includes('accounting') || s.includes(' হিসাব')) return '📒';
-  if (s.includes('business') || s.includes('ব্যবসা')) return '💼';
-  if (s.includes('economics') || s.includes('অর্থনীতি')) return '📊';
-  if (s.includes('history') || s.includes('ইতিহাস')) return '🏛️';
-  if (s.includes('geography') || s.includes('ভূগোল')) return '🌍';
-  if (s.includes('social')) return '👥';
-  if (s.includes('religion') || s.includes('ধর্ম')) return '🕌';
-  return '📘';
-}
-
-function formatPrice(n) {
-  if (!n) return '0';
-  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
