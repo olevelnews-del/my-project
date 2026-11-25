@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Check HTML validity
         run: |
           echo "Checking all HTML files..."
@@ -36,71 +36,69 @@ jobs:
               errors=$((errors+1))
             fi
           done
-          echo "✓ All $count HTML files pass basic validation"
+          echo "OK All $count HTML files pass basic validation"
           if [ $errors -gt 0 ]; then exit 1; fi
-      
+
       - name: Verify JS data loads
         run: |
           if [ -f "js/site-data.js" ]; then
             if grep -q 'const siteData' js/site-data.js; then
-              echo "✓ site-data.js has correct export"
+              echo "OK site-data.js has correct export"
             else
               echo "ERROR: site-data.js missing siteData export"
               exit 1
             fi
             size=$(wc -c < js/site-data.js)
-            echo "✓ site-data.js is ${size} bytes"
+            echo "OK site-data.js is ${size} bytes"
           else
-            echo "WARNING: site-data.js not found (optional)"
+            echo "WARN site-data.js not found"
           fi
-          
           if [ -f "js/site-data.json" ]; then
-            python3 -c "import json; d=json.load(open('js/site-data.json')); print(f'✓ JSON valid: {len(d[\"courses\"])} courses, {len(d[\"bundles\"])} bundles')"
+            python3 -c "import json; d=json.load(open('js/site-data.json')); print(f'OK JSON valid: {len(d[\"courses\"])} courses, {len(d[\"bundles\"])} bundles')"
           else
-            echo "WARNING: site-data.json not found (optional)"
+            echo "WARN site-data.json not found"
           fi
-          
+
       - name: Check page links
         run: |
-          # Collect all valid file paths
           find . -type f -not -path './.git/*' | sed 's|^\./||' > /tmp/valid_files.txt
-          
           errors=0
           for f in $(find . -name '*.html' -not -path './.git/*'); do
             hrefs=$(grep -oE 'href="[^"]*"' "$f" | sed 's/href="//;s/"$//' | grep -v '^http' | grep -v '^#' | grep -v '^javascript:' | grep -v '^//')
             for h in $hrefs; do
-              # Strip query string and fragment
               target=$(echo "$h" | sed 's/[?#].*//')
               target="${target#/}"
               [ -z "$target" ] && continue
-              
-              # Normalize: handle both /dir/ (→ dir/index.html) and /file (→ file.html)
-              normalized=""
-              if echo "$target" | grep -q '/$'; then
-                # Directory path → look for index.html inside it
-                normalized="$(dirname "$target")/index.html"
-              else
-                # Could be file or directory without trailing slash
-                normalized="$target.html"
+              found=false
+              # Case 1: direct file match
+              if grep -qF "$target" /tmp/valid_files.txt; then found=true; fi
+              # Case 2: dir/index.html (for paths like bundles/)
+              if [ "$found" = false ]; then
+                idx_path="${target%/}/index.html"
+                if grep -qF "$idx_path" /tmp/valid_files.txt; then found=true; fi
               fi
-              
-              if ! grep -qF "$normalized" /tmp/valid_files.txt; then
-                echo "BROKEN LINK in $(basename $f): $h (resolved to $normalized)"
+              # Case 3: add .html extension
+              if [ "$found" = false ]; then
+                html_path="${target}.html"
+                if grep -qF "$html_path" /tmp/valid_files.txt; then found=true; fi
+              fi
+              if [ "$found" = false ]; then
+                echo "BROKEN LINK in $(basename $f): $h"
                 errors=$((errors + 1))
               fi
             done
           done
           if [ $errors -gt 0 ]; then
-            echo "✗ Found $errors broken link(s)"
+            echo "FAIL Found $errors broken link(s)"
             exit 1
           else
-            echo "✓ No broken internal links found"
+            echo "OK No broken internal links found"
           fi
-          
+
       - name: Count deliverables
         run: |
           html=$(find . -name '*.html' -not -path './.git/*' | wc -l)
           css=$(find . -name '*.css' -not -path './.git/*' | wc -l)
           js=$(find . -name '*.js' -not -path './.git/*' | wc -l)
           total=$(find . -type f -not -path './.git/*' | wc -l)
-          echo "📊 Summary: $html HTML pages, $css CSS files, $js JS files ($total files total)"
+          echo "Summary: $html HTML pages, $css CSS files, $js JS files ($total files total)"
