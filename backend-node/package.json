@@ -1,0 +1,14 @@
+{
+  "name": "hsc-academic-hub-node",
+  "version": "1.0.0",
+  "description": "Fast Node.js API for HSC Academic Hub Dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "better-sqlite3": "^11.0.0"
+  }
+}

@@ -1,0 +1,175 @@
+/* HSC Academic Hub Unified Common CSS */
+
+:root {
+  --bg-dark: #0F172A;
+  --bg-card: #1E293B;
+  --bg-hover: #334155;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --accent-purple: #A855F7;
+  --accent-violet: #7C3AED;
+  --cta-yellow: #FACC15;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --danger: #EF4444;
+  --font-main: 'Hind Siliguri', 'Noto Serif Bengali', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Common Layout Components */
+.sidebar {
+  width: 260px;
+  background: #090D16;
+  border-right: 1px solid var(--border-subtle);
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.brand-icon { font-size: 24px; }
+.brand-text strong { display: block; font-size: 15px; color: var(--text-primary); }
+.brand-text small { font-size: 11px; color: var(--text-secondary); }
+
+.sidebar-nav {
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.nav-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin: 16px 0 8px 10px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-item:hover, .nav-item.active {
+  background: rgba(124, 58, 237, 0.15);
+  color: var(--accent-purple);
+}
+
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.whatsapp-btn {
+  display: block;
+  text-align: center;
+  background: #25D366;
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+/* Topbar Header */
+.topbar {
+  height: 60px;
+  background: #090D16;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-left: 260px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.upgrade-topbar-btn {
+  background: var(--cta-yellow);
+  color: #000;
+  border: none;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.main-content {
+  margin-left: 260px;
+  padding: 24px;
+  min-height: calc(100vh - 60px);
+}
+
+@media (max-width: 768px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.active { transform: translateX(0); }
+  .topbar { margin-left: 0; }
+  .main-content { margin-left: 0; }
+  .mobile-menu-toggle { display: block; }
+}
+
+.app-footer {
+  margin-left: 260px;
+  padding: 20px;
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+@media (max-width: 768px) {
+  .app-footer { margin-left: 0; }
+}

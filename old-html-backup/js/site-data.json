@@ -1,0 +1,2288 @@
+{
+  "courses": [
+    {
+      "id": "ACCOUNTING_1St_Paper",
+      "slug": "accounting-1st-paper",
+      "group": "business_studies",
+      "group_bengali": "ব্যবসায় শিক্ষা",
+      "subject": "ACCOUNTING",
+      "paper": "1St Paper",
+      "total_chapters": 8,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Introduction to Accounting"
+        },
+        {
+          "number": "02",
+          "name": "Journal"
+        },
+        {
+          "number": "03",
+          "name": "Ledger"
+        },
+        {
+          "number": "04",
+          "name": "Cash Book"
+        },
+        {
+          "number": "05",
+          "name": "Trial Balance"
+        },
+        {
+          "number": "06",
+          "name": "Final Accounts of Sole Proprietorship"
+        },
+        {
+          "number": "07",
+          "name": "Adjustments"
+        },
+        {
+          "number": "08",
+          "name": "Bank Reconciliation Statement"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Introduction to Accounting",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Journal",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Ledger",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Cash Book",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Trial Balance",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Final Accounts of Sole Proprietorship",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "07",
+          "chapter_name": "Adjustments",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "08",
+          "chapter_name": "Bank Reconciliation Statement",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://youtube.com/playlist?list=PLuaHF6yUT-71Xi8xva43XS8Bg5W7cUYFN",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "ACCOUNTING_2Nd_Paper",
+      "slug": "accounting-2nd-paper",
+      "group": "business_studies",
+      "group_bengali": "ব্যবসায় শিক্ষা",
+      "subject": "ACCOUNTING",
+      "paper": "2Nd Paper",
+      "total_chapters": 7,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Partnership Accounts"
+        },
+        {
+          "number": "02",
+          "name": "Admission of Partner"
+        },
+        {
+          "number": "03",
+          "name": "Retirement/Death of Partner"
+        },
+        {
+          "number": "04",
+          "name": "Dissolution of Partnership Firm"
+        },
+        {
+          "number": "05",
+          "name": "Accounting for Share Capital"
+        },
+        {
+          "number": "06",
+          "name": "Debentures"
+        },
+        {
+          "number": "07",
+          "name": "Financial Statements of Company"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Partnership Accounts",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Admission of Partner",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Retirement/Death of Partner",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Dissolution of Partnership Firm",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Accounting for Share Capital",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Debentures",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "07",
+          "chapter_name": "Financial Statements of Company",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/watch?v=uNgPk9U5U6g",
+      "teachers": [
+        "Shahriar Sir"
+      ],
+      "is_free": false
+    },
+    {
+      "id": "BANGLA_1St_Paper",
+      "slug": "bangla-1st-paper",
+      "group": "compulsory_subjects",
+      "group_bengali": "সাধারণ শিক্ষা",
+      "subject": "BANGLA",
+      "paper": "1St Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "ভাষাতত্ত্ব"
+        },
+        {
+          "number": "02",
+          "name": "বাংলা ব্যাকরণ"
+        },
+        {
+          "number": "03",
+          "name": "গদ্য সাহিত্য"
+        },
+        {
+          "number": "04",
+          "name": "পদ্য সাহিত্য"
+        },
+        {
+          "number": "05",
+          "name": "নাটক ও উপন্যাস"
+        },
+        {
+          "number": "06",
+          "name": "সাহিত্য সমালোচনা"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "ভাষাতত্ত্ব",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "বাংলা ব্যাকরণ",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "গদ্য সাহিত্য",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "পদ্য সাহিত্য",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "নাটক ও উপন্যাস",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "সাহিত্য সমালোচনা",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://youtube.com/playlist?list=PLligk3drcfzSynR8wcupYUC_j3dhGApwf",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "BANGLA_2Nd_Paper",
+      "slug": "bangla-2nd-paper",
+      "group": "compulsory_subjects",
+      "group_bengali": "সাধারণ শিক্ষা",
+      "subject": "BANGLA",
+      "paper": "2Nd Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "রচনা ও পত্রাদি"
+        },
+        {
+          "number": "02",
+          "name": "অনুবাদ"
+        },
+        {
+          "number": "03",
+          "name": "সাধারণ জ্ঞান"
+        },
+        {
+          "number": "04",
+          "name": "বাক্য সংশোধন"
+        },
+        {
+          "number": "05",
+          "name": "সমাস ও কারক"
+        },
+        {
+          "number": "06",
+          "name": "গ্ৰাম্য শব্দার্থ"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "রচনা ও পত্রাদি",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "অনুবাদ",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "সাধারণ জ্ঞান",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "বাক্য সংশোধন",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "সমাস ও কারক",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "গ্ৰাম্য শব্দার্থ",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/watch?v=C9qf3Cy70tU",
+      "teachers": [
+        "Nahid Hasan Munna"
+      ],
+      "is_free": false
+    },
+    {
+      "id": "BIOLOGY_1St_Paper",
+      "slug": "biology-1st-paper",
+      "group": "science",
+      "group_bengali": "বিজ্ঞান",
+      "subject": "BIOLOGY",
+      "paper": "1St Paper",
+      "total_chapters": 10,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Cell Biology"
+        },
+        {
+          "number": "02",
+          "name": "Plant Anatomy and Physiology"
+        },
+        {
+          "number": "03",
+          "name": "Human Physiology – Digestion"
+        },
+        {
+          "number": "04",
+          "name": "Human Physiology – Circulation"
+        },
+        {
+          "number": "05",
+          "name": "Human Physiology – Respiration"
+        },
+        {
+          "number": "06",
+          "name": "Human Physiology – Excretion"
+        },
+        {
+          "number": "07",
+          "name": "Human Physiology – Nervous System"
+        },
+        {
+          "number": "08",
+          "name": "Human Physiology – Endocrine System"
+        },
+        {
+          "number": "09",
+          "name": "Human Reproduction"
+        },
+        {
+          "number": "10",
+          "name": "Genetics"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Cell Biology",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Plant Anatomy and Physiology",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Human Physiology – Digestion",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Human Physiology – Circulation",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Human Physiology – Respiration",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Human Physiology – Excretion",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "07",
+          "chapter_name": "Human Physiology – Nervous System",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "08",
+          "chapter_name": "Human Physiology – Endocrine System",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "09",
+          "chapter_name": "Human Reproduction",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "10",
+          "chapter_name": "Genetics",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/playlist?list=PLuaHF6yUT-72UDF5Oh88no5vsW4tCxj-y",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "BIOLOGY_2Nd_Paper",
+      "slug": "biology-2nd-paper",
+      "group": "science",
+      "group_bengali": "বিজ্ঞান",
+      "subject": "BIOLOGY",
+      "paper": "2Nd Paper",
+      "total_chapters": 10,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Plant Ecology"
+        },
+        {
+          "number": "02",
+          "name": "Animal Ecology"
+        },
+        {
+          "number": "03",
+          "name": "Population Ecology"
+        },
+        {
+          "number": "04",
+          "name": "Biodiversity and Conservation"
+        },
+        {
+          "number": "05",
+          "name": "Biotechnology"
+        },
+        {
+          "number": "06",
+          "name": "Human Health and Disease"
+        },
+        {
+          "number": "07",
+          "name": "Evolution"
+        },
+        {
+          "number": "08",
+          "name": "Plant Morphology and Taxonomy"
+        },
+        {
+          "number": "09",
+          "name": "Zoology – Invertebrates"
+        },
+        {
+          "number": "10",
+          "name": "Zoology – Vertebrates"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Plant Ecology",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Animal Ecology",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Population Ecology",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Biodiversity and Conservation",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Biotechnology",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Human Health and Disease",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "07",
+          "chapter_name": "Evolution",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "08",
+          "chapter_name": "Plant Morphology and Taxonomy",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "09",
+          "chapter_name": "Zoology – Invertebrates",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "10",
+          "chapter_name": "Zoology – Vertebrates",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/watch?v=IaY8ObXDuIQ",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "BUSINESS_ORGANIZATION_MANAGEMENT_1St_Paper",
+      "slug": "business-organization-management-1st-paper",
+      "group": "business_studies",
+      "group_bengali": "ব্যবসায় শিক্ষা",
+      "subject": "BUSINESS_ORGANIZATION_MANAGEMENT",
+      "paper": "1St Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Nature and Significance of Business"
+        },
+        {
+          "number": "02",
+          "name": "Forms of Business Organization"
+        },
+        {
+          "number": "03",
+          "name": "Commercial Utilities"
+        },
+        {
+          "number": "04",
+          "name": "Foreign Trade"
+        },
+        {
+          "number": "05",
+          "name": "Advertising"
+        },
+        {
+          "number": "06",
+          "name": "Warehousing"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Nature and Significance of Business",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Forms of Business Organization",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Commercial Utilities",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Foreign Trade",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Advertising",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Warehousing",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/watch?v=da_PdEJugvg",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "BUSINESS_ORGANIZATION_MANAGEMENT_2Nd_Paper",
+      "slug": "business-organization-management-2nd-paper",
+      "group": "business_studies",
+      "group_bengali": "ব্যবসায় শিক্ষা",
+      "subject": "BUSINESS_ORGANIZATION_MANAGEMENT",
+      "paper": "2Nd Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Management Principles"
+        },
+        {
+          "number": "02",
+          "name": "Planning"
+        },
+        {
+          "number": "03",
+          "name": "Organizing"
+        },
+        {
+          "number": "04",
+          "name": "Staffing"
+        },
+        {
+          "number": "05",
+          "name": "Directing"
+        },
+        {
+          "number": "06",
+          "name": "Controlling"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Management Principles",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Planning",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Organizing",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Staffing",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Directing",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Controlling",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/watch?v=ftRm_DRcXTY",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "CHEMISTRY_1St_Paper",
+      "slug": "chemistry-1st-paper",
+      "group": "science",
+      "group_bengali": "বিজ্ঞান",
+      "subject": "CHEMISTRY",
+      "paper": "1St Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Safe Use of Laboratory Chemicals"
+        },
+        {
+          "number": "02",
+          "name": "Qualitative Chemistry"
+        },
+        {
+          "number": "03",
+          "name": "Periodic Properties of Elements"
+        },
+        {
+          "number": "04",
+          "name": "Chemical Bonding"
+        },
+        {
+          "number": "05",
+          "name": "Chemical Change"
+        },
+        {
+          "number": "06",
+          "name": "Vocational Chemistry"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Safe Use of Laboratory Chemicals",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Qualitative Chemistry",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Periodic Properties of Elements",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Chemical Bonding",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Chemical Change",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Vocational Chemistry",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/playlist?list=PLuaHF6yUT-737gI311jJlJRy0_JoMxV3X",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "CHEMISTRY_2Nd_Paper",
+      "slug": "chemistry-2nd-paper",
+      "group": "science",
+      "group_bengali": "বিজ্ঞান",
+      "subject": "CHEMISTRY",
+      "paper": "2Nd Paper",
+      "total_chapters": 5,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Environmental Chemistry"
+        },
+        {
+          "number": "02",
+          "name": "Organic Chemistry"
+        },
+        {
+          "number": "03",
+          "name": "Quantitative Chemistry"
+        },
+        {
+          "number": "04",
+          "name": "Electrochemistry"
+        },
+        {
+          "number": "05",
+          "name": "Economic Chemistry"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Environmental Chemistry",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Organic Chemistry",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Quantitative Chemistry",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Electrochemistry",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Economic Chemistry",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/watch?v=E8DG5EzA7wU",
+      "teachers": [
+        "10MS Instructor Team"
+      ],
+      "is_free": false
+    },
+    {
+      "id": "CIVICS_1St_Paper",
+      "slug": "civics-1st-paper",
+      "group": "humanities",
+      "group_bengali": "মানবিক",
+      "subject": "CIVICS",
+      "paper": "1St Paper",
+      "total_chapters": 7,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Citizenship and Civic Values"
+        },
+        {
+          "number": "02",
+          "name": "Rights and Duties"
+        },
+        {
+          "number": "03",
+          "name": "Democracy and Governance"
+        },
+        {
+          "number": "04",
+          "name": "Constitution of Bangladesh"
+        },
+        {
+          "number": "05",
+          "name": "Parliament"
+        },
+        {
+          "number": "06",
+          "name": "Executive"
+        },
+        {
+          "number": "07",
+          "name": "Judiciary"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Citizenship and Civic Values",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Rights and Duties",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Democracy and Governance",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Constitution of Bangladesh",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Parliament",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Executive",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "07",
+          "chapter_name": "Judiciary",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://youtube.com/watch?v=UHPUeGiMjmE",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "CIVICS_2Nd_Paper",
+      "slug": "civics-2nd-paper",
+      "group": "humanities",
+      "group_bengali": "মানবিক",
+      "subject": "CIVICS",
+      "paper": "2Nd Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Local Government"
+        },
+        {
+          "number": "02",
+          "name": "Law and Order"
+        },
+        {
+          "number": "03",
+          "name": "Human Rights"
+        },
+        {
+          "number": "04",
+          "name": "Peace and Conflict Resolution"
+        },
+        {
+          "number": "05",
+          "name": "International Organizations"
+        },
+        {
+          "number": "06",
+          "name": "Bangladesh in International Relations"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Local Government",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Law and Order",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Human Rights",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Peace and Conflict Resolution",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "International Organizations",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Bangladesh in International Relations",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/watch?v=zz36WS4MPQw",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "ECONOMICS_1St_Paper",
+      "slug": "economics-1st-paper",
+      "group": "humanities",
+      "group_bengali": "মানবিক",
+      "subject": "ECONOMICS",
+      "paper": "1St Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Introduction to Economics"
+        },
+        {
+          "number": "02",
+          "name": "Consumer Behavior"
+        },
+        {
+          "number": "03",
+          "name": "Production and Cost"
+        },
+        {
+          "number": "04",
+          "name": "Market Structures"
+        },
+        {
+          "number": "05",
+          "name": "National Income"
+        },
+        {
+          "number": "06",
+          "name": "Money and Banking"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Introduction to Economics",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Consumer Behavior",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Production and Cost",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Market Structures",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "National Income",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Money and Banking",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/playlist?list=PLnmPOrX1kZBimtR4akrR7J9q2FcyJvx1X",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "ECONOMICS_2Nd_Paper",
+      "slug": "economics-2nd-paper",
+      "group": "humanities",
+      "group_bengali": "মানবিক",
+      "subject": "ECONOMICS",
+      "paper": "2Nd Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Public Finance"
+        },
+        {
+          "number": "02",
+          "name": "International Trade"
+        },
+        {
+          "number": "03",
+          "name": "Economic Development"
+        },
+        {
+          "number": "04",
+          "name": "Economic Planning in Bangladesh"
+        },
+        {
+          "number": "05",
+          "name": "Population"
+        },
+        {
+          "number": "06",
+          "name": "Environment and Development"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Public Finance",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "International Trade",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Economic Development",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Economic Planning in Bangladesh",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Population",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Environment and Development",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/watch?v=at3LX-dpQSU",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "ENGLISH_1St_Paper",
+      "slug": "english-1st-paper",
+      "group": "compulsory_subjects",
+      "group_bengali": "সাধারণ শিক্ষা",
+      "subject": "ENGLISH",
+      "paper": "1St Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Grammar – Tenses"
+        },
+        {
+          "number": "02",
+          "name": "Grammar – Voice"
+        },
+        {
+          "number": "03",
+          "name": "Grammar – Mood"
+        },
+        {
+          "number": "04",
+          "name": "Reading Comprehension"
+        },
+        {
+          "number": "05",
+          "name": "Summary Writing"
+        },
+        {
+          "number": "06",
+          "name": "Paragraph Writing"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Grammar – Tenses",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Grammar – Voice",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Grammar – Mood",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Reading Comprehension",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Summary Writing",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Paragraph Writing",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://youtube.com/watch?v=jjK_Psj0CA0",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "ENGLISH_2Nd_Paper",
+      "slug": "english-2nd-paper",
+      "group": "compulsory_subjects",
+      "group_bengali": "সাধারণ শিক্ষা",
+      "subject": "ENGLISH",
+      "paper": "2Nd Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Literature – Prose"
+        },
+        {
+          "number": "02",
+          "name": "Literature – Poetry"
+        },
+        {
+          "number": "03",
+          "name": "Literature – Drama"
+        },
+        {
+          "number": "04",
+          "name": "Translation"
+        },
+        {
+          "number": "05",
+          "name": "Letter Writing"
+        },
+        {
+          "number": "06",
+          "name": "Essay Writing"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Literature – Prose",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Literature – Poetry",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Literature – Drama",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Translation",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Letter Writing",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Essay Writing",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://youtube.com/watch?v=9hIwtSuogkU",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "FINANCE_BANKING_INSURANCE_1St_Paper",
+      "slug": "finance-banking-insurance-1st-paper",
+      "group": "business_studies",
+      "group_bengali": "ব্যবসায় শিক্ষা",
+      "subject": "FINANCE_BANKING_INSURANCE",
+      "paper": "1St Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Introduction to Finance"
+        },
+        {
+          "number": "02",
+          "name": "Money and Banking"
+        },
+        {
+          "number": "03",
+          "name": "Foreign Exchange"
+        },
+        {
+          "number": "04",
+          "name": "Insurance"
+        },
+        {
+          "number": "05",
+          "name": "Budget"
+        },
+        {
+          "number": "06",
+          "name": "Taxation"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Introduction to Finance",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Money and Banking",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Foreign Exchange",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Insurance",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Budget",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Taxation",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://youtube.com/watch?v=AM_PfqHEM1o",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "FINANCE_BANKING_INSURANCE_2Nd_Paper",
+      "slug": "finance-banking-insurance-2nd-paper",
+      "group": "business_studies",
+      "group_bengali": "ব্যবসায় শিক্ষা",
+      "subject": "FINANCE_BANKING_INSURANCE",
+      "paper": "2Nd Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "International Trade Financing"
+        },
+        {
+          "number": "02",
+          "name": "Islamic Banking"
+        },
+        {
+          "number": "03",
+          "name": "Microfinance"
+        },
+        {
+          "number": "04",
+          "name": "Financial Management"
+        },
+        {
+          "number": "05",
+          "name": "Investment Management"
+        },
+        {
+          "number": "06",
+          "name": "Risk Management"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "International Trade Financing",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Islamic Banking",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Microfinance",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Financial Management",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Investment Management",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Risk Management",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/watch?v=AM_PfqHEM1o",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "GEOGRAPHY_1St_Paper",
+      "slug": "geography-1st-paper",
+      "group": "humanities",
+      "group_bengali": "মানবিক",
+      "subject": "GEOGRAPHY",
+      "paper": "1St Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Introduction to Geography"
+        },
+        {
+          "number": "02",
+          "name": "Geomorphology – Interior of Earth"
+        },
+        {
+          "number": "03",
+          "name": "Mineral Resources"
+        },
+        {
+          "number": "04",
+          "name": "Climate and Weather"
+        },
+        {
+          "number": "05",
+          "name": "Soil Geography"
+        },
+        {
+          "number": "06",
+          "name": "Vegetation and Natural Regions"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Introduction to Geography",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Geomorphology – Interior of Earth",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Mineral Resources",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Climate and Weather",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Soil Geography",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Vegetation and Natural Regions",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://youtube.com/watch?v=31w02FaVjcQ",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "GEOGRAPHY_2Nd_Paper",
+      "slug": "geography-2nd-paper",
+      "group": "humanities",
+      "group_bengali": "মানবিক",
+      "subject": "GEOGRAPHY",
+      "paper": "2Nd Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Population Geography"
+        },
+        {
+          "number": "02",
+          "name": "Urban Geography"
+        },
+        {
+          "number": "03",
+          "name": "Agriculture and Land Use"
+        },
+        {
+          "number": "04",
+          "name": "Industry and Commerce"
+        },
+        {
+          "number": "05",
+          "name": "Transport and Communication"
+        },
+        {
+          "number": "06",
+          "name": "Environmental Geography of Bangladesh"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Population Geography",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Urban Geography",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Agriculture and Land Use",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Industry and Commerce",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Transport and Communication",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Environmental Geography of Bangladesh",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/watch?v=MW8uEnJLH48",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "HIGHER_MATHEMATICS_1St_Paper",
+      "slug": "higher-mathematics-1st-paper",
+      "group": "science",
+      "group_bengali": "বিজ্ঞান",
+      "subject": "HIGHER_MATHEMATICS",
+      "paper": "1St Paper",
+      "total_chapters": 9,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Matrices and Determinants"
+        },
+        {
+          "number": "02",
+          "name": "Vectors"
+        },
+        {
+          "number": "03",
+          "name": "Straight Lines"
+        },
+        {
+          "number": "04",
+          "name": "Circles"
+        },
+        {
+          "number": "05",
+          "name": "Permutations and Combinations"
+        },
+        {
+          "number": "06",
+          "name": "Trigonometric Ratios"
+        },
+        {
+          "number": "07",
+          "name": "Functions and Graphs"
+        },
+        {
+          "number": "08",
+          "name": "Differentiation"
+        },
+        {
+          "number": "09",
+          "name": "Integration"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Matrices and Determinants",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Vectors",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Straight Lines",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Circles",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Permutations and Combinations",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Trigonometric Ratios",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "07",
+          "chapter_name": "Functions and Graphs",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "08",
+          "chapter_name": "Differentiation",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "09",
+          "chapter_name": "Integration",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://youtube.com/watch?v=Lf7L_EcxLWk",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "HIGHER_MATHEMATICS_2Nd_Paper",
+      "slug": "higher-mathematics-2nd-paper",
+      "group": "science",
+      "group_bengali": "বিজ্ঞান",
+      "subject": "HIGHER_MATHEMATICS",
+      "paper": "2Nd Paper",
+      "total_chapters": 9,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Real Numbers and Inequalities"
+        },
+        {
+          "number": "02",
+          "name": "Complex Numbers"
+        },
+        {
+          "number": "03",
+          "name": "Polynomials and Equations"
+        },
+        {
+          "number": "04",
+          "name": "Binomial Expansion"
+        },
+        {
+          "number": "05",
+          "name": "Conic Sections"
+        },
+        {
+          "number": "06",
+          "name": "Inverse Trigonometric Functions"
+        },
+        {
+          "number": "07",
+          "name": "Statics"
+        },
+        {
+          "number": "08",
+          "name": "Dynamics"
+        },
+        {
+          "number": "09",
+          "name": "Probability"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Real Numbers and Inequalities",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Complex Numbers",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Polynomials and Equations",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Binomial Expansion",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Conic Sections",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Inverse Trigonometric Functions",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "07",
+          "chapter_name": "Statics",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "08",
+          "chapter_name": "Dynamics",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "09",
+          "chapter_name": "Probability",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/playlist?list=PLuaHF6yUT-73iV32YGtES1843FjSUQSfp",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "HISTORY_1St_Paper",
+      "slug": "history-1st-paper",
+      "group": "humanities",
+      "group_bengali": "মানবিক",
+      "subject": "HISTORY",
+      "paper": "1St Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Ancient History – Mesopotamia, Egypt, Indus Valley"
+        },
+        {
+          "number": "02",
+          "name": "Ancient Greece and Rome"
+        },
+        {
+          "number": "03",
+          "name": "Medieval History – Islamic Civilization"
+        },
+        {
+          "number": "04",
+          "name": "Modern History – European Revolutions"
+        },
+        {
+          "number": "05",
+          "name": "History of Bengal – Pre-Islamic Period"
+        },
+        {
+          "number": "06",
+          "name": "History of Bengal – Islamic Period"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Ancient History – Mesopotamia, Egypt, Indus Valley",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Ancient Greece and Rome",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Medieval History – Islamic Civilization",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Modern History – European Revolutions",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "History of Bengal – Pre-Islamic Period",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "History of Bengal – Islamic Period",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/playlist?list=PLligk3drcfzSnytGZT-LQ6Y97UoIlrxao",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "HISTORY_2Nd_Paper",
+      "slug": "history-2nd-paper",
+      "group": "humanities",
+      "group_bengali": "মানবিক",
+      "subject": "HISTORY",
+      "paper": "2Nd Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Bangladesh Movement – Roots and Early Phase"
+        },
+        {
+          "number": "02",
+          "name": "Language Movement 1952"
+        },
+        {
+          "number": "03",
+          "name": "Movement for Autonomy 1966"
+        },
+        {
+          "number": "04",
+          "name": "Liberation War 1971"
+        },
+        {
+          "number": "05",
+          "name": "Post-Independence Bangladesh"
+        },
+        {
+          "number": "06",
+          "name": "World History – Cold War Era"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Bangladesh Movement – Roots and Early Phase",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Language Movement 1952",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Movement for Autonomy 1966",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Liberation War 1971",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Post-Independence Bangladesh",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "World History – Cold War Era",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/watch?v=dd2pMendBWI",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "ICT_1St_Paper",
+      "slug": "ict-1st-paper",
+      "group": "compulsory_subjects",
+      "group_bengali": "সাধারণ শিক্ষা",
+      "subject": "ICT",
+      "paper": "1St Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Introduction to ICT"
+        },
+        {
+          "number": "02",
+          "name": "Computer Hardware"
+        },
+        {
+          "number": "03",
+          "name": "Operating Systems"
+        },
+        {
+          "number": "04",
+          "name": "Number System and Boolean Algebra"
+        },
+        {
+          "number": "05",
+          "name": "Programming Fundamentals"
+        },
+        {
+          "number": "06",
+          "name": "Internet and Web Technologies"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Introduction to ICT",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Computer Hardware",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Operating Systems",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Number System and Boolean Algebra",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Programming Fundamentals",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Internet and Web Technologies",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/playlist?list=PLgH5QX0i9K3oH5_sk-k-XN7Wo2tH-TYAr",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "LOGIC_1St_Paper",
+      "slug": "logic-1st-paper",
+      "group": "humanities",
+      "group_bengali": "মানবিক",
+      "subject": "LOGIC",
+      "paper": "1St Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Introduction to Logic"
+        },
+        {
+          "number": "02",
+          "name": "Terms and Definitions"
+        },
+        {
+          "number": "03",
+          "name": "Classification of Propositions"
+        },
+        {
+          "number": "04",
+          "name": "Immediate Inference"
+        },
+        {
+          "number": "05",
+          "name": "Categorical Syllogism"
+        },
+        {
+          "number": "06",
+          "name": "Rules of Syllogism"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Introduction to Logic",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Terms and Definitions",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Classification of Propositions",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Immediate Inference",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Categorical Syllogism",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Rules of Syllogism",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/playlist?list=PLuaHF6yUT-71tUHL3WJXa78rCRPwuH5zu",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "LOGIC_2Nd_Paper",
+      "slug": "logic-2nd-paper",
+      "group": "humanities",
+      "group_bengali": "মানবিক",
+      "subject": "LOGIC",
+      "paper": "2Nd Paper",
+      "total_chapters": 6,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Fallacies"
+        },
+        {
+          "number": "02",
+          "name": "Inductive Reasoning"
+        },
+        {
+          "number": "03",
+          "name": "Cause and Effect"
+        },
+        {
+          "number": "04",
+          "name": "Method of Inquiry – Mill's Methods"
+        },
+        {
+          "number": "05",
+          "name": "Scientific Method"
+        },
+        {
+          "number": "06",
+          "name": "Applied Logic"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Fallacies",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Inductive Reasoning",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Cause and Effect",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Method of Inquiry – Mill's Methods",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Scientific Method",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Applied Logic",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://youtube.com/watch?v=lEzcbvnD8vQ",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "PHYSICS_1St_Paper",
+      "slug": "physics-1st-paper",
+      "group": "science",
+      "group_bengali": "বিজ্ঞান",
+      "subject": "PHYSICS",
+      "paper": "1St Paper",
+      "total_chapters": 10,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Physical World and Measurement"
+        },
+        {
+          "number": "02",
+          "name": "Vectors"
+        },
+        {
+          "number": "03",
+          "name": "Dynamics"
+        },
+        {
+          "number": "04",
+          "name": "Turn of Force and Equilibrium"
+        },
+        {
+          "number": "05",
+          "name": "Gravitation"
+        },
+        {
+          "number": "06",
+          "name": "Simple Harmonic Motion"
+        },
+        {
+          "number": "07",
+          "name": "Mechanical Properties of Matter"
+        },
+        {
+          "number": "08",
+          "name": "Properties of Waves"
+        },
+        {
+          "number": "09",
+          "name": "Kinetic Theory of Gases"
+        },
+        {
+          "number": "10",
+          "name": "Thermodynamics"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Physical World and Measurement",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Vectors",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Dynamics",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Turn of Force and Equilibrium",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Gravitation",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Simple Harmonic Motion",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "07",
+          "chapter_name": "Mechanical Properties of Matter",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "08",
+          "chapter_name": "Properties of Waves",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "09",
+          "chapter_name": "Kinetic Theory of Gases",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "10",
+          "chapter_name": "Thermodynamics",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://youtube.com/watch?v=JZXaKO9ETGw",
+      "teachers": [],
+      "is_free": false
+    },
+    {
+      "id": "PHYSICS_2Nd_Paper",
+      "slug": "physics-2nd-paper",
+      "group": "science",
+      "group_bengali": "বিজ্ঞান",
+      "subject": "PHYSICS",
+      "paper": "2Nd Paper",
+      "total_chapters": 11,
+      "chapters": [
+        {
+          "number": "01",
+          "name": "Temperature and Heat"
+        },
+        {
+          "number": "02",
+          "name": "Electrostatics"
+        },
+        {
+          "number": "03",
+          "name": "Current Electricity"
+        },
+        {
+          "number": "04",
+          "name": "Magnetic Effect of Current"
+        },
+        {
+          "number": "05",
+          "name": "Electromagnetic Induction"
+        },
+        {
+          "number": "06",
+          "name": "Alternating Current"
+        },
+        {
+          "number": "07",
+          "name": "Geometrical Optics"
+        },
+        {
+          "number": "08",
+          "name": "Physical Optics"
+        },
+        {
+          "number": "09",
+          "name": "Atomic Models and Nuclear Physics"
+        },
+        {
+          "number": "10",
+          "name": "Semiconductor and Electronics"
+        },
+        {
+          "number": "11",
+          "name": "Astronomy"
+        }
+      ],
+      "modules": [
+        {
+          "chapter_number": "01",
+          "chapter_name": "Temperature and Heat",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "02",
+          "chapter_name": "Electrostatics",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "03",
+          "chapter_name": "Current Electricity",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "04",
+          "chapter_name": "Magnetic Effect of Current",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "05",
+          "chapter_name": "Electromagnetic Induction",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "06",
+          "chapter_name": "Alternating Current",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "07",
+          "chapter_name": "Geometrical Optics",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "08",
+          "chapter_name": "Physical Optics",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "09",
+          "chapter_name": "Atomic Models and Nuclear Physics",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "10",
+          "chapter_name": "Semiconductor and Electronics",
+          "is_preview": false
+        },
+        {
+          "chapter_number": "11",
+          "chapter_name": "Astronomy",
+          "is_preview": false
+        }
+      ],
+      "primary_url": "https://www.youtube.com/playlist?list=PLuaHF6yUT-73-b4530pajLXtDARnHsAjo",
+      "teachers": [],
+      "is_free": false
+    }
+  ],
+  "bundles": [
+    {
+      "slug": "full-platform",
+      "name": "Personal Tutor Membership",
+      "description": "৳999 একবার পেমেন্টে একজন শিক্ষার্থীর জন্য সব বিষয় ও সব গ্রুপ, HSC পরীক্ষা পর্যন্ত।",
+      "courses_count": 29,
+      "total_chapters": 200,
+      "group": "",
+      "is_featured": true,
+      "price": 999,
+      "price_type": "one-time",
+      "price_for": "one student - all access"
+    }
+  ]
+}

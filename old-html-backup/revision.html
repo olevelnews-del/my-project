@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>রিভিশন — HSC Academic Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="/config.js"></script>
+  <link rel="stylesheet" href="/css/dashboard.css" />
+  <style>
+    .rev-hero { padding: 28px 28px 0; }
+    .rev-title { font-family: 'Noto Serif Bengali', serif; font-size: 22px; font-weight: 700; color: var(--text-primary); }
+    .rev-desc { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+    .rev-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin: 16px 28px; }
+    .rev-card-title { font-size: 13px; font-weight: 700; color: var(--text-secondary); margin-bottom: 12px; }
+    .rev-stats { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+    .rev-stat { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-muted); }
+    .rev-stat strong { color: var(--cta-yellow); font-size: 16px; }
+    .rev-filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+    .filter-chip { background: var(--bg-base); border: 1px solid var(--border-color); color: var(--text-muted); font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 999px; cursor: pointer; transition: all .15s; }
+    .filter-chip:hover, .filter-chip.active { border-color: var(--accent-violet); color: var(--accent-purple); background: rgba(124,58,237,.1); }
+    .rev-empty { background: var(--bg-base); border: 1px dashed var(--border-color); border-radius: 10px; padding: 32px; text-align: center; color: var(--text-muted); font-size: 12px; }
+    .rev-empty-icon { font-size: 32px; margin-bottom: 8px; }
+    .rev-bookmark-list { display: flex; flex-direction: column; gap: 8px; }
+    .bookmark-item { display: flex; align-items: flex-start; gap: 12px; background: var(--bg-base); border: 1px solid var(--border-color); border-radius: 10px; padding: 12px 14px; }
+    .bm-letter { width: 28px; height: 28px; background: var(--accent-violet); color: white; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+    .bm-body { flex: 1; }
+    .bm-q { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+    .bm-meta { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+    .bm-actions { display: flex; flex-direction: column; gap: 6px; }
+    .bm-btn { font-size: 10px; padding: 4px 10px; border-radius: 6px; font-weight: 600; }
+    .bm-btn-test { background: var(--accent-violet); color: white; }
+    .bm-btn-remove { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); }
+    .bm-btn-remove:hover { border-color: var(--danger); color: var(--danger); }
+    .rev-footer-bar { margin: 16px 28px 32px; display: flex; gap: 10px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <a href="/" class="brand-link">
+      <span class="brand-icon">🎓</span>
+      <div class="brand-text"><strong>HSC Academic Hub</strong><small>hsctutorbd.com</small></div>
+    </a>
+    <button class="mobile-close-btn" id="sidebarClose">×</button>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="/" class="nav-item"><span class="nav-icon">🏠</span><span>হোম</span></a>
+    <div class="nav-section-title">COURSES</div>
+    <a href="/courses/all/index.html" class="nav-item"><span class="nav-icon">📚</span><span>কোর্স ব্রাউজ করো</span></a>
+    <div class="nav-section-title">PRACTICE</div>
+    <a href="/test.html" class="nav-item"><span class="nav-icon">📝</span><span>টেস্ট দাও (MCQ)</span></a>
+    <a href="/scorecard.html" class="nav-item"><span class="nav-icon">📊</span><span>স্কোর কার্ড</span></a>
+    <a href="/revision.html" class="nav-item active"><span class="nav-icon">🔄</span><span>রিভিশন</span></a>
+    <div class="nav-section-title">OTHER</div>
+    <a href="/pricing.html" class="nav-item"><span class="nav-icon">💳</span><span>প্ল্যান ও মূল্য</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="https://wa.me/8801616200174?text=Revision" target="_blank" rel="noopener" class="whatsapp-btn">💬 WhatsApp</a>
+  </div>
+</aside>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="mobile-menu-toggle" id="menuToggle" aria-label="মেনু">☰</button>
+    <div class="search-box"><span class="search-icon">🔍</span><input type="text" placeholder="খুঁজো..." class="search-input" /></div>
+  </div>
+  <div class="topbar-right">
+    <button class="upgrade-topbar-btn" onclick="location.href='/pricing.html'">⬆ আপগ্রেড</button>
+    <div class="hsc-countdown-badge">HSC 2027 — <span id="hsc-countdown">...</span></div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main-content">
+
+  <section class="rev-hero">
+    <h1 class="rev-title">তোমার বুকমার্ক করা প্রশ্ন রিভিশন করো</h1>
+    <p class="rev-desc">যেসব প্রশ্নে বুকমার্ক করেছে তার রিভিশন টেস্ট দাও — ক্যাটাগরি ভিত্তিতে গ্রুপ করে customized test তৈরি করো।</p>
+  </section>
+
+  <!-- STATS -->
+  <div class="rev-card">
+    <div class="rev-card-title">রিভিশন স্ট্যাটাস</div>
+    <div class="rev-stats">
+      <div class="rev-stat">মোট বুকমার্ক <strong id="revTotal">০</strong></div>
+      <div class="rev-stat">ফিল্টার <span id="revFilterLabel">সব ক্যাটাগরি</span></div>
+      <div class="rev-stat">রিভিশনের জন্য নির্বাচিত <strong id="revSelected">০</strong>টি প্রশ্ন</div>
+    </div>
+    <div class="rev-filter">
+      <button class="filter-chip active" data-filter="all">সব</button>
+      <button class="filter-chip" data-filter="physics">পদার্থবিজ্ঞান</button>
+      <button class="filter-chip" data-filter="chemistry">রসায়ন</button>
+      <button class="filter-chip" data-filter="biology">জীববিজ্ঞান</button>
+      <button class="filter-chip" data-filter="math">গণিত</button>
+      <button class="filter-chip" data-filter="bangla">বাংলາ</button>
+      <button class="filter-chip" data-filter="english">ইংরেজি</button>
+    </div>
+    <div id="bookmarkList"></div>
+  </div>
+
+  <!-- WRONG ANSWER QUEUE (FACILITY 2) -->
+  <div class="rev-card" id="wrongQueueSection">
+    <div class="rev-card-title">🔄 ভুল উত্ধর - আবার চেষ্টা করো</div>
+    <div class="rev-stats">
+      <div class="rev-stat">বাকি রিভিশন <strong id="queuePending">০</strong></div>
+      <div class="rev-stat">পারফেক্ট <strong id="queueMastered">০</strong></div>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:14px;">যেসব প্ৰশ্নে ভুল করছো, তারা এখান আসবে। পাখরা দিলে Mastered হয়।</p>
+    <div id="wrongQueueList"></div>
+    <div id="queue-empty" class="rev-empty" style="display:none;">কোনো ভুল উত্তর নাই — টেস্ট দিয়া ভুল প্রশ্নগুলো এখানে দেখুন</div>
+    <button class="cta-btn cta-outline" style="margin-top:12px;font-size:11px;padding:6px 14px;" onclick="clearWrongDemo()">Demo - Clear</button>
+  </div>
+
+  <!-- EMPTY STATE -->
+  <div class="rev-card" id="revEmptyCard" style="display:none">
+    <div class="rev-empty">
+      <div class="rev-empty-icon">🔖</div>
+      <p>এখনো কোনো বুকমার্ক করা প্রশ্ন নেই — টেস্ট রিভিউতে যেসব প্রশ্নে ভুল হবে বুকমার্ক করে রিভিশনে ফিরে আসবে।</p>
+      <a href="/test.html" class="cta-btn cta-violet" style="margin-top:14px;display:inline-flex">একটি টেস্ট দাও →</a>
+    </div>
+  </div>
+
+  <!-- ACTION BAR -->
+  <div class="rev-footer-bar" id="revActions" style="display:none">
+    <a href="#" class="cta-btn cta-violet" id="startRevBtn">রিভিশন টেস্ট শুরু করো</a>
+    <button class="cta-btn cta-white" id="clearAllBtn">সব মুছে ফেলো</button>
+    <a href="/test.html" class="cta-btn cta-outline">সাধারণ টেস্ট দাও</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="dashboard-footer" style="margin:16px 28px 32px">
+    <div class="footer-bottom">
+      <span>© 2025 HSC Academic Hub — hsctutorbd.com</span>
+      <span>৳999 একবার · একজন শিক্ষার্থীর জন্য সবকিছু</span>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'hscBookmarks';
+  const SUBJECT_MAP = { physics:'পদার্থবিজ্ঞান', chemistry:'রসায়ন', biology:'জীববিজ্ঞান', math:'গণিত', bangla:'বাংলা', english:'ইংরেজি' };
+  let currentFilter = 'all';
+
+  function toBengaliNum(n) {
+    const d = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+    return String(n).split('').map(c => d[parseInt(c)]||c).join('');
+  }
+
+  function getBookmarks() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch { return []; }
+  }
+
+  function render() {
+    let bookmarks = getBookmarks();
+    const totalEl = document.getElementById('revTotal');
+    const selectedEl = document.getElementById('revSelected');
+    const listEl = document.getElementById('bookmarkList');
+    const emptyCard = document.getElementById('revEmptyCard');
+    const actionsBar = document.getElementById('revActions');
+
+    if (currentFilter !== 'all') {
+      bookmarks = bookmarks.filter(b => b.subject === currentFilter || (SUBJECT_MAP[currentFilter] && b.subject === SUBJECT_MAP[currentFilter]));
+    }
+    document.getElementById('revFilterLabel').textContent = currentFilter === 'all' ? 'সব ক্যাটাগরি' : (SUBJECT_MAP[currentFilter] || currentFilter);
+
+    totalEl.textContent = toBengaliNum(getBookmarks().length);
+    selectedEl.textContent = toBengaliNum(bookmarks.length);
+
+    if (bookmarks.length === 0) {
+      listEl.innerHTML = '';
+      emptyCard.style.display = 'block';
+      actionsBar.style.display = 'none';
+      return;
+    }
+
+    emptyCard.style.display = 'none';
+    actionsBar.style.display = 'flex';
+
+    listEl.innerHTML = bookmarks.map((bm, idx) => `
+      <div class="bookmark-item">
+        <div class="bm-letter">${bm.question?.charAt(0) || '?'}</div>
+        <div class="bm-body">
+          <div class="bm-q">${escapeHtml(bm.question || '')}</div>
+          <div class="bm-meta">${escapeHtml(bm.subject || '')} · অধ্যায় ${escapeHtml(bm.chapter || '?')} · ${formatDate(bm.bookmarkedAt)}</div>
+        </div>
+        <div class="bm-actions">
+          <button class="bm-btn bm-btn-test" onclick="startBookmarkTest(${idx})">টেস্ট দাও</button>
+          <button class="bm-btn bm-btn-remove" onclick="removeBookmark(${idx})">মুছুন</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function escapeHtml(s) {
+    return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function formatDate(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    const months = ['জানু','ফেব','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগ','সেপ্ট','অক্টো','নভে','ডিসে'];
+    return `${toBengaliNum(d.getDate())} ${months[d.getMonth()]} ${toBengaliNum(d.getFullYear())}`;
+  }
+
+  window.startBookmarkTest = function(idx) {
+    const bookmarks = getBookmarks();
+    const bm = bookmarks[idx];
+    if (!bm) return;
+    const url = `/test.html?subject=${encodeURIComponent(bm.subject)}&bookmarks=true`;
+    window.location.href = url;
+  };
+
+  window.removeBookmark = function(idx) {
+    const bookmarks = getBookmarks();
+    bookmarks.splice(idx, 1);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
+    render();
+  };
+
+  // Filter chips
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      currentFilter = chip.dataset.filter;
+      render();
+    });
+  });
+
+  // Start revision button
+  document.getElementById('startRevBtn')?.addEventListener('click', () => {
+    const bookmarks = getBookmarks();
+    if (bookmarks.length === 0) return;
+    localStorage.setItem('hscRevBookmarks', JSON.stringify(bookmarks.slice(0, 25)));
+    window.location.href = '/test.html?rev=true';
+  });
+
+  // Clear all
+  document.getElementById('clearAllBtn')?.addEventListener('click', () => {
+    if (!confirm('সব বুকমার্ক মুছে ফেলতে চাও?')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    render();
+  });
+
+  // Countdown
+  const cd = document.getElementById('hsc-countdown');
+  if (cd) {
+    const diff = Math.ceil((new Date('2027-03-01') - Date.now()) / 86400000);
+    cd.textContent = toBengaliNum(diff) + ' দিন';
+  }
+
+  // Mobile menu
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', () => sidebar.classList.toggle('mobile-open'));
+  }
+
+  render();
+
+  // ===== FACILITY 2: WRONG ANSWER QUEUE =====
+  (function() {
+    var bn = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+    function toBn(n) { return String(n).split('').map(d => bn[parseInt(d)]||d).join(''); }
+
+    var demoWrong = [
+      { subject: 'physics', chapter: 'Vectors', question: 'ভেক্টর AB-এর দৈর্ঘ্য কত?', options: ['3', '5', '4', '6'], correctAnswer: 1, attempts: 0, status: 'pending', lastAttempted: new Date().toISOString() },
+      { subject: 'bangla', chapter: 'বাক্য', question: 'সন্ধি কাকে বলে?', options: ['দুই বর্ণ মিলন', 'কথার ব্যবধান', 'বিরামচিনহ্ন', 'লিঙ্গ পরিবর্তন'], correctAnswer: 0, attempts: 1, status: 'pending', lastAttempted: new Date().toISOString() },
+      { subject: 'chemistry', chapter: 'Stoichiometry', question: 'NaCl এর মোলার ভর কত?', options: ['58.5 g/mol', '35.5 g/mol', '23 g/mol', '117 g/mol'], correctAnswer: 0, attempts: 2, status: 'pending', lastAttempted: new Date().toISOString() }
+    ];
+
+    function getWrongQueue() {
+      var data = localStorage.getItem('hsc_wrong_queue');
+      if (!data) return demoWrong;
+      try {
+        var parsed = JSON.parse(data);
+        return parsed.length > 0 ? parsed : demoWrong;
+      } catch(e) {
+        return demoWrong;
+      }
+    }
+
+    function renderWrongQueue() {
+      var list = document.getElementById('wrongQueueList');
+      var emptyEl = document.getElementById('queue-empty');
+      if (!list) return;
+
+      var queue = getWrongQueue();
+      var pending = queue.filter(function(q) { return q.status === 'pending'; });
+      var mastered = queue.filter(function(q) { return q.status === 'mastered'; });
+
+      // Update stats
+      var pendingEl = document.getElementById('queuePending');
+      var masteredEl = document.getElementById('queueMastered');
+      if (pendingEl) pendingEl.textContent = toBn(pending.length);
+      if (masteredEl) masteredEl.textContent = toBn(mastered.length);
+
+      if (pending.length === 0 && mastered.length === 0) {
+        list.innerHTML = '';
+        emptyEl.style.display = 'block';
+        return;
+      }
+      emptyEl.style.display = 'none';
+
+      list.innerHTML = pending.map(function(q, i) {
+        var subLabel = SUBJECT_MAP[q.subject] || q.subject;
+        return '<div class="bookmark-item" style="border-color:' + (q.status === 'weak' ? '#EF4444' : 'var(--border-color)') + '">' +
+          '<div class="bm-body">' +
+            '<div class="bm-q">❓ ' + escapeHtml(q.question) + '</div>' +
+            '<div class="bm-meta">' + subLabel + ' | চ্যাপ্টার: ' + escapeHtml(q.chapter || '-') + ' | প্রযােস: ' + toBn(q.attempts || 0) + '</div>' +
+          '</div>' +
+          '<div class="bm-actions">' +
+            '<button class="bm-btn bm-btn-test" onclick="retryQuestion(' + i + ')">আবার চেষ্টা করো</button>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    window.retryQuestion = function(idx) {
+      var queue = getWrongQueue();
+      var q = queue[idx];
+      if (!q) return;
+
+      // Show simple retry dialog
+      var userAnswer = prompt('তোমার উত্তর দাও (0-3):');
+      if (userAnswer === null) return;
+      userAnswer = parseInt(userAnswer);
+      if (isNaN(userAnswer) || userAnswer < 0 || userAnswer > 3) {
+        alert('সঠিক সংখ্যা দাও (0-3)');
+        return;
+      }
+
+      q.attempts = (q.attempts || 0) + 1;
+      q.lastAttempted = new Date().toISOString();
+
+      if (userAnswer === q.correctAnswer) {
+        // Correct! Check if 2 in a row → master
+        var masteredCount = queue.filter(function(item) {
+          return item.question === q.question && item.status === 'mastered';
+        }).length;
+        q.status = 'mastered';
+        alert('✅ সঠিক! এটা Mastered হিসেবে যোগ হোল।');
+      } else {
+        q.status = 'pending';
+        alert('❌ ভুল আবার চেষ্টা করো।');
+      }
+
+      localStorage.setItem('hsc_wrong_queue', JSON.stringify(queue));
+      renderWrongQueue();
+    };
+
+    window.clearWrongDemo = function() {
+      if (!confirm('ডেমো ডাটা মুছতে চান?')) return;
+      localStorage.removeItem('hsc_wrong_queue');
+      renderWrongQueue();
+    };
+
+    var SUBJECT_MAP = { physics:'পদার্থবিজ্ঞান', chemistry:'রসায়ন', biology:'জীববিজ্ঞান', math:'গণিত', bangla:'বাংলা', english:'ইংরেজি' };
+    renderWrongQueue();
+  })();
+})();
+</script>
+</body>
+</html>
