@@ -66,12 +66,16 @@ jobs:
           for f in $(find . -name '*.html' -not -path './.git/*'); do
             hrefs=$(grep -oE 'href="[^"]*"' "$f" | sed 's/href="//;s/"$//' | grep -v '^http' | grep -v '^#' | grep -v '^javascript:' | grep -v '^//' | grep -v '\${')
             for h in $hrefs; do
+              # Skip query-string URLs (e.g., /bundles/?group=science)
               target=$(echo "$h" | sed 's/[?#].*//')
-              target="${target#/}"
               [ -z "$target" ] && continue
               found=false
+              # Root path resolves to index.html
+              if [ "$target" = "/" ]; then found=true; fi
               # Case 1: direct file match
-              if grep -qF "$target" /tmp/valid_files.txt; then found=true; fi
+              if [ "$found" = false ]; then
+                if grep -qF "$target" /tmp/valid_files.txt; then found=true; fi
+              fi
               # Case 2: dir/index.html (for paths like bundles/)
               if [ "$found" = false ]; then
                 idx_path="${target%/}/index.html"
