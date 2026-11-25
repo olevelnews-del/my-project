@@ -68,10 +68,11 @@ jobs:
             for h in $hrefs; do
               # Skip query-string URLs (e.g., /bundles/?group=science)
               target=$(echo "$h" | sed 's/[?#].*//')
+              target="${target#/}"
               [ -z "$target" ] && continue
               found=false
               # Root path resolves to index.html
-              if [ "$target" = "/" ]; then found=true; fi
+              if [ "$target" = "index.html" ]; then found=true; fi
               # Case 1: direct file match
               if [ "$found" = false ]; then
                 if grep -qF "$target" /tmp/valid_files.txt; then found=true; fi
