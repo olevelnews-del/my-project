@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HSC Academic Hub | ৳999 একবার - একজন শিক্ষার্থীর জন্য সবকিছু</title>
-  <meta name="description" content="HSC Academic Hub — ৳999 একবার পেমেন্ট, একজন শিক্ষার্থীর জন্য সবকিছু। One Student - All Groups - All Subjects - Until HSC Exam." />
+  <title>HSC Academic Hub | HSC Study System — প্রতিদিন কী পড়বো, আমরা বলবি</title>
+  <meta name="description" content="HSC Academic Hub — তোমার HSC Study System। প্রতিদিন ৩টা কাজ, স্মার্ট রুটিন, চেক-ইন, সাপ্তাহিক রিপোর্ট, দুর্বলতা ঠিক করা।" />
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -87,6 +87,8 @@
     .confetti-piece {position:fixed;top:-12px;width:9px;height:13px;z-index:200;pointer-events:none;animation:confetti-fall 1.2s ease-in forwards}
     @keyframes confetti-fall {to {transform:translate3d(var(--drift),105vh,0) rotate(720deg);opacity:0}}
     @media(max-width:640px) {.payment-form{grid-template-columns:1fr}.payment-form .form-full{grid-column:auto}.hero-stats{justify-content:center}}
+    .day-dot.active {background:#10B981;color:#fff;}
+    .task-check:checked + span {text-decoration:line-through;opacity:0.6;}
   </style>
   <script src="/config.js"></script>
 </head>
@@ -106,7 +108,7 @@
       </a>
       <nav class="space-x-4 hidden md:block">
         <a href="/" class="text-gray-700 hover:text-violet-600">হোম</a>
-        <a href="/video-player.html?video=bio-ch3" class="text-gray-700 hover:text-violet-600">আমার Tutor দেখো</a>
+        <a href="/dashboard/" class="text-gray-700 hover:text-violet-600">Dashboard</a>
         <a href="/courses/" class="text-gray-700 hover:text-violet-600">পাঠসমূহ</a>
         <a href="/pricing.html#package" class="text-gray-700 hover:text-violet-600">Membership</a>
         <a href="/pricing.html#package" class="gradient-btn text-white px-4 py-2 rounded-full shadow">এখনই ভর্তি হও</a>
@@ -118,11 +120,13 @@
   <section class="text-white py-16" style="background:linear-gradient(110deg,#7C3AED 0%,#EC4899 55%,#F97316 100%)">
     <div class="container mx-auto flex flex-col md:flex-row items-center px-4">
       <div class="md:w-1/2">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4"><span class="bg-yellow-400 text-black px-2 py-1 rounded">৳999 - একবার পেমেন্ট, একজন শিক্ষার্থীর জন্য সবকিছু</span></h1>
+         <h1 class="text-3xl md:text-5xl font-bold mb-4 leading-tight" style="font-family:'Noto Serif Bengali',serif;">
+           তোমার HSC Study System<br><span class="text-yellow-300">প্রতিদিন কী পড়বো, আমরা বলবো</span>
+         </h1>
         <p class="mb-6" data-price-sub>One Student - All Groups - All Subjects - Until HSC Exam</p>
         <div class="flex space-x-4">
           <a href="/pricing.html#package" class="btn-primary" style="background:#FFC800;color:#111827;">একবার ৳999 পেমেন্ট করে ভর্তি হও</a>
-          <a href="/video-player.html?video=bio-ch3" class="btn-outline" style="background:#fff;color:#7C3AED">আমার Tutor দেখো</a>
+          <a href="/dashboard/" class="btn-outline" style="background:#fff;color:#7C3AED">Dashboard খোলো</a>
         </div>
         <div class="hero-stats">
           <div class="stat-pill"><strong>29</strong><span>পাঠ</span></div>
@@ -131,26 +135,24 @@
         </div>
       </div>
       <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center">
-        <div class="floating max-w-md rounded-3xl bg-white/15 border border-white/25 p-4 text-center shadow-xl" aria-label="HSC Academic Hub শিক্ষক ও শিক্ষার্থীর ছবি">
-          <img class="h-64 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&amp;fit=crop&amp;w=960&amp;q=85" alt="শ্রেণিকক্ষে বোর্ডে পড়াচ্ছেন একজন শিক্ষক" fetchpriority="high" />
-          <div class="px-4 pb-3 pt-4 text-2xl font-bold">তোমার ব্যক্তিগত শিক্ষক</div>
-          <div class="px-4 pb-3">বিজ্ঞান • ব্যবসায় • মানবিক</div>
+        <div class="floating max-w-md rounded-3xl bg-white/15 border border-white/25 p-4 text-center shadow-xl" aria-label="HSC Academic Hub student study">
+          <img class="h-64 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=960&q=85" alt="ছাত্রী ডেস্কে পড়ছে" fetchpriority="high" />
+          <div class="px-4 pb-3 pt-4 text-2xl font-bold">প্রতিদিন ৩টা কাজ</div>
+          <div class="px-4 pb-3">আজ কি পড়াবো? — আমরা বলে দেবো</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Tutor facilities -->
-  <section class="py-12 bg-cream">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-8">তোমার Personal Tutor-এর সুবিধা</h2>
+  <!-- 5 Core Features -->
+      <p class="text-center text-gray-600 mb-8">কোন বেসিক সাইট/YouTube দিযে পাও নাক? আমর দিই — "আজ কী পড়বো?"</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <article class="card p-6 text-center reveal bg-yellow-100"><div class="text-4xl mb-2">▶️</div><h3 class="font-semibold mb-2">অধ্যায়ভিত্তিক ভিডিও</h3><p>YouTube-এ পাঠ দেখো; লিংকগুলো links.json থেকে পরিচালিত হয়।</p></article>
-        <article class="card p-6 text-center reveal bg-violet-100"><div class="text-4xl mb-2">📚</div><h3 class="font-semibold mb-2">তোমার NotebookLM</h3><p>নিজের NotebookLM একবার Connect করে সব Subject-এর Sources যোগ করো।</p></article>
-        <article class="card p-6 text-center reveal bg-pink-100"><div class="text-4xl mb-2">📝</div><h3 class="font-semibold mb-2">অধ্যায়ের প্রশ্ন</h3><p>প্রশ্ন ও ব্যাখ্যা data/questions.json থেকে দেখো।</p></article>
-        <article class="card p-6 text-center reveal bg-blue-100"><div class="text-4xl mb-2">📄</div><h3 class="font-semibold mb-2">Google Drive Notes</h3><p>অধ্যায়ের Drive নোট links.json থেকে খোলো।</p></article>
-        <article class="card p-6 text-center reveal bg-orange-100"><div class="text-4xl mb-2">🧪</div><h3 class="font-semibold mb-2">বাহ্যিক পরীক্ষা</h3><p>Quizizz বা Google Form-এ অধ্যায়ভিত্তিক পরীক্ষা দাও।</p></article>
-        <article class="card p-6 text-center reveal bg-green-100"><div class="text-4xl mb-2">📊</div><h3 class="font-semibold mb-2">ছোট অগ্রগতি রেকর্ড</h3><p>দেখা ভিডিও, পরীক্ষা ও শেষ দেখার সময় সংরক্ষণ করো।</p></article>
+        <article class="card p-6 text-center reveal bg-yellow-100"><div class="text-4xl mb-2">📋</div><h3 class="font-semibold mb-2">প্রোফাইল সেটআপ</h3><p>বোর্ড, বিভাগ (বিশ্বান/ব্যবসায়/মানবিক), পরীক্ষার বছর, দৈনিক পড়া সময়, দুর্বল বিষয় — এগুলো দিয়ে শুরু করো।</p></article>
+        <article class="card p-6 text-center reveal bg-violet-100"><div class="text-4xl mb-2">⏱️</div><h3 class="font-semibold mb-2">স্মার্ট রুটিন</h3><p>তোমার সময় অনুযায়ী daily ৩টা কাজ পাও — কোন বিষয়ের কোন অধ্যায় পড়াবো, আমরা বলে দেবো।</p></article>
+        <article class="card p-6 text-center reveal bg-pink-100"><div class="text-4xl mb-2">✅</div><h3 class="font-semibold mb-2">Daily Check-In</h3><p>"আজকের কাজ শেষ?" — হ্যাঁ/না, কত মিনিট পড়েছো, কোন টপিকে সমস্যা।</p></article>
+        <article class="card p-6 text-center reveal bg-blue-100"><div class="text-4xl mb-2">📊</div><h3 class="font-semibold mb-2">সাপ্তাহিক রিপোর্ট</h3><p>কোন অধ্যায় শেষ, কোথায় পিছিয়ে, পরের সপ্তাহে কী করতে হবে — অটোমেটিক রিপোর্ট।</p></article>
+        <article class="card p-6 text-center reveal bg-orange-100"><div class="text-4xl mb-2">🧪</div><h3 class="font-semibold mb-2">Mini Quiz + Weakness Tracker</h3><p>প্রতিদিন ৫-১০টা MCQ — ভুলের কারণ + রিভিশন কার্ড দেখায়, দুর্বলতা আপডেট হয়।</p></article>
+        <article class="card p-6 text-center reveal bg-green-100"><div class="text-4xl mb-2">👥</div><h3 class="font-semibold mb-2">Study Group</h3><p>ইচ্ছা করলে ৩-৫ জনের Study Group — সবাই দেখে কে কতটা পড়েছে। Competitive motivation.</p></article>
       </div>
     </div>
   </section>
@@ -200,7 +202,7 @@
   <!-- Membership -->
   <section class="py-12 bg-cream">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-8">Personal Tutor Membership</h2>
+      <h2 class="text-3xl font-bold text-center mb-8">HSC Study System Membership</h2>
       <article class="card max-w-3xl mx-auto p-8 text-center reveal">
         <span class="inline-block bg-green-100 text-green-700 px-4 py-1 rounded-full font-bold">ONE-TIME - HSC পর্যন্ত</span>
         <h3 class="text-2xl font-bold mt-4">HSC Academic Hub - সব অ্যাক্সেস</h3>
@@ -215,14 +217,14 @@
     </div>
   </section>
 
-  <!-- Mentorship -->
+  <!-- How It Works -->
   <section class="py-12 bg-cream">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-8">শিক্ষক মেন্টরশিপ</h2>
+      <h2 class="text-3xl font-bold text-center mb-8">কিভাবে শুরু করবে? — তোর Study System</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <article class="card p-6 text-center reveal"><div class="text-4xl">🔬</div><h3 class="font-bold mt-3">বিজ্ঞান বিভাগের মেন্টর</h3><p class="mt-2">বিজ্ঞান বিষয় ও সমস্যা সমাধানে দিকনির্দেশনা।</p></article>
-        <article class="card p-6 text-center reveal"><div class="text-4xl">📊</div><h3 class="font-bold mt-3">ব্যবসায় বিভাগের মেন্টর</h3><p class="mt-2">হিসাববিজ্ঞান ও ব্যবসায় বিষয়ের প্রস্তুতি সহায়তা।</p></article>
-        <article class="card p-6 text-center reveal"><div class="text-4xl">📖</div><h3 class="font-bold mt-3">মানবিক বিভাগের মেন্টর</h3><p class="mt-2">মানবিক বিষয় ও পরীক্ষার কৌশলে দিকনির্দেশনা।</p></article>
+        <article class="card p-6 text-center reveal bg-yellow-100"><div class="text-4xl mb-2">🌅</div><h3 class="font-bold mt-3">সকাল — ৩টা কাজ পাও</h3><p class="mt-2">প্রতিদিন সকালে তোমার ড্যাশবোর্ডে আজকের ৩টা ক্লিয়ার টাস্ক।</p></article>
+        <article class="card p-6 text-center reveal bg-pink-100"><div class="text-4xl mb-2">🌙</div><h3 class="font-bold mt-3">রাতে — চেক-ইন করো</h3><p class="mt-2">"কাজ শেষ করেছি / করিনি" জানাও। না হলে কেন হচ্ছে না, কাল কিভাবে পুষিয়ে নেব — জিজ্ঞেস করবে।</p></article>
+        <article class="card p-6 text-center reveal bg-green-100"><div class="text-4xl mb-2">📈</div><h3 class="font-bold mt-3">সপ্তাহে ১ বার — রিপোর্ট</h3><p class="mt-2">অগ্রগতির রিপোর্ট তৈরি হয়। ইচ্ছা করলে Study Group-ে সবাই দেখে কে কতটা পড়েছে।</p></article>
       </div>
     </div>
   </section>
@@ -230,22 +232,22 @@
   <!-- How It Works -->
   <section class="py-12">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-8">কিভাবে শুরু করবেন? ৩ ধাপে</h2>
+      <h2 class="text-3xl font-bold text-center mb-8">Accountability — তোর প্রতিদিনের নিয়ম</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="card p-6 bg-white rounded-2xl shadow text-center reveal">
           <div class="text-4xl mb-2">🎓</div>
-          <h3 class="font-semibold mb-2">Free Demo দেখো</h3>
-          <p>উদাহরণ ক্লাসগুলো দেখুন, কোনো ঝুঁকি নেই।</p>
+          <h3 class="font-semibold mb-2">প্রোফাইল সেটআপ করো</h3>
+          <p>তোমার বোর্ড ও বিভাগ বসাও — ১০ সেকেন্ডে প্রথম Routine তৈরি হবে।</p>
         </div>
         <div class="card p-6 bg-white rounded-2xl shadow text-center reveal">
           <div class="text-4xl mb-2">🛒</div>
           <h3 class="font-semibold mb-2">৯৯৯ টাকায় Join করো</h3>
-          <p>তোমার Personal Tutor Membership শুরু করো।</p>
+          <p>৳999 একবারে সব এক্সেস নাও।</p>
         </div>
         <div class="card p-6 bg-white rounded-2xl shadow text-center reveal">
           <div class="text-4xl mb-2">📅</div>
-          <h3 class="font-semibold mb-2">রুটিন অনুযায়ী পড়ুন</h3>
-          <p>নির্ধারিত রুটিনে ভিডিও ক্লাস অনুসরণ করুন।</p>
+          <h3 class="font-semibold mb-2">প্রতিদিন Check-In দাও</h3>
+          <p>প্রতিদিন Check-In → Streak বাড়াও → সপ্তাহে রিপোর্ট নাও।</p>
         </div>
       </div>
     </div>
@@ -259,7 +261,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="card p-6 bg-white rounded-2xl shadow reveal">
           <img class="mb-4 h-20 w-20 rounded-full object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=240&amp;h=240&amp;q=80" alt="রাহাতের প্রতিনিধিত্বমূলক ছবি" loading="lazy" />
-          <p class="italic mb-4">"Dedicated Tutor-এর সাথে নিয়মিত পড়ে HSC-তে GPA 5.00 পেয়েছি।"</p>
+          <p class="italic mb-4">"প্রতিনিয়ত চেক-ইন এবং স্টিকার সিস্টেমের কারণে প্রতিদিন পাঁচ ঘণ্টা পড়ছি।"</p>
           <p class="font-semibold">রাহাত, Dhaka College · GPA 5.00</p>
           <p class="text-sm text-gray-500">⭐️⭐️⭐️⭐️⭐️</p>
         </div>
@@ -318,7 +320,7 @@
           <div class="font-bold">HSC Academic Hub</div>
           <div class="text-sm text-gray-500">HSC Tutor BD</div>
         </div>
-        <p>তোমার HSC প্রস্তুতিতে ব্যক্তিগত শিক্ষক, AI Tutor ও পরীক্ষার সহায়তা।</p>
+        <p>তোমার HSC Study System — দৈনিক প্ল্যান, চেক-ইন, দুর্বলতা ট্র্যাকিং ও সাপ্তাহিক রিপোর্ট।</p>
       </div>
       <div>
         <h4 class="font-semibold mb-2">দ্রুত লিংক</h4>
@@ -352,4 +354,67 @@
   <script src="/js/site-data.js"></script>
   <script src="/js/app.js"></script>
 </body>
+  <script>
+    // Streak & Check-In Logic
+    const storageKey = 'hscCheckIn';
+    function getCheckInData() {
+      try { return JSON.parse(localStorage.getItem(storageKey) || '{"streak":0,"days":[],"todayDone":false}'); }
+      catch(e) { return {streak:0,days:[],todayDone:false}; }
+    }
+    function saveCheckInData(d) { localStorage.setItem(storageKey, JSON.stringify(d)); }
+    function todayKey() { return new Date().toISOString().slice(0,10); }
+    const ciBtn = document.getElementById('checkin-btn');
+    const ciMsg = document.getElementById('checkin-msg');
+    const streakEl = document.getElementById('streak-display');
+    const tasksDone = document.getElementById('tasks-done');
+    const dots = document.querySelectorAll('.day-dot');
+    if (ciBtn && ciMsg && streakEl) {
+      const d = getCheckInData();
+      streakEl.textContent = 'Streak: ' + d.streak + ' দিন';
+      dots.forEach((dot, i) => { dot.classList.toggle('active', d.days.includes(i)); });
+      if (d.todayDone) { ciBtn.textContent = 'আজকের চেক-ইন শেষ ✓'; ciBtn.disabled = true; ciBtn.style.opacity = '0.6'; ciBtn.style.background = '#10B981'; ciMsg.textContent = 'আজকে ইতিমধ্যে চেক-ইন করেছো!'; }
+      ciBtn.addEventListener('click', () => {
+        if (d.todayDone) return;
+        d.todayDone = true;
+        const last = d.days.length > 0 ? d.days[d.days.length-1] : -1;
+        const todayIdx = new Date().getDay();
+        if (!d.days.includes(todayIdx)) d.days.push(todayIdx);
+        // Calc streak
+        let s = 1;
+        const recent = [];
+        for (let i = d.days.length-1; i >= 0; i--) { if (recent.length === 0 || d.days[i] === recent[recent.length-1]+1) recent.push(d.days[i]); else break; }
+        d.streak = Math.max(d.streak, recent.length);
+        saveCheckInData(d);
+        streakEl.textContent = 'Streak: ' + d.streak + ' দিন';
+        dots.forEach((dot, i) => { dot.classList.toggle('active', d.days.includes(i)); });
+        ciBtn.textContent = 'আজকের চেক-ইন শেষ ✓'; ciBtn.disabled = true; ciBtn.style.opacity='0.6'; ciBtn.style.background='#10B981';
+        ciMsg.textContent = 'চেক-ইন সফল! পরশুবার আবার দেখা হবে।';
+      });
+    }
+    // Task checkboxes
+    const checks = document.querySelectorAll('.task-check');
+    if (tasksDone && checks.length) {
+      checks.forEach(c => c.addEventListener('change', () => { tasksDone.textContent = [...checks].filter(x=>x.checked).length; }));
+    }
+    // Focus Timer
+    let timerInterval = null, timerSec = 25*60;
+    const timerDisplay = document.getElementById('timer-display');
+    const timerStart = document.getElementById('timer-start');
+    const timerReset = document.getElementById('timer-reset');
+    function fmtTimer(s) { return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+    if (timerDisplay && timerStart) {
+      timerDisplay.textContent = fmtTimer(timerSec);
+      timerStart.addEventListener('click', () => {
+        if (timerInterval) { clearInterval(timerInterval); timerInterval = null; timerStart.textContent = 'Resume'; timerStart.style.background = '#10B981'; }
+        else {
+          timerInterval = setInterval(() => {
+            if (timerSec <= 0) { clearInterval(timerInterval); timerInterval = null; timerDisplay.textContent = '✅ শেষ!'; return; }
+            timerSec--; timerDisplay.textContent = fmtTimer(timerSec);
+          }, 1000);
+          timerStart.textContent = 'Pause'; timerStart.style.background = '#F97316';
+        }
+      });
+      if (timerReset) timerReset.addEventListener('click', () => { clearInterval(timerInterval); timerInterval=null; timerSec=25*60; timerDisplay.textContent=fmtTimer(timerSec); timerStart.textContent='Start'; timerStart.style.background='#10B981'; });
+    }
+  </script>
 </html>

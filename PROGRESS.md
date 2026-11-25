@@ -27,3 +27,15 @@ Chapter detail pages and `video-player.html` let students save and open Notebook
 ## Validation status
 
 Static HTML was opened in the integrated browser, but root-relative scripts and JSON cannot load from `file://`. A local HTTP server, build, and command-line validation could not run because the shell sandbox lacks `slirp4netns`. Production payment/cloud sync also remain unverified until the webhook and Cloudflare secrets are configured.
+
+
+## Repositioning Complete
+- **Positioning Change**: Teacher language → Consultant / HSC Study System
+- **Accountability**: #1 feature - Streak, Daily Check-In, Focus Timer
+- **5 Core MVP Features**: Profile Setup → Smart Routine → Daily Check-In → Weekly Report → Mini Quiz
+- **Content Rule**: Transform NCTB syllabus into daily tasks, don't create new content
+- **Target**: First group only — Science HSC students who have coaching but can't study at home
+- **Pricing**: ৳999 ONE-TIME, not monthly. Free tier added
+- **Dashboard**: Rebuilt as Consultant Dashboard
+- **Removed from hero**: Live Class, Dedicated Teacher, 1-on-1 Video Call
+- **Section #1**: Accountability - এটাই আমাদের আসল পার্থক্য

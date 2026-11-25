@@ -3,27 +3,213 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>অগ্রগতি | HSC Academic Hub</title>
+  <title>Dashboard — HSC Study System</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/video-player.css" />
+  <style>
+    body {font-family: 'Hind Siliguri', sans-serif; background: #FFF9F0; color: #111827;}
+    h1, h2, h3, h4 {font-family: 'Noto Serif Bengali', serif;}
+    .card {background: #fff; border-radius: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: transform .2s, box-shadow .2s;}
+    .card:hover {transform: translateY(-4px); box-shadow: 0 6px 12px rgba(0,0,0,0.15);}
+    .pill {border-radius: 999px; display: inline-block; padding: .5rem 1rem; font-weight: 600;}
+    .bg-orange {background: #F97316; color: #fff;}
+    .bg-violet {background: #7C3AED; color: #fff;}
+    .bg-green {background: #10B981; color: #fff;}
+    .bg-pink {background: #EC4899; color: #fff;}
+    .bg-gray {background: #e5e7eb;}
+    .text-gray-600 {color: #64748b;}
+    .opacity-75 {opacity: .75;}
+    .opacity-60 {opacity: .6;}
+    @media(max-width:640px){.mobile-full{grid-template-columns:1fr}}
+    .reveal {opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+    .reveal.visible {opacity:1;transform:translateY(0)}
+    .focus-timer {font-family: 'SF Mono', monospace;}
+  </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header class="study-header">
     <a class="brand" href="/"><span>🎓</span><span><strong>HSC Academic Hub</strong><small>hsctutorbd.com</small></span></a>
     <a class="notebooklm-button notebooklm-button-white" href="/workspace.html">NotebookLM Workspace</a>
   </header>
+
+  <!-- Main Dashboard -->
   <main class="dashboard-layout">
-    <section class="workspace-column">
-      <h1>তোমার পড়ার অগ্রগতি</h1>
-      <p>শুধু ফোন নম্বর ও অধ্যায়ভিত্তিক দেখা/পরীক্ষা সম্পন্নের তথ্য রাখা হয়। বড় ফাইল বা অতিরিক্ত profile data সংরক্ষণ করা হয় না।</p>
-      <label class="modal-field">শিক্ষার্থীর ফোন নম্বর<input id="dashboard-phone" class="notebooklm-input" type="tel" inputmode="tel" placeholder="তোমার ফোন নম্বর" autocomplete="tel" /></label>
-      <button id="dashboard-load" class="notebooklm-button notebooklm-button-primary" type="button">অগ্রগতি দেখো</button>
-      <p id="dashboard-status" role="status">Demo - Connect Firebase to enable progress saving.</p>
-      <div id="dashboard-progress" class="workspace-list"></div>
+    <section class="today-column">
+      <h1>আজ আমি কী পড়ব?</h1>
+      <div class="today-tasks">
+        <div class="task-card bg-violet-50">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-2xl">▶️</span>
+            <div>
+              <h3 class="font-semibold">Physics Ch 4 — Turn of Force</h3>
+              <p class="text-sm text-gray-600">20 মিনিট ভিডিও + ১০ MCQ</p>
+            </div>
+          </div>
+          <input type="checkbox" class="task-check w-5 h-5 accent-violet-600" />
+        </div>
+        <div class="task-card bg-pink-50">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-2xl">📝</span>
+            <div>
+              <h3 class="font-semibold">Chemistry Ch 2 — Acid Base</h3>
+              <p class="text-sm text-gray-600">১০ টি MCQ + ব্যাখ্যা</p>
+            </div>
+          </div>
+          <input type="checkbox" class="task-check w-5 h-5 accent-pink-500" />
+        </div>
+        <div class="task-card bg-green-50">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-2xl">💡</span>
+            <div>
+              <h3 class="font-semibold">Maths Ch 1 — Matrix Exercise</h3>
+              <p class="text-sm text-gray-600">৫টা প্র্যাকটিস সমস্যা</p>
+            </div>
+          </div>
+          <input type="checkbox" class="task-check w-5 h-5 accent-green-500" />
+        </div>
+      </div>
+      <p class="mt-3 text-center text-gray-600 opacity-75">✅ <span id="today-tasks-done">০</span>/৩ সম্পন্ন</p>
+      
+      <!-- Focus Timer -->
+      <div class="mt-6 card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-3xl">⏱️</span>
+          <span class="font-bold text-lg">Focus Timer</span>
+        </div>
+        <div class="text-center py-4">
+          <div id="dashboard-timer-display" class="text-5xl font-mono font-bold mb-3">25:00</div>
+          <p class="text-sm text-gray-500 mb-4">Pomodoro — ২৫ মিনিট ফোকাস</p>
+          <div class="flex justify-center gap-3">
+            <button id="dashboard-timer-start" class="pill px-6 py-2 font-bold" style="background:#10B981;color:#fff;">Start</button>
+            <button id="dashboard-timer-reset" class="pill px-6 py-2 font-bold bg-gray-200">Reset</button>
+          </div>
+        </div>
+        <div class="mt-4 p-3 rounded-xl bg-orange-50 text-sm text-orange-800">
+          💡 Distraction Blocker: YouTube / Facebook বন্ধ করে পড়ো!
+        </div>
+      </div>
+
+      <!-- Check-In -->
+      <div class="mt-6 card p-6">
+        <h3 class="font-bold text-lg mb-4">Daily Check-In</h3>
+        <p>আজকের কাজ শেষ?</p>
+        <button id="dashboard-checkin-btn" class="w-full pill py-3 font-bold text-white" style="background:#7C3AED;">
+          Check-In করো →
+        </button>
+        <p id="dashboard-checkin-msg" class="mt-2 text-sm text-center text-green-600"></p>
+      </div>
+
+      <!-- Streak -->
+      <div class="mt-6 card p-6">
+        <h3 class="font-bold text-lg mb-4">Streak <span id="dashboard-streak">0</span> দিন</h3>
+        <p class="text-sm text-gray-600">প্রতিদিন চেক-ইন করো, streak বাড়ाओ</p>
+        <div class="mt-3">
+          <span class="day-dot w-5 h-5 rounded-full bg-gray-200 inline-flex items-center justify-center text-xs font-bold active">স</span>
+          <span class="day-dot w-5 h-5 rounded-full bg-gray-200 inline-flex items-center justify-center text-xs font-bold">মো</span>
+          <span class="day-dot w-5 h-5 rounded-full bg-gray-200 inline-flex items-center justify-center text-xs font-bold">বু</span>
+          <span class="day-dot w-5 h-5 rounded-full bg-gray-200 inline-flex items-center justify-center text-xs font-bold">বৃহ</span>
+          <span class="day-dot w-5 h-5 rounded-full bg-gray-200 inline-flex items-center justify-center text-xs font-bold">শুক্র</span>
+          <span class="day-dot w-5 h-5 rounded-full bg-gray-200 inline-flex items-center justify-center text-xs font-bold">শনি</span>
+          <span class="day-dot w-5 h-5 rounded-full bg-gray-200 inline-flex items-center justify-center text-xs font-bold">রবি</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Middle Column -->
+    <section class="middle-column">
+      <!-- Weekly Progress -->
+      <div class="card p-6 reveal">
+        <h2 class="text-2xl font-bold mb-4"> Weekly Progress</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p class="text-opacity-60">E Completed This Week</p>
+            <p class="text-3xl font-bold" id="week-progress">0</p>
+            <div class="w-full bg-white h-2 rounded"><div class="h-full bg-violet-600 rounded" style="width:0%"></div></div>
+            <p class="text-xs text-gray-500" id="week-progress-text">০%</p>
+          </div>
+          <div>
+            <p class="text-opacity-60">Chapters Finished</p>
+            <p class="text-3xl font-bold" id="chapters-finished">0</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weak Chapters -->
+      <div class="card p-6 mt-4 reveal">
+        <h2 class="text-2xl font-bold mb-4">Weak Chapters</h2>
+        <p class="text-gray-600">From quizzes + check-ins</p>
+        <ul class="list-disc list-inside text-gray-600 space-y-2" id="weak-chapters">
+          <li>Physics Ch 4 — আমি এখানে সমস্যা পাই</li>
+          <li>Chemistry Ch 2 — formulas ভুলে যাই</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Bottom Column -->
+    <section class="bottom-column">
+      <!-- Study Group Leaderboard -->
+      <div class="card p-6 reveal">
+        <h2 class="text-2xl font-bold mb-4">Study Group Leaderboard</h2>
+        <p class="text-sm text-gray-600">৩-৫ জন study group — সবাই দেখে কে কতটা পড়েছে</p>
+        <div class="space-y-3" id="leaderboard">
+          <div class="p-3 rounded-xl bg-cream">Rahat: 5/7 days ✅</div>
+          <div class="p-3 rounded-xl bg-cream">Mim: 6/7 days ✅</div>
+          <div class="p-3 rounded-xl bg-cream">Sakib: 3/7 days ⚠️</div>
+        </div>
+      </div>
+
+      <!-- Weekly Report Preview -->
+      <div class="card p-6 mt-4 reveal">
+        <h2 class="text-2xl font-bold mb-4">Weekly Report Preview</h2>
+        <p class="text-sm text-gray-600">Generate from check-in data</p>
+        <button class="w-full pill py-2 font-bold bg-violet-600 text-white mt-3">সাপ্তাহিক রিপোর্ট দেখো</button>
+        <p class="text-xs text-gray-500 mt-2" id="report-preview">This week: Physics Ch 4 → 80% complete, Chemistry Ch 2 → MCQ avg 7/10</p>
+      </div>
     </section>
   </main>
-  <script src="/config.js"></script>
-  <script src="/js/progress.js"></script>
+
+  <script>
+    // Dashboard check-in + streak logic
+    const storageKey = 'hscDashboardCheckIn';
+    function getData() { try { return JSON.parse(localStorage.getItem(storageKey) || '{"streak":0,"doneDays":[],"todayDone":false}'); } catch(e) { return {streak:0, doneDays:[], todayDone:false}; } }
+    function saveData(d) { localStorage.setItem(storageKey, JSON.stringify(d)); }
+    const todayKey = () => new Date().toISOString().slice(0,10);
+    const dbBtn = document.getElementById('dashboard-checkin-btn');
+    const dbMsg = document.getElementById('dashboard-checkin-msg');
+    const streakEl = document.getElementById('dashboard-streak');
+    const dots = document.querySelectorAll('.day-dot');
+    if (dbBtn && dbMsg && streakEl) {
+      const data = getData();
+      streakEl.textContent = data.streak;
+      dots.forEach((dot, i) => { dot.classList.toggle('active', data.doneDays.includes(i)); });
+      if (data.todayDone) { dbBtn.textContent = 'আজকের চেক-ইন abgeschlossen ✓'; dbBtn.disabled = true; dbBtn.style.opacity = '0.6'; dbBtn.style.background = '#10B981'; dbMsg.textContent = 'আজকে ইতিমধ্যে চেক-ইন করেছো!'; }
+      dbBtn.addEventListener('click', () => {
+        if (data.todayDone) return;
+        data.todayDone = true;
+        if (!data.doneDays.includes(todayKey())) data.doneDays.push(todayKey());
+        // Calculate streak
+        const sorted = data.doneDays.slice().sort((a,b) => new Date(a) - new Date(b));
+        let s = 1, recent = [];
+        for (let i = sorted.length-1; i >= 0; i--) { recent.push(sorted[i]); if (recent.length > 1 && new Date(sorted[i]) === new Date(sorted[i+1]) - 86400000) s++; else break; }
+        data.streak = Math.max(data.streak, s);
+        saveData(data);
+        streakEl.textContent = data.streak;
+        dots.forEach((dot, i) => { dot.classList.toggle('active', data.doneDays.includes(i)); });
+        dbBtn.textContent = 'আজকের চেক-ইন abgeschlossen ✓'; dbBtn.disabled = true; dbBtn.style.opacity='0.6'; dbBtn.style.background='#10B981';
+        dbMsg.textContent = 'চেক-ইন সফল! পরশুবার আবার দেখা হবে।';
+      });
+    }
+
+    // Focus timer
+    let ti = null, ts = 25*60;
+    const dtd = document.getElementById('dashboard-timer-display');
+    const dts = document.getElementById('dashboard-timer-start');
+    const dtr = document.getElementById('dashboard-timer-reset');
+    function fmt(s) { return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+    if (dtd && dts) { dtd.textContent = fmt(ts); dts.addEventListener('click', () => { if (ti) { clearInterval(ti); ti = null; dts.textContent = 'Resume'; dts.style.background = '#10B981'; } else { ti = setInterval(() => { if (ts <= 0) { clearInterval(ti); ti = null; dtd.textContent = '✅ শেষ!'; return; } ts--; dtd.textContent = fmt(ts); }, 1000); dts.textContent = 'Pause'; dts.style.background = '#F97316'; }); if (dtr) dtr.addEventListener('click', () => { clearInterval(ti); ti = null; ts = 25*60; dtd.textContent = fmt(ts); dts.textContent = 'Start'; dts.style.background = '#10B981'; }); } }
+  </script>
 </body>
 </html>

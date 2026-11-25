@@ -32,6 +32,30 @@
 
 **Conclusion:** Folder B is a blank shell - it has NO actual page content whatsoever. Its only value is as a modern React/Next.js + Tailwind v4 + shadcn starting point. Folder A is the real product.
 ---
+
+
+## Repositioning Complete
+
+**Date:** 2026-11-25
+
+**- Positioning Change**: Teacher language → Consultant language throughout all pages
+- **Brand**: HSC Academic Hub - HSC Study System
+- **Tagline**: "আমরা শুধু পড়াই না — আপনাকে প্রতিদিন পড়তে বসাই, অগ্রগতি দেখাই এবং দুর্বলতা ঠিক করতে সাহায্য করি।"
+- **Hero Headline**: "তোমার HSC Study System — প্রতিদিন কী পড়বো, আমরা বলে দিবো"
+- **Section #1 Priority**: Accountability — এটাই আমাদের আসল পার্থক্য (Streak, Today's 3 Tasks, Focus Timer 25 min)
+- **5 Core MVP Features**: Profile Setup → Smart Routine → Daily Check-In → Weekly Report → Mini Quiz
+- **Content Rule**: We don't create content; we transform NCTB curriculum into daily tasks
+- **Target Audience**: First group only — Science HSC students who have coaching but can't study at home
+- **Pricing**: ৳999 ONE-TIME for ONE Student - NOT monthly. Free tier added.
+- **Dashboard**: Rebuilt as Consultant Dashboard (not Teacher Dashboard)
+- **Removed from hero**: Live Class, Dedicated Teacher, 1-on-1 Video Call
+- **Free Tier card**: "Weekly routine, some MCQ, Study Tips" + [Free শুরু করো]
+- **Paid card (Highlight)**: "৳999 ONE-TIME: ব্যক্তিগত রুটিন, প্রতিদিনের চেক-ইন, প্রগ্রেস রিপোর্ট, রিভিশন টেস্ট, Study Group, Mentor 10 min/week"
+- **Premium note**: "Premium: ছোট গ্রুপে Mentor, দুর্বল বিষয়ে Focused Support, পরীক্ষার আগের Revision Plan - WhatsApp এ জিজ্ঞেস করো: 01616200174"
+- **Parent Plan note**: "Parent Plan: অভিভাবক সাপ্তাহিক অগ্রগতি দেখতে পারবেন — শিক্ষার গোপনীয়তা রক্ষা করে, চাপ বাড়ানো হবে না"
+- **WhatsApp Only**: 01616200174, Domain hsctutorbd.com, Bengali only NO Hindi
+- **Files changed**: index.html, dashboard.html, pricing/index.html, bundles/index.html, full-platform.html, courses/*.html (29 pages), js/progress.js, config.js
+
 ## P0 Bugs in Folder A — [DONE]
 
 | # | Bug | Resolution | Status |
@@ -151,3 +175,23 @@ No AI API key or AI backend is used. NotebookLM opens in a new tab; it is not em
 - The payment Worker accepts bKash Payment IDs and SSLCOMMERZ validation IDs, verifies amount/status/currency server-side, and fails closed unless the Google Sheet webhook confirms saving. A wallet TrxID alone cannot be verified through those provider query APIs.
 - `.env.example` contains blank placeholders only. Configure the provider credentials and HTTPS `SHEET_WEBHOOK_URL` as Cloudflare Worker secrets before accepting real payments; implement the documented webhook actions (`verify-and-save-payment`, `save-progress`, `get-progress`, `save-notebooklm`, `get-notebooklm`, and `delete-notebooklm`). Do not use the example file for live secrets.
 - No production payment or cloud-sync verification was run: the webhook and credentials are intentionally unset. The command/browser test server could not be started because the shell sandbox lacks `slirp4netns`; opening `file://` cannot load root-relative app scripts.
+
+
+## Repositioning Complete
+
+**Date:** 2026-11-25
+- **Positioning Change**: Teacher language → Consultant language throughout
+- **Brand**: HSC Academic Hub - HSC Study System
+- **Tagline**: "আমরা শুধু পড়াই না — আপনাকে প্রতিদিন পড়তে বসাই, অগ্রগতি দেখাই এবং দুর্বলতা ঠিক করতে সাহায্য করি।"
+- **Hero Headline**: "তোমার HSC Study System - প্রতিদিন কী পড়বে, আমরা বলে দিবো"
+- **5 Core Features**: Profile Setup, Smart Routine, Daily Check-In, Weekly Report, Mini Quiz
+- **Accountability #1 Feature**: Streak, Today's 3 Tasks, Focus Timer 25 min
+- **Content Rule**: We don't create content; we transform NCTB curriculum into actionable daily tasks
+- **Target Audience**: First group only — Science HSC students who can't study at home despite coaching
+- **Pricing**: ৳999 ONE-TIME for ONE Student - Not monthly
+- **Free Tier**: Weekly routine, some MCQ, Study Tips
+- **Dashboard**: Rebuilt to Consultant Dashboard (not Teacher)
+- **Removed**: Live Class, Dedicated Teacher 1-on-1 Video Call
+- **Section #1**: Accountability - এটাই আমাদের আসল পার্থক্য
+
+Files changed: index.html, dashboard.html, pricing/index.html, bundles/index.html, full-platform.html, courses/*.html (29 pages), js/progress.js, config.js'

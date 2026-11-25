@@ -5,6 +5,13 @@ const initializeProgress = () => {
   const dashboardLoad = document.getElementById("dashboard-load");
   const dashboardList = document.getElementById("dashboard-progress");
   const dashboardStatus = document.getElementById("dashboard-status");
+  const streakEl = document.getElementById("dashboard-streak");
+  const todayTasks = document.getElementById("today-tasks-done");
+  const weekProgress = document.getElementById("week-progress");
+  const chaptersFinished = document.getElementById("chapters-finished");
+  const weakChaptersList = document.getElementById("weak-chapters");
+  const leaderboardList = document.getElementById("leaderboard");
+  const reportPreview = document.getElementById("report-preview");
   const chapterId = new URLSearchParams(location.search).get("video")
     || document.querySelector("[data-notebooklm-section]")?.dataset.chapterId
     || "";
