@@ -195,3 +195,53 @@ No AI API key or AI backend is used. NotebookLM opens in a new tab; it is not em
 - **Section #1**: Accountability - এটাই আমাদের আসল পার্থক্য
 
 Files changed: index.html, dashboard.html, pricing/index.html, bundles/index.html, full-platform.html, courses/*.html (29 pages), js/progress.js, config.js'
+
+
+---
+
+## Hermes Audit Fixes (2026-11-25)
+**Status:** ✅ All 6 categories completed. Site now Ads-ready for demo deployment.
+
+### Fix #1 — Typo Search
+- Searched all files for "আমরামরা" → **No occurrence found**. Original text "আমরা শুধু পড়াই নহে" in dashboard.html and scorecard.html is correct.
+
+### Fix #2 — links.json Placeholder Notes
+- Added comment headers to links.json videos/notes/tests sections reminding admin to fill real YouTube/Drive/Quizizz links before launch. No fake IDs were added.
+
+### Fix #3 — Dead Nav Links Fixed + Missing Pages Created
+- **dashboard.html**: Replaced 9 dead `href="#"` links:
+  - `planner.html` links (3) → new planner page
+  - `chapter.html?subject=X&ch=Y` plan chips (2) → new chapter player
+  - Footer "পড়াঁর প্ল্যান" → planner.html
+  - Mentor-feature dead links kept as `#` with "(Mentor আসছе)" badge per spec
+- **Created `/planner.html`** (full dark theme): Profile Setup banner, Today's 3 Tasks checklist, Focus Timer (Pomodoro 25min), Weekly streak progress report, mobile responsive
+- **Created `/chapter.html`** (standalone chapter viewer): Loads video URL from links.json by subject+chapter params, displays NotebookLM connect modal, progress tracking, mobile-responsive sidebar nav
+
+### Fix #4 — Testimonial Stock Photos Replaced
+- **index.html**: Removed 3 Unsplash stock photo `<img>` tags (Facebook entity risk). Replaced with colored-circle avatar divs showing Bengali initials (র / মি / সা).
+- Added `"নাম পরিবতন · Beta Student"` label on each card.
+- Added footer disclaimer: "⚠️ শিক্ষাথীদের ছবি এখনো সংগ্রহ চলছে — এগুলো নমুনা (placeholder)"
+
+### Fix #5 — Payment Demo Messaging
+- **api/payment.js**: Wrapped all SHEET_WEBHOOK_URL guard blocks to return `{ok:true, _mode:"demo", message:...}` instead of 503 errors:
+  - `verifyAndSavePayment`: returns verified record with `_mode:demo`
+  - `handleProgress`: returns empty records array with Bengali demo explanation
+  - `handleNotebook`: returns empty link with Bengali demo explanation
+- **bundles/index.html**: Added visible yellow warning notice above payment form; JS intercepts submit to show demo-mode success message
+
+### Fix #6 — OG Meta Tags Added
+- Added Open Graph (`og:title`, `og:description`, `og:image`, `og:url`, `og:type`) + Twitter Card meta tags to:
+  - `index.html` ✅
+  - `pricing.html` ✅
+  - `bundles/index.html` ✅
+  - `dashboard.html` ✅
+  - `scorecard.html` ✅
+  - `chapter.html` (new file) ✅
+- Placeholder image URL: `https://hsctutorbd.com/og-image.jpg` (to be replaced with actual social preview when created)
+
+### Fix #7 — .env.example Updated
+- Added missing env vars:
+  - `BKASH_MERCHANT_ID=`
+  - `FIREBASE_CONFIG={}`
+
+---

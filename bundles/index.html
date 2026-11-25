@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HSC Academic Hub | ৳999 একবার - একজন শিক্ষার্থীর জন্য সবকিছু</title>
+  <title>HSC Academic Hub | ৳999 একবার - একজন শিক্ষার্থীর জন্য সবকিছু</title>  <!-- OG Meta Tags -->
+  <meta property="og:title" content="HSC Academic Hub — ৳999 Membership Bundle" />
+  <meta property="og:description" content="HSC Academic Hub membership bundle: All groups, all subjects, HSC exam till access for one-time ৳999." />
+  <meta property="og:image" content="https://hsctutorbd.com/og-image.jpg" />
+  <meta property="og:url" content="https://hsctutorbd.com/bundles/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="description" content="HSC Academic Hub — ৳999 একবার পেমেন্ট, একজন শিক্ষার্থীর জন্য সবকিছু। One Student - All Groups - All Subjects - Until HSC Exam." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -105,6 +111,9 @@
           <label class="form-full">Gateway Payment ID / Validation ID<input name="transaction" autocomplete="off" required /><small>bKash-এ Payment ID, SSLCOMMERZ-এ Validation ID দাও (wallet TrxID নয়)।</small></label>
           <button type="submit" class="form-full rounded-full px-6 py-3 font-bold" style="background:#FFC800;color:#111827">পেমেন্ট যাচাই করো →</button>
           <p id="payment-status" class="form-full text-gray-600" aria-live="polite"></p>
+          <div id="payment-demo-notice" class="form-full mt-3 p-3 rounded-xl text-sm" style="background:#FEF3C7;color:#92400E;border:1px solid #FCD34D;display:none;">
+            ⚠️ <strong>ডেমো মোড:</strong> SHEET_WEBHOOK_URL এখনও সেট হয়নি। তুমি পেমেন্ট পাঠাতে পারবে — ডাটা লোকালস্টোরেজে সংরক্ষিত হবে। প্রকৃত ভেরিফিকেশনের জন্য সমর্থক টিমকে WhatsApp-এ যোগাযোগ করো।
+          </div>
         </form>
       </div>
     </div>
@@ -118,5 +127,39 @@
     </div>
   </footer>
   <script src="/js/app.js"></script>
+  <script>
+    // Demo mode detection — shows notice when sheet webhook is missing
+    (function(){
+      var notice = document.getElementById('payment-demo-notice');
+      var form = document.getElementById('payment-form');
+      if(!form || !notice) return;
+      // Always show demo notice if no Sheet webhook is configured client-side
+      // (server returns _mode:demo header or response field)
+      notice.style.display = 'block';
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var fd = new FormData(form);
+        var data = Object.fromEntries(fd.entries());
+        fetch('/api/payment', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)})
+          .then(function(r){return r.json();})
+          .then(function(res){
+            var el = document.getElementById('payment-status');
+            if(res._mode === 'demo'){
+              el.textContent = '✅ ডেমো সাক্সেস — তোমার তথ্য সংরক্ষিত হযেছে। WhatsApp এ কনফার্মেশন মিসেজ আসবে: ' + data.phone;
+              el.style.color = '#15803d';
+            } else if(res.ok){
+              el.textContent = '✅ পেমেন্ট সাফল্য় যাচাই হযেছে!';
+              el.style.color = '#15803d';
+            } else {
+              el.textContent = '❌ ' + (res.error || 'অজ্ঞাত ত্রুটি');
+              el.style.color = '#dc2626';
+            }
+          })
+          .catch(function(err){
+            document.getElementById('payment-status').textContent = 'নেটওয়ার্ক ত্রুটি — পরে আবায় চেষ্টা করো।'
+          });
+      });
+    })();
+  </script>
 </body>
 </html>

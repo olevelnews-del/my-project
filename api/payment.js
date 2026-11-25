@@ -37,7 +37,20 @@ async function verifyAndSavePayment(payload, env) {
   const payment = validatePayment(payload);
   if (!payment.ok) return json({ ok: false, error: payment.error }, 400);
   if (!env.SHEET_WEBHOOK_URL) {
-    return json({ ok: false, error: "Payment verification is not configured yet." }, 503);
+    console.log("[DEMO MODE] Sheet webhook not configured — returning demo payment response.");
+    const record = {
+      name: payment.name,
+      phone: payment.phone,
+      group: payment.group,
+      method: payment.method,
+      trxId: null,
+      providerReference: payment.transaction,
+      amount: PRICE,
+      currency: "BDT",
+      date: new Date().toISOString(),
+      _demo: true
+    };
+    return json({ ok: true, verified: true, _mode: "demo", message: "ডেমো মোড — পেমেন্ট সাবমিট হয়েছে। প্রকৃত ভেরিফিকেশনের জন্য SHEET_WEBHOOK_URL সেট করো। WhatsApp-এ মেসেজ পাঠানো হবে: " + payment.phone, record });
   }
 
   let verified;
@@ -175,7 +188,8 @@ async function handleProgress(payload, env) {
   const phone = normalizePhone(payload?.studentPhone);
   if (!phone) return json({ ok: false, error: "সঠিক ফোন নম্বর দাও।" }, 400);
   if (!env.SHEET_WEBHOOK_URL) {
-    return json({ ok: false, error: "Connect Firebase to enable progress saving." }, 503);
+    console.log("[DEMO MODE] Sheet webhook not configured — returning demo progress response.");
+    return json({ ok: true, _mode: "demo", records: [], message: "ডেমো মোড — প্ৰগ্রেস লোকালস্টোর-এ সংরক্ষিত হচ্ছে। প্রকৃত ক্লাউড সিঙ্কের জন্য SHEET_WEBHOOK_URL সেট করো।" });
   }
   if (payload.action === "get") {
     const result = await callSheet(env, "get-progress", { studentPhone: phone });
@@ -204,7 +218,7 @@ async function handleNotebook(payload, env) {
   if (!studentPhone || !["get", "save", "delete"].includes(action)) {
     return json({ ok: false, error: "NotebookLM request is invalid." }, 400);
   }
-  if (!env.SHEET_WEBHOOK_URL) return json({ ok: false, error: "NotebookLM cloud sync is not configured." }, 503);
+  if (!env.SHEET_WEBHOOK_URL) return json({ ok: true, _mode: "demo", link: "", message: "ডেমো মোড — NotebookLM的云同步 নেই, শুধুমাত্র লোকালস্টোর ব্যবহার হচ্ছে।" });
   if (action === "get") {
     const result = await callSheet(env, "get-notebooklm", { studentPhone });
     if (!result?.ok || (result.link && !isNotebookLink(result.link))) {

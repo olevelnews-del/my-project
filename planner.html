@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>পড়ার প্ল্যানার — HSC Academic Hub | ৳999 একবার</title>
+  <meta name="description" content="তোমার দৈনিক HSC পড়ার প্ল্যানার, Daily Check-In, Focus Timer এবং Streak ট্র্যাকার।" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/css/dashboard-dark.css" />
+
+  <!-- OG Meta Tags -->
+  <meta property="og:title" content="পড়ার প্ল্যানার — HSC Academic Hub" />
+  <meta property="og:description" content="তোমার দৈনিক HSC পড়ার প্ল্যানার, Daily Check-In, Focus Timer এবং Streak ট্র্যাকার।" />
+  <meta property="og:image" content="https://hsctutorbd.com/og-image.jpg" />
+  <meta property="og:url" content="https://hsctutorbd.com/planner.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    .planner-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .task-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--bg-hover);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      transition: all 0.2s;
+    }
+    .task-item:hover { border-color: var(--accent-purple); }
+    .task-checkbox {
+      width: 22px; height: 22px;
+      accent-color: var(--accent-violet);
+      cursor: pointer;
+    }
+    .task-label { font-weight: 600; font-size: 15px; color: var(--text-primary); flex: 1; }
+    .task-label.done { text-decoration: line-through; opacity: 0.6; }
+    .task-tag {
+      font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px;
+      background: var(--accent-violet); color: white;
+    }
+    .timer-display {
+      font-size: 48px; font-weight: 900; color: var(--cta-yellow);
+      font-family: monospace; text-align: center; margin: 20px 0;
+    }
+    .timer-controls { display: flex; justify-content: center; gap: 12px; }
+    .streak-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255, 200, 0, 0.15); border: 1px solid var(--cta-yellow);
+      color: var(--cta-yellow); font-weight: 700; padding: 6px 14px; border-radius: 20px; font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <a href="/" class="logo-link">
+          <span class="logo-icon">🎓</span>
+          <div>
+            <div class="logo-title" data-brand>HSC Academic Hub</div>
+            <div class="logo-subtitle">Consultant Dashboard</div>
+          </div>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">নেভিগেশন</div>
+        <a href="dashboard.html" class="nav-item">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-label">হোম ড্যাশবোর্ড</span>
+        </a>
+        <a href="planner.html" class="nav-item active">
+          <span class="nav-icon">📅</span>
+          <span class="nav-label">পড়ার প্ল্যানার</span>
+        </a>
+        <a href="scorecard.html" class="nav-item">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">স্কোরকার্ড</span>
+        </a>
+        <a href="test.html" class="nav-item">
+          <span class="nav-icon">📝</span>
+          <span class="nav-label">টেস্ট সিরিজ</span>
+        </a>
+        <a href="revision.html" class="nav-item">
+          <span class="nav-icon">🔖</span>
+          <span class="nav-label">বুকমার্ক ও রিভিশন</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer-note">
+        <p>৳999 একবার · HSC পরীক্ষা পর্যন্ত</p>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <button class="topbar-mobile-btn" id="topbar-toggle" aria-label="মেনু">☰</button>
+        <h1 style="font-size:18px;font-weight:700;color:var(--text-primary);">📅 HSC দৈনিক পড়ার প্ল্যানার</h1>
+        <div style="margin-left:auto;" class="streak-badge">🔥 <span id="streak-count">১</span> দিন স্ট্রিক</div>
+      </header>
+
+      <main class="main-content">
+
+        <!-- Banner -->
+        <div class="greeting-card">
+          <h2>দৈনিক পড়ার স্মার্ট রুটিন 🎯</h2>
+          <p>NCTB সিলেবাসের বড় চ্যাপ্টারগুলোকে প্রতিদিনের ৩টি সহজ টাস্কে ভাগ করা হয়েছে। প্রতিদিন সম্পন্ন করো এবং স্ট্রিক বাড়াও!</p>
+        </div>
+
+        <!-- Today's Tasks -->
+        <div class="planner-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <h3 style="font-size:18px;font-weight:700;color:var(--text-primary);">আজকের ৩টি টাস্ক</h3>
+            <span style="font-size:13px;color:var(--text-muted);" id="today-date-str">--</span>
+          </div>
+
+          <div class="task-item">
+            <input type="checkbox" class="task-checkbox" id="task1" onchange="toggleTask(this)" />
+            <label class="task-label" for="task1">পদার্থবিজ্ঞান ১ম পত্র — ভেক্টর (চ্যাপ্টার ২) ৩০ মি. ভিডিও দেখো</label>
+            <span class="task-tag">পদার্থ</span>
+          </div>
+
+          <div class="task-item">
+            <input type="checkbox" class="task-checkbox" id="task2" onchange="toggleTask(this)" />
+            <label class="task-label" for="task2">রসায়ন ২য় পত্র — জৈব রসায়ন ১০টি MCQ প্র্যাকটিস করো</label>
+            <span class="task-tag" style="background:#EC4899;">রসায়ন</span>
+          </div>
+
+          <div class="task-item">
+            <input type="checkbox" class="task-checkbox" id="task3" onchange="toggleTask(this)" />
+            <label class="task-label" for="task3">NotebookLM-এ অধ্যায় নোট আপলোড করে AI সামারি নাও</label>
+            <span class="task-tag" style="background:#F97316;">NotebookLM</span>
+          </div>
+
+          <button class="btn btn-yellow" style="width:100%;margin-top:16px;" onclick="dailyCheckIn()">✅ Daily Check-In সম্পূর্ণ করো (+১ স্ট্রিক)</button>
+          <p id="checkin-msg" style="text-align:center;font-size:13px;color:#4ADE80;margin-top:8px;display:none;"></p>
+        </div>
+
+        <!-- Focus Timer -->
+        <div class="planner-card" style="text-align:center;">
+          <h3 style="font-size:18px;font-weight:700;color:var(--text-primary);">⏱️ Focused Study Timer (Pomodoro ২৫ মি.)</h3>
+          <p style="font-size:13px;color:var(--text-secondary);margin-top:4px;">ফোন দূরে রাখো, ২৫ মিনিট গভীর মনোযোগে পড়ো</p>
+
+          <div class="timer-display" id="timer-display">25:00</div>
+
+          <div class="timer-controls">
+            <button class="btn btn-primary" id="timer-start" onclick="startTimer()">▶ শুরু করো</button>
+            <button class="btn btn-outline" onclick="pauseTimer()">⏸ বিরতি</button>
+            <button class="btn btn-outline" onclick="resetTimer()">🔄 রিসেট</button>
+          </div>
+        </div>
+
+        <!-- Weekly Summary -->
+        <div class="planner-card">
+          <h3 style="font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:12px;">📊 সাপ্তাহিক অগ্রগতি রিপোর্ট</h3>
+          <p style="font-size:14px;color:var(--text-secondary);margin-bottom:16px;">এই সপ্তাহে ৩/৭ দিন চেক-ইন সম্পূর্ণ করেছ (৪২% সম্পন্ন)।</p>
+          <div style="background:var(--bg-hover);border-radius:10px;height:12px;overflow:hidden;margin-bottom:8px;">
+            <div style="width:42%;height:100%;background:linear-gradient(90deg, var(--accent-violet), var(--cta-yellow));"></div>
+          </div>
+          <p style="font-size:12px;color:var(--text-muted);">রবি-বৃহস্পতি প্রতিদিনের চেক-ইন নিশ্চিত করো।</p>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="/config.js"></script>
+  <script>
+    // Bengali Date
+    var now = new Date();
+    var days = ['রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার'];
+    var months = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
+    var toBn = function(n) { return String(n).replace(/[0-9]/g, function(d){ return ['০','১','২','৩','৪','৫','৬','৭','৮','৯'][d]; }); };
+    var dateStr = days[now.getDay()] + ', ' + toBn(now.getDate()) + ' ' + months[now.getMonth()] + ' ' + toBn(now.getFullYear());
+    document.getElementById('today-date-str').textContent = dateStr;
+
+    // Task Toggles
+    function toggleTask(cb) {
+      var label = cb.nextElementSibling;
+      if (cb.checked) {
+        label.classList.add('done');
+      } else {
+        label.classList.remove('done');
+      }
+    }
+
+    // Daily Check-In
+    function dailyCheckIn() {
+      var streak = parseInt(localStorage.getItem('hscStreak') || '1') + 1;
+      localStorage.setItem('hscStreak', streak);
+      document.getElementById('streak-count').textContent = toBn(streak);
+      var msg = document.getElementById('checkin-msg');
+      msg.textContent = '🎉 দারুণ! আজকের Check-In সফল হয়েছে। তোমার নতুন স্ট্রিক: ' + toBn(streak) + ' দিন!';
+      msg.style.display = 'block';
+    }
+
+    // Timer
+    var timerInterval = null;
+    var secondsLeft = 25 * 60;
+    function updateTimerDisplay() {
+      var m = Math.floor(secondsLeft / 60);
+      var s = secondsLeft % 60;
+      document.getElementById('timer-display').textContent =
+        (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+    }
+
+    function startTimer() {
+      if (timerInterval) return;
+      timerInterval = setInterval(function() {
+        if (secondsLeft > 0) {
+          secondsLeft--;
+          updateTimerDisplay();
+        } else {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          alert('⏰ ২৫ মিনিটের Focus Session শেষ! ৫ মিনিট বিরতি নাও।');
+        }
+      }, 1000);
+    }
+
+    function pauseTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+
+    function resetTimer() {
+      pauseTimer();
+      secondsLeft = 25 * 60;
+      updateTimerDisplay();
+    }
+
+    // Mobile Nav Toggle
+    var toggle = document.getElementById('topbar-toggle');
+    var sidebar = document.getElementById('sidebar');
+    if (toggle && sidebar) {
+      toggle.addEventListener('click', function() {
+        sidebar.classList.toggle('open');
+      });
+    }
+  </script>
+</body>
+</html>

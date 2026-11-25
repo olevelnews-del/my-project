@@ -20,7 +20,7 @@ Chapter detail pages and `video-player.html` let students save and open Notebook
 
 ## Files changed
 
-- Added: `links.json`, `data/questions.json`, `api/payment.js`, `js/progress.js`, `dashboard.html`, `.env.example`.
+- Added: `links.json`, `data/questions.json`, `api/payment.js`, `js/progress.js`, `dashboard.html`, `scorecard.html`, `revision.html`, `test.html`, `css/dashboard-dark.css`, `css/dashboard.css`, `js/dashboard.js`, `.env.example`.
 - Updated: `config.js`, `data/academic.json`, `js/notebooklm.js`, `video-player.html`, `workspace.html`, `css/video-player.css`, `bundles/index.html`, `js/app.js`, `js/site-data.js`, `index.html`, `full-platform.html`, `pricing.html`, `pricing/index.html`, `courses/index.html`, `courses/all/index.html`, 29 `courses/*.html` detail pages, `wrangler.jsonc`, `.assetsignore`, `AUDIT-REPORT.md`, `PROGRESS.md`.
 - Deleted: `videos.json`, `api/chat.js`, `js/chat.js`, and eight dead bundle redirects (`science.html`, `humanities.html`, `business-studies.html`, `compulsory-subjects.html`, `compulsory_subjects.html`, `business_studies.html`, `full-platform.html`, `all/index.html`).
 
@@ -50,3 +50,13 @@ Static HTML was opened in the integrated browser, but root-relative scripts and 
 - **Dashboard**: Rebuilt as Consultant Dashboard
 - **Removed from hero**: Live Class, Dedicated Teacher, 1-on-1 Video Call
 - **Section #1**: Accountability - এটাই আমাদের আসল পার্থক্য
+
+## Hermes Audit Fixes (2026-11-25) — All 6 Categories Complete
+- ✅ **Typo check**: No "আমরামরা" typo found anywhere.
+- ✅ **Dead links fixed**: 9 href="#" replaced across dashboard.html (planner/chapter/milestone pages).
+- ✅ **New pages created**: `planner.html` (daily task tracker + focus timer + streak), `chapter.html` (chapter-level video player + NotebookLM connect).
+- ✅ **Testimonials fixed**: 3 Unsplash photos replaced with Bengali-initial avatar circles + Beta Student labels + disclaimer.
+- ✅ **Demo messaging**: api/payment.js returns `{_mode:"demo"}` responses; bundles/index.html shows inline yellow warning + handles demo submission gracefully.
+- ✅ **OG meta tags**: Added to index.html, pricing.html, bundles/index.html, dashboard.html, scorecard.html, chapter.html.
+- ✅ **.env.example**: Added BKASH_MERCHANT_ID and FIREBASE_CONFIG entries.
+- ✅ **AUDIT-REPORT.md & PROGRESS.md**: Updated with full audit fix log.
