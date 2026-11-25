@@ -64,7 +64,7 @@ jobs:
           find . -type f -not -path './.git/*' | sed 's|^\./||' > /tmp/valid_files.txt
           errors=0
           for f in $(find . -name '*.html' -not -path './.git/*'); do
-            hrefs=$(grep -oE 'href="[^"]*"' "$f" | sed 's/href="//;s/"$//' | grep -v '^http' | grep -v '^#' | grep -v '^javascript:' | grep -v '^//' | grep -v '\${')
+            hrefs=$(grep -oE 'href="[^"]*"' "$f" | sed 's/href="//;s/"$//' | grep -vE '^(https?|mailto|tel):' | grep -v '^#' | grep -v '^javascript:' | grep -v '^//' | grep -v '\${')
             for h in $hrefs; do
               # Skip query-string URLs (e.g., /bundles/?group=science)
               target=$(echo "$h" | sed 's/[?#].*//')
